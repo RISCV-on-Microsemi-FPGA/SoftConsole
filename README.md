@@ -7,6 +7,7 @@ SoftConsole supports target JTAG debugging through FlashPro5.
 SoftConsole v5.0 is currently only available for Linux.
 
 ### Download
-[SoftConsole v5.0 download](ftp://ftp.actel.com/outgoing/RISC-V/toolchain/latest/toolchain.tar.gz)
+SoftConsole v5.0 Release Notes: ftp://ftp.actel.com/outgoing/RISC-V/toolchain/latest/SoftConsole_v5.0_ReleaseNotes.pdf
 
-[SoftConsole v5.0 Release Notes](ftp://ftp.actel.com/outgoing/tommy/SoftConsole_v5.0_ReleaseNotes.pdf)
+SoftConsole v5.0 download: ftp://ftp.actel.com/outgoing/RISC-V/toolchain/latest/Microsemi-SoftConsole-v5.0.0.6-Linux-x86-Installer
+
