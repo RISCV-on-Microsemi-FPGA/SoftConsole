@@ -1,0 +1,7 @@
+12:37:20 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+
+12:37:20 Build Finished (took 63ms)
+

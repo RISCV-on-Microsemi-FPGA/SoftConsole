@@ -1,0 +1,613 @@
+11:43:02 **** Build of configuration Debug for project systick-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+../riscv_hal/init.c:8:25: fatal error: hw_platform.h: No such file or directory
+ #include "hw_platform.h"
+                         ^
+compilation terminated.
+make: *** [riscv_hal/init.o] Error 1
+11:44:51 **** Incremental Build of configuration Debug for project systick-blinky ****
+make all 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../main.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"main.d" -MT"main.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: systick-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,systick-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "systick-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   -lc
+Finished building target: systick-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex systick-blinky.elf  "systick-blinky.hex"
+Finished building: systick-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S systick-blinky.elf > "systick-blinky.lst"
+Finished building: systick-blinky.lst
+ 
+11:48:30 **** Incremental Build of configuration Debug for project systick-blinky ****
+make all 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building target: systick-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,systick-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "systick-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   -lc
+Finished building target: systick-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex systick-blinky.elf  "systick-blinky.hex"
+Finished building: systick-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S systick-blinky.elf > "systick-blinky.lst"
+Finished building: systick-blinky.lst
+ 
+12:14:08 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+/bin/sh: 1: arm-none-eabi-gcc: not found
+Invoking: Cross ARM GNU Assembler
+make: *** [riscv_hal/entry.o] Error 127
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -x assembler-with-cpp -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.o" -c -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+12:15:10 **** Clean-only build of configuration Debug for project systick-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  systick-blinky.hex  systick-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  systick-blinky.elf
+ 
+12:15:10 **** Build of configuration Debug for project systick-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../main.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/systick-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"main.d" -MT"main.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: systick-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,systick-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "systick-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   -lc
+Finished building target: systick-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex systick-blinky.elf  "systick-blinky.hex"
+Finished building: systick-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S systick-blinky.elf > "systick-blinky.lst"
+Finished building: systick-blinky.lst
+ 
+12:17:52 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:20:22 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+12:20:22 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:21:48 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+12:21:49 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:22:43 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+12:22:43 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:27:21 **** Incremental Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+../interrupt_blinky.c: In function 'main':
+../interrupt_blinky.c:84:14: warning: unused variable 'irq_disabled' [-Wunused-variable]
+     uint32_t irq_disabled = 0;
+              ^~~~~~~~~~~~
+../interrupt_blinky.c:83:11: warning: unused variable 'psr' [-Wunused-variable]
+     psr_t psr;
+           ^~~
+../interrupt_blinky.c:131:37: warning: 'switches' is used uninitialized in this function [-Wuninitialized]
+         GPIO_set_outputs(&g_gpio1, (~switches & 0x000000F0) | g_state);
+                                     ^~~~~~~~~
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:27:26 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+12:27:26 **** Build of configuration Debug for project interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../interrupt_blinky.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/riscv_hal" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreGPIO" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreTimer" -I"/scratch/SoftConsoleGitHub/github/SoftConsole/ExampleWorkspace/interrupt-blinky/drivers/CoreUARTapb" -O0 -Wall -c -MMD -MP -MF"interrupt_blinky.d" -MT"interrupt_blinky.d" -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt_blinky.o" "../interrupt_blinky.c"
+../interrupt_blinky.c: In function 'main':
+../interrupt_blinky.c:84:14: warning: unused variable 'irq_disabled' [-Wunused-variable]
+     uint32_t irq_disabled = 0;
+              ^~~~~~~~~~~~
+../interrupt_blinky.c:83:11: warning: unused variable 'psr' [-Wunused-variable]
+     psr_t psr;
+           ^~~
+../interrupt_blinky.c:131:37: warning: 'switches' is used uninitialized in this function [-Wuninitialized]
+         GPIO_set_outputs(&g_gpio1, (~switches & 0x000000F0) | g_state);
+                                     ^~~~~~~~~
+Finished building: ../interrupt_blinky.c
+ 
+Building target: interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -g3 -gdwarf-2 -m32 -T"../all-ram.lds" -nostartfiles -nostdlib -Wl,-Map,interrupt-blinky.map -march=RV32IM -mmuldiv -mfloat-abi=soft -o "interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o   -lc
+Finished building target: interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex interrupt-blinky.elf  "interrupt-blinky.hex"
+Finished building: interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S interrupt-blinky.elf > "interrupt-blinky.lst"
+Finished building: interrupt-blinky.lst
+ 
+12:37:20 **** Clean-only build of configuration Debug for project interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./interrupt_blinky.o  interrupt-blinky.hex  interrupt-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./interrupt_blinky.d  interrupt-blinky.elf
+ 
+12:37:20 **** Clean-only build of configuration Debug for project systick-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  systick-blinky.hex  systick-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  systick-blinky.elf
+ 
