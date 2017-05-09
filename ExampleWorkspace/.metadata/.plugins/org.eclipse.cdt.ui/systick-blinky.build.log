@@ -1,7 +1,66 @@
-12:37:20 **** Clean-only build of configuration Debug for project systick-blinky ****
-make clean 
-rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  systick-blinky.hex  systick-blinky.lst  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  systick-blinky.elf
+11:30:05 **** Build of configuration Debug for project systick-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -Wa,-march=rv32im -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
  
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../main.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\riscv_hal" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreGPIO" -I"C:\proj\RISC-V\SoftConsole\GitHub\SoftConsole\ExampleWorkspace\systick-blinky\drivers\CoreUARTapb" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: systick-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -T"../riscv_hal/microsemi-riscv-ram.ld" -nostartfiles -Wl,--gc-sections -Wl,-Map,systick-blinky.map -o "systick-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   
+c:/microsemi/softconsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/bin/ld.exe: cannot open linker script file ../riscv_hal/microsemi-riscv-ram.ld: No such file or directory
+collect2.exe: error: ld returned 1 exit status
+makefile:48: recipe for target 'systick-blinky.elf' failed
+make: *** [systick-blinky.elf] Error 1
 
-12:37:20 Build Finished (took 58ms)
+11:30:08 Build Finished (took 3s.6ms)
 
