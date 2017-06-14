@@ -1472,3 +1472,44 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -pluginCustomization plugin
 
 !ENTRY org.eclipse.cdt.core 1 0 2017-06-14 09:21:15.432
 !MESSAGE Indexed 'riscv-systick-blinky' (9 sources, 63 headers) in 0.272 sec: 2,749 declarations; 4,578 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+!SESSION 2017-06-14 12:03:51.047 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IE
+Framework arguments:  -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86 -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -data /scratch/Cyril-Jean-GitHub/SoftConsole/ExampleWorkspace -pluginCustomization plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-06-14 12:03:51.830
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 12:04:35.582
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --file board/microsemi-riscv.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 12:04:36.977
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb --interpreter=mi2 --nx Debug/interrupt-blinky.elf
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 13:27:23.857
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --file board/microsemi-riscv.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 13:27:25.242
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb --interpreter=mi2 --nx Debug/interrupt-blinky.elf
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 13:28:35.363
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --file board/microsemi-riscv.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 13:28:36.760
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb --interpreter=mi2 --nx Debug/interrupt-blinky.elf
+!SESSION 2017-06-14 14:49:33.509 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IE
+Framework arguments:  -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini
+Command-line arguments:  -os linux -ws gtk -arch x86 -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -pluginCustomization plugin_customization.ini -data /scratch/Cyril-Jean-GitHub/SoftConsole/ExampleWorkspace -pluginCustomization plugin_customization.ini
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 15:05:10.853
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../openocd/bin/openocd -c gdb_port 3333 -c telnet_port 4444 --file board/microsemi-riscv.cfg -c echo "Started by GNU ARM Eclipse"
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 15:05:12.263
+!MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb --interpreter=mi2 --nx Debug/interrupt-blinky.elf

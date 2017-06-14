@@ -14,7 +14,7 @@
  * Some of these macros also allow to access a specific register field.
  * 
  * SVN $Revision: 9085 $
- * SVN $Date: 2017-04-28 09:59:14 +0100 (Fri, 28 Apr 2017) $
+ * SVN $Date: 2017-04-28 14:29:14 +0530 (Fri, 28 Apr 2017) $
  */
 #ifndef __HW_REGISTER_MACROS_H
 #define __HW_REGISTER_MACROS_H 1

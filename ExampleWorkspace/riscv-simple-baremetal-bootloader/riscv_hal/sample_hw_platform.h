@@ -5,7 +5,7 @@
  * Version based on requirements of RISCV-HAL
  *
  * SVN $Revision: 9030 $
- * SVN $Date: 2017-04-23 10:47:47 +0100 (Sun, 23 Apr 2017) $
+ * SVN $Date: 2017-04-23 15:17:47 +0530 (Sun, 23 Apr 2017) $
  */
  /*=========================================================================*//**
   @mainpage Sample file detailing how hw_platform.h should be constructed for 
