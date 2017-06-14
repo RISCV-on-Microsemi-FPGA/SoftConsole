@@ -4918,3 +4918,383 @@ rm -rf  ./ymodem/ymodem.o  ./spi_flash/spi_flash.o  ./riscv_hal/entry.o ./riscv_
 make clean 
 rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-systick-blinky.hex  riscv-systick-blinky.lst  riscv-systick-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-systick-blinky.elf
  
+09:23:43 **** Clean-only build of configuration Debug for project riscv-interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-interrupt-blinky.hex  riscv-interrupt-blinky.lst  riscv-interrupt-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-interrupt-blinky.elf
+ 
+09:23:43 **** Clean-only build of configuration Debug for project riscv-simple-baremetal-bootloader ****
+make clean 
+rm -rf  ./ymodem/ymodem.o  ./spi_flash/spi_flash.o  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreSPI/core_spi.o  ./drivers/CoreGPIO/core_gpio.o  ./bootloader.o  riscv-simple-baremetal-bootloader.hex  riscv-simple-baremetal-bootloader.lst  riscv-simple-baremetal-bootloader.siz  ./riscv_hal/entry.d  ./ymodem/ymodem.d  ./spi_flash/spi_flash.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreSPI/core_spi.d  ./drivers/CoreGPIO/core_gpio.d  ./bootloader.d  riscv-simple-baremetal-bootloader.elf
+ 
+09:23:43 **** Clean-only build of configuration Debug for project riscv-systick-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-systick-blinky.hex  riscv-systick-blinky.lst  riscv-systick-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-systick-blinky.elf
+ 
+09:23:43 **** Build of configuration Debug for project riscv-interrupt-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -Wa,-march=rv32im -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../main.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-interrupt-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: riscv-interrupt-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -T"../riscv_hal/microsemi-riscv-ram.ld" -nostartfiles -Wl,--gc-sections -Wl,-Map,riscv-interrupt-blinky.map -o "riscv-interrupt-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   
+Finished building target: riscv-interrupt-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex riscv-interrupt-blinky.elf  "riscv-interrupt-blinky.hex"
+Finished building: riscv-interrupt-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S riscv-interrupt-blinky.elf > "riscv-interrupt-blinky.lst"
+Finished building: riscv-interrupt-blinky.lst
+ 
+Invoking: RISC-V GCC/Newlib Print Size
+riscv64-unknown-elf-size --format=berkeley "riscv-interrupt-blinky.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7344	   1216	   4288	  12848	   3230	riscv-interrupt-blinky.elf
+Finished building: riscv-interrupt-blinky.siz
+ 
+09:23:44 **** Build of configuration Debug for project riscv-simple-baremetal-bootloader ****
+make all 
+Building file: ../ymodem/ymodem.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"ymodem/ymodem.d" -MT"ymodem/ymodem.d" -o "ymodem/ymodem.o" "../ymodem/ymodem.c"
+../ymodem/ymodem.c: In function 'ymodem_receive':
+../ymodem/ymodem.c:473:14: warning: variable 'crc_tries' set but not used [-Wunused-but-set-variable]
+     int32_t  crc_tries;
+              ^~~~~~~~~
+../ymodem/ymodem.c:466:20: warning: variable 'file_name' set but not used [-Wunused-but-set-variable]
+     static uint8_t file_name[FILE_NAME_LENGTH + 1]; /* +1 for nul */
+                    ^~~~~~~~~
+Finished building: ../ymodem/ymodem.c
+ 
+Building file: ../spi_flash/spi_flash.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"spi_flash/spi_flash.d" -MT"spi_flash/spi_flash.d" -o "spi_flash/spi_flash.o" "../spi_flash/spi_flash.c"
+../spi_flash/spi_flash.c: In function 'spi_flash_control_hw':
+../spi_flash/spi_flash.c:124:8: warning: 'x' may be used uninitialized in this function [-Wmaybe-uninitialized]
+       x++;
+       ~^~
+Finished building: ../spi_flash/spi_flash.c
+ 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -Wa,-march=rv32im -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreTimer/core_timer.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreTimer/core_timer.d" -MT"drivers/CoreTimer/core_timer.d" -o "drivers/CoreTimer/core_timer.o" "../drivers/CoreTimer/core_timer.c"
+Finished building: ../drivers/CoreTimer/core_timer.c
+ 
+Building file: ../drivers/CoreSPI/core_spi.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreSPI/core_spi.d" -MT"drivers/CoreSPI/core_spi.d" -o "drivers/CoreSPI/core_spi.o" "../drivers/CoreSPI/core_spi.c"
+../drivers/CoreSPI/core_spi.c: In function 'SPI_init':
+../drivers/CoreSPI/core_spi.c:67:10: warning: variable 'test' set but not used [-Wunused-but-set-variable]
+  uint8_t test;
+          ^~~~
+Finished building: ../drivers/CoreSPI/core_spi.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../bootloader.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreSPI" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreTimer" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/spi_flash" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/ymodem" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-simple-baremetal-bootloader/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"bootloader.d" -MT"bootloader.d" -o "bootloader.o" "../bootloader.c"
+../bootloader.c: In function 'test_flash':
+../bootloader.c:502:36: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+    UART_polled_tx_string( &g_uart, "  Flash test success\n\r" );
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:293:24: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+     spi_flash_status_t result;
+                        ^~~~~~
+../bootloader.c: In function 'write_program_to_flash':
+../bootloader.c:522:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "\r\n---------------------- Writing SPI flash from DDR memory ----------------------\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:523:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "This may take several minutes to complete if writing a large file.\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:736:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "  Flash write success\n\r" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:519:24: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+     spi_flash_status_t result;
+                        ^~~~~~
+../bootloader.c: In function 'read_program_from_flash':
+../bootloader.c:753:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "\r\n------------------- Reading from SPI flash into DDR memory --------------------\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:754:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "This will take several minutes to complete in order to read the full SPI flash \r\ncontent.\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:799:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "  Flash read success\n\r" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:750:24: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+     spi_flash_status_t result;
+                        ^~~~~~
+../bootloader.c: In function 'mem_test':
+../bootloader.c:815:38: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+      UART_polled_tx_string( &g_uart, "  Read/Write success\n\r" );
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:817:38: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+      UART_polled_tx_string( &g_uart, "  Read/Write fail\n\r" );
+                                      ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c: In function 'rx_app_file':
+../bootloader.c:830:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "\r\n------------------------ Starting YModem file transfer ------------------------\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+../bootloader.c:831:37: warning: pointer targets in passing argument 2 of 'UART_polled_tx_string' differ in signedness [-Wpointer-sign]
+     UART_polled_tx_string( &g_uart, "Please select file and initiate transfer on host computer.\r\n" );
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../bootloader.c:20:0:
+../drivers/CoreUARTapb/core_uart_apb.h:346:1: note: expected 'const uint8_t * {aka const unsigned char *}' but argument is of type 'char *'
+ UART_polled_tx_string
+ ^~~~~~~~~~~~~~~~~~~~~
+Finished building: ../bootloader.c
+ 
+Building target: riscv-simple-baremetal-bootloader.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -T"../riscv_hal/microsemi-riscv-ram.ld" -nostartfiles -Wl,--gc-sections -Wl,-Map,riscv-simple-baremetal-bootloader.map -o "riscv-simple-baremetal-bootloader.elf"  ./ymodem/ymodem.o  ./spi_flash/spi_flash.o  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreSPI/core_spi.o  ./drivers/CoreGPIO/core_gpio.o  ./bootloader.o   
+Finished building target: riscv-simple-baremetal-bootloader.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex riscv-simple-baremetal-bootloader.elf  "riscv-simple-baremetal-bootloader.hex"
+Finished building: riscv-simple-baremetal-bootloader.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S riscv-simple-baremetal-bootloader.elf > "riscv-simple-baremetal-bootloader.lst"
+Finished building: riscv-simple-baremetal-bootloader.lst
+ 
+Invoking: RISC-V GCC/Newlib Print Size
+riscv64-unknown-elf-size --format=berkeley "riscv-simple-baremetal-bootloader.elf"
+   text	   data	    bss	    dec	    hex	filename
+  23088	   1216	   5760	  30064	   7570	riscv-simple-baremetal-bootloader.elf
+Finished building: riscv-simple-baremetal-bootloader.siz
+ 
+09:23:45 **** Build of configuration Debug for project riscv-systick-blinky ****
+make all 
+Building file: ../riscv_hal/entry.S
+Invoking: RISC-V GCC/Newlib Assembler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -x assembler-with-cpp -Wall -c -MMD -MP -MF"riscv_hal/entry.d" -MT"riscv_hal/entry.d" -Wa,-march=rv32im -o "riscv_hal/entry.o" "../riscv_hal/entry.S"
+Finished building: ../riscv_hal/entry.S
+ 
+Building file: ../riscv_hal/init.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/init.d" -MT"riscv_hal/init.d" -o "riscv_hal/init.o" "../riscv_hal/init.c"
+Finished building: ../riscv_hal/init.c
+ 
+Building file: ../riscv_hal/riscv_hal.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal.d" -MT"riscv_hal/riscv_hal.d" -o "riscv_hal/riscv_hal.o" "../riscv_hal/riscv_hal.c"
+Finished building: ../riscv_hal/riscv_hal.c
+ 
+Building file: ../riscv_hal/riscv_hal_stubs.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/riscv_hal_stubs.d" -MT"riscv_hal/riscv_hal_stubs.d" -o "riscv_hal/riscv_hal_stubs.o" "../riscv_hal/riscv_hal_stubs.c"
+Finished building: ../riscv_hal/riscv_hal_stubs.c
+ 
+Building file: ../riscv_hal/syscall.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"riscv_hal/syscall.d" -MT"riscv_hal/syscall.d" -o "riscv_hal/syscall.o" "../riscv_hal/syscall.c"
+Finished building: ../riscv_hal/syscall.c
+ 
+Building file: ../hal/hal_irq.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hal_irq.d" -MT"hal/hal_irq.d" -o "hal/hal_irq.o" "../hal/hal_irq.c"
+Finished building: ../hal/hal_irq.c
+ 
+Building file: ../hal/hw_reg_access.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"hal/hw_reg_access.d" -MT"hal/hw_reg_access.d" -o "hal/hw_reg_access.o" "../hal/hw_reg_access.c"
+Finished building: ../hal/hw_reg_access.c
+ 
+Building file: ../drivers/CoreUARTapb/core_uart_apb.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreUARTapb/core_uart_apb.d" -MT"drivers/CoreUARTapb/core_uart_apb.d" -o "drivers/CoreUARTapb/core_uart_apb.o" "../drivers/CoreUARTapb/core_uart_apb.c"
+../drivers/CoreUARTapb/core_uart_apb.c: In function 'UART_init':
+../drivers/CoreUARTapb/core_uart_apb.c:97:30: warning: variable 'rx_byte' set but not used [-Wunused-but-set-variable]
+             volatile uint8_t rx_byte;
+                              ^~~~~~~
+Finished building: ../drivers/CoreUARTapb/core_uart_apb.c
+ 
+Building file: ../drivers/CoreGPIO/core_gpio.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"drivers/CoreGPIO/core_gpio.d" -MT"drivers/CoreGPIO/core_gpio.d" -o "drivers/CoreGPIO/core_gpio.o" "../drivers/CoreGPIO/core_gpio.c"
+Finished building: ../drivers/CoreGPIO/core_gpio.c
+ 
+Building file: ../main.c
+Invoking: RISC-V GCC/Newlib C Compiler
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreGPIO" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/drivers/CoreUARTapb" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/hal" -I"/scratch/MSCC_github_tests/SoftConsole/ExampleWorkspace/riscv-systick-blinky/riscv_hal" -O0 -ffunction-sections -fdata-sections -Wall -c -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: riscv-systick-blinky.elf
+Invoking: RISC-V GCC/Newlib C Linker
+riscv64-unknown-elf-gcc -mabi=ilp32 -g3 -gdwarf-2 -march=rv32im -T"../riscv_hal/microsemi-riscv-ram.ld" -nostartfiles -Wl,--gc-sections -Wl,-Map,riscv-systick-blinky.map -o "riscv-systick-blinky.elf"  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o   
+Finished building target: riscv-systick-blinky.elf
+ 
+Invoking: RISC-V GCC/Newlib GNU Create Flash Image
+riscv64-unknown-elf-objcopy -O ihex riscv-systick-blinky.elf  "riscv-systick-blinky.hex"
+Finished building: riscv-systick-blinky.hex
+ 
+Invoking: RISC-V GCC/Newlib Create Listing
+riscv64-unknown-elf-objdump -h -S riscv-systick-blinky.elf > "riscv-systick-blinky.lst"
+Finished building: riscv-systick-blinky.lst
+ 
+Invoking: RISC-V GCC/Newlib Print Size
+riscv64-unknown-elf-size --format=berkeley "riscv-systick-blinky.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6448	   1216	   4272	  11936	   2ea0	riscv-systick-blinky.elf
+Finished building: riscv-systick-blinky.siz
+ 
+09:23:52 **** Clean-only build of configuration Debug for project riscv-interrupt-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-interrupt-blinky.hex  riscv-interrupt-blinky.lst  riscv-interrupt-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-interrupt-blinky.elf
+ 
+09:23:52 **** Clean-only build of configuration Debug for project riscv-simple-baremetal-bootloader ****
+make clean 
+rm -rf  ./ymodem/ymodem.o  ./spi_flash/spi_flash.o  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreSPI/core_spi.o  ./drivers/CoreGPIO/core_gpio.o  ./bootloader.o  riscv-simple-baremetal-bootloader.hex  riscv-simple-baremetal-bootloader.lst  riscv-simple-baremetal-bootloader.siz  ./riscv_hal/entry.d  ./ymodem/ymodem.d  ./spi_flash/spi_flash.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreSPI/core_spi.d  ./drivers/CoreGPIO/core_gpio.d  ./bootloader.d  riscv-simple-baremetal-bootloader.elf
+ 
+09:23:52 **** Clean-only build of configuration Debug for project riscv-systick-blinky ****
+make clean 
+rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-systick-blinky.hex  riscv-systick-blinky.lst  riscv-systick-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-systick-blinky.elf
+ 

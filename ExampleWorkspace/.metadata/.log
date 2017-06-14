@@ -1466,3 +1466,9 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -pluginCustomization plugin
 
 !ENTRY ilg.gnuarmeclipse.debug.gdbjtag.openocd 4 1 2017-06-14 09:11:31.372
 !MESSAGE /home/cyril/Microsemi_SoftConsole_v5.1/eclipse//../riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-06-14 09:20:09.701
+!MESSAGE Indexed 'riscv-interrupt-blinky' (10 sources, 65 headers) in 0.31 sec: 2,794 declarations; 4,767 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2017-06-14 09:21:15.432
+!MESSAGE Indexed 'riscv-systick-blinky' (9 sources, 63 headers) in 0.272 sec: 2,749 declarations; 4,578 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)

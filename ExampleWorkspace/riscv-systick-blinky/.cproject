@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" description="" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068" name="Debug" parent="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug">
+					<folderInfo id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.debug.1955948442" name="RISC-V GCC/Newlib Toolchain" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.debug">
+							<option id="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level.1348336118" name="Debug level" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.debugging.level.max" valueType="enumerated"/>
+							<targetPlatform id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.platform.debug.1104983350" isAbstract="false" name="All Platform" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.platform.debug"/>
+							<builder buildPath="${workspace_loc:/riscv-systick-blinky}/Debug" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.builder.debug.2121805697" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="GNU Make Builder for RISC-V" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.builder.debug"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.debug.1471246544" name="RISC-V GCC/Newlib Assembler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.debug">
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input.545065178" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug.161866051" name="RISC-V GCC/Newlib C Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level.972686014" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.1934525221" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreGPIO}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input.1380932983" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.compiler.debug.1075768154" name="RISC-V GCC/Newlib C++ Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.compiler.debug">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level.192411515" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.debug.720157193" name="RISC-V GCC/Newlib C Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.debug">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.1089089013" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.c.linker.input.324339982" superClass="org.eclipse.cdt.cross.riscv.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.linker.debug.745013267" name="RISC-V GCC/Newlib C++ Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.linker.debug"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.archiver.base.510832147" name="RISC-V GCC/Newlib Archiver" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.archiver.base"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createflash.debug.568176580" name="RISC-V GCC/Newlib GNU Create Flash Image" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createflash.debug"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createlisting.debug.1094801684" name="RISC-V GCC/Newlib Create Listing" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createlisting.debug"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.printsize.debug.925403858" name="RISC-V GCC/Newlib Print Size" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.printsize.debug"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" description="" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403" name="Release" parent="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release">
+					<folderInfo id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.release.816387346" name="RISC-V GCC/Newlib Toolchain" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.release">
+							<option id="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level.875229059" name="Debug level" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.debugging.level.none" valueType="enumerated"/>
+							<targetPlatform id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.platform.release.1434408793" isAbstract="false" name="All Platform" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.platform.release"/>
+							<builder buildPath="${workspace_loc:/riscv-systick-blinky}/Release" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.builder.release.337915432" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="GNU Make Builder for RISC-V" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.builder.release"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.release.1326268362" name="RISC-V GCC/Newlib Assembler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.release">
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input.1413749691" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.release.1574788598" name="RISC-V GCC/Newlib C Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.release">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level.2038546234" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.136025496" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreGPIO}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/hal}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/riscv_hal}&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input.1762549622" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.compiler.release.1049760238" name="RISC-V GCC/Newlib C++ Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.compiler.release">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level.1602782937" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.size" valueType="enumerated"/>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.release.2026061035" name="RISC-V GCC/Newlib C Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.release">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.477205183" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
+								<inputType id="org.eclipse.cdt.cross.riscv.gnu.c.linker.input.756927753" superClass="org.eclipse.cdt.cross.riscv.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.linker.release.262872654" name="RISC-V GCC/Newlib C++ Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.cpp.linker.release"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.archiver.base.282651980" name="RISC-V GCC/Newlib Archiver" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.archiver.base"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createflash.release.1308619404" name="RISC-V GCC/Newlib GNU Create Flash Image" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createflash.release"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createlisting.release.188985681" name="RISC-V GCC/Newlib Create Listing" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.createlisting.release"/>
+							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.printsize.release.1471256631" name="RISC-V GCC/Newlib Print Size" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.printsize.release"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="riscv-systick-blinky.org.eclipse.cdt.cross.riscv.gnu.linux.elf.1704908918" name="RISC-V Embedded Application" projectType="org.eclipse.cdt.cross.riscv.gnu.linux.elf"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068;org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug.161866051;org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input.1380932983">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.riscv.gnu.RISCV_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068;org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.debug.1471246544;org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input.545065178">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.riscv.gnu.RISCV_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403;org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.release.1326268362;org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input.1413749691">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.riscv.gnu.RISCV_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403;org.eclipse.cdt.cross.riscv.gnu.linux.elf.release.1486775403.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.release.1574788598;org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input.1762549622">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.riscv.gnu.RISCV_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+</cproject>
