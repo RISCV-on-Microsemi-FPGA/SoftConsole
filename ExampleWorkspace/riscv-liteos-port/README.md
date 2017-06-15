@@ -1,16 +1,16 @@
 ## Microsemi RISC-V port for Huawei LiteOS
 
 ### LiteOS Stack
-    https://github.com/LITEOS/LiteOS_Kernel
-    Downloaded on -- 14June2017
+https://github.com/LITEOS/LiteOS_Kernel
+
     
 ### Test Platform and FPGA design:
-    M2S150-Advanced-Dev-Kit
-    [SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/blob/master/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)   
+M2S150-Advanced-Dev-Kit
+[SmartFusion2 Advanced Development Kit RISC-V Sample Design](https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/blob/master/Programming_The_Target_Device/PROC_SUBSYSTEM_BaseDesign)   
 
 ### LiteOS Port Test results:
-    LOS_BoadExampleEntry  -- executes on board.
-    LOS_Inspect_Entry   -- Following tests are passed.
+LOS_BoadExampleEntry    -- executes on board.
+LOS_Inspect_Entry       -- Following tests are passed.
         LOS_INSPECT_TASK
         LOS_INSPECT_EVENT
         LOS_INSPECT_SEM
@@ -21,13 +21,12 @@
         LOS_INSPECT_DMEM
 
 ### How to run the LiteOS RISC-V port:
-    Open SoftConsole IDE
-    Import the project riscv-liteos-port into SoftConsole.
-    Buld the project and DownLoad the from SoftConsole to 
-    M2S150-Advanced-Dev-Kit using FlashPro Debugger.
-    The riscv-liteos-port is a self contained project where only those 
-    LiteOS components which are related to RISC-V port are part of the 
-    project.
+Open SoftConsole IDE 
+Import the project riscv-liteos-port into SoftConsole. 
+Buld the project and DownLoad the from SoftConsole to M2S150-Advanced-Dev-Kit using FlashPro Debugger.
+
+The riscv-liteos-port is a self contained project where only those LiteOS components 
+which are related to RISC-V port are part of the project.
     
     This example project requires USB-UART interface to be connected to 
     a host PC. The host PC must connect to the serial port using a 
@@ -38,28 +37,27 @@
         - no parity
         - no flow control
     
-    The platform/M2S150_RV32/hw_platform.h file contains the design
-    related information that is required for this project.
-    If you update the design, the hw_platform.h must be updated 
-    accordingly.
+The platform/M2S150_RV32/hw_platform.h file contains the design related information
+that is required for this project. If you update the design, the hw_platform.h 
+must be updated accordingly.
     
-    The preprocessor LOS_M2S150_RV32 must be defined for this project.
+The preprocessor LOS_M2S150_RV32 must be defined for this project.
      
 ### Microsemi RISC-V Port:
-    Folders Added:
+Folders Added:
         \kernel\cpu\riscv
         \platform\M2S150_RV32
         \projects\M2S150_RV32_SoftConsole
 
-    Files Updated:
+Files Updated:
         kernel\config\los_config.h
         kernel\link\gcc\los_builddef.h
         example\include\los_demo_debug.h
         example\api\los_inspect_entry.c
 
 ### Microsemi SoftConsole Toolchain:
-    [SoftConsole](https://github.com/RISCV-on-Microsemi-FPGA/SoftConsole)
+[SoftConsole](https://github.com/RISCV-on-Microsemi-FPGA/SoftConsole)
 
 ### Documentation for Microsemi RISC-V processor, SoftConsole toochain, Debug Tools, FPGA design etc.
-    [Documentation](https://github.com/RISCV-on-Microsemi-FPGA/Documentation)
+[Documentation](https://github.com/RISCV-on-Microsemi-FPGA/Documentation)
     
