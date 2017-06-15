@@ -6,8 +6,8 @@
  * @brief RISC-V soft processor CoreRISCV_AXI4 PLIC and PRCI access data
  *        structures and functions.
  *
- * SVN $Revision: 9085 $
- * SVN $Date: 2017-04-28 09:59:14 +0100 (Fri, 28 Apr 2017) $
+ * SVN $Revision: 9187 $
+ * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
  */
 #ifndef RISCV_COREPLEXE31_H
 #define RISCV_COREPLEXE31_H
@@ -164,6 +164,14 @@ static inline void PLIC_EnableIRQ(IRQn_Type IRQn)
 /*==============================================================================
  * The function PLIC_DisableIRQ() disables the external interrupt for the interrupt
  * number indicated by the parameter IRQn.
+
+ * NOTE:
+ * 	This function can be used to disable the external interrupt from outside
+ * 	external interrupt handler function.
+ * 	This function MUST NOT be used from within the External Interrupt handler.
+ * 	If you wish to disable the external interrupt while the interrupt handler
+ * 	for that external interrupt is executing then you must use the return value
+ * 	EXT_IRQ_DISABLE to return from the extern interrupt handler.
  */
 static inline void PLIC_DisableIRQ(IRQn_Type IRQn)
 {

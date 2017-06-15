@@ -9,8 +9,8 @@
  * defined with weak linking so that they can be overridden by a function with
  * same prototype in the user's application code.
  *
- * SVN $Revision: 9014 $
- * SVN $Date: 2017-04-19 06:23:23 +0100 (Wed, 19 Apr 2017) $
+ * SVN $Revision: 9187 $
+ * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
  */
 #include <unistd.h>
 
@@ -33,164 +33,164 @@ __attribute__((weak)) void SysTick_Handler(void)
     ;
 }
 
-__attribute__((weak))  void Invalid_IRQHandler(void)
+__attribute__((weak))  uint8_t Invalid_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_1_IRQHandler(void)
+__attribute__((weak))  uint8_t External_1_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_2_IRQHandler(void)
+__attribute__((weak))  uint8_t External_2_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_3_IRQHandler(void)
+__attribute__((weak))  uint8_t External_3_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_4_IRQHandler(void)
+__attribute__((weak))  uint8_t External_4_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_5_IRQHandler(void)
+__attribute__((weak))  uint8_t External_5_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_6_IRQHandler(void)
+__attribute__((weak))  uint8_t External_6_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_7_IRQHandler(void)
+__attribute__((weak))  uint8_t External_7_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_8_IRQHandler(void)
+__attribute__((weak))  uint8_t External_8_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_9_IRQHandler(void)
+__attribute__((weak))  uint8_t External_9_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_10_IRQHandler(void)
+__attribute__((weak))  uint8_t External_10_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_11_IRQHandler(void)
+__attribute__((weak))  uint8_t External_11_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_12_IRQHandler(void)
+__attribute__((weak))  uint8_t External_12_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_13_IRQHandler(void)
+__attribute__((weak))  uint8_t External_13_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_14_IRQHandler(void)
+__attribute__((weak))  uint8_t External_14_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_15_IRQHandler(void)
+__attribute__((weak))  uint8_t External_15_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_16_IRQHandler(void)
+__attribute__((weak))  uint8_t External_16_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_17_IRQHandler(void)
+__attribute__((weak))  uint8_t External_17_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_18_IRQHandler(void)
+__attribute__((weak))  uint8_t External_18_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_19_IRQHandler(void)
+__attribute__((weak))  uint8_t External_19_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_20_IRQHandler(void)
+__attribute__((weak))  uint8_t External_20_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_21_IRQHandler(void)
+__attribute__((weak))  uint8_t External_21_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_22_IRQHandler(void)
+__attribute__((weak))  uint8_t External_22_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_23_IRQHandler(void)
+__attribute__((weak))  uint8_t External_23_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_24_IRQHandler(void)
+__attribute__((weak))  uint8_t External_24_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_25_IRQHandler(void)
+__attribute__((weak))  uint8_t External_25_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_26_IRQHandler(void)
+__attribute__((weak))  uint8_t External_26_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_27_IRQHandler(void)
+__attribute__((weak))  uint8_t External_27_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_28_IRQHandler(void)
+__attribute__((weak))  uint8_t External_28_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_29_IRQHandler(void)
+__attribute__((weak))  uint8_t External_29_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_30_IRQHandler(void)
+__attribute__((weak))  uint8_t External_30_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
-__attribute__((weak))  void External_31_IRQHandler(void)
+__attribute__((weak))  uint8_t External_31_IRQHandler(void)
 {
-    ;
+    return(0);
 }
 
 #ifdef __cplusplus

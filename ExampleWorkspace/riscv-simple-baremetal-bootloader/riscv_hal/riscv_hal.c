@@ -8,8 +8,8 @@
  *        This is mainly targeted at RV32IM but should be usable with other
  *        variants.
  *
- * SVN $Revision: 9014 $
- * SVN $Date: 2017-04-19 06:23:23 +0100 (Wed, 19 Apr 2017) $
+ * SVN $Revision: 9187 $
+ * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
  */
 #include <stdlib.h>
 #include <stdint.h>
@@ -29,38 +29,38 @@ extern "C" {
 /*------------------------------------------------------------------------------
  * 
  */
-void Invalid_IRQHandler(void);
-void External_1_IRQHandler(void);
-void External_2_IRQHandler(void);
-void External_3_IRQHandler(void);
-void External_4_IRQHandler(void);
-void External_5_IRQHandler(void);
-void External_6_IRQHandler(void);
-void External_7_IRQHandler(void);
-void External_8_IRQHandler(void);
-void External_9_IRQHandler(void);
-void External_10_IRQHandler(void);
-void External_11_IRQHandler(void);
-void External_12_IRQHandler(void);
-void External_13_IRQHandler(void);
-void External_14_IRQHandler(void);
-void External_15_IRQHandler(void);
-void External_16_IRQHandler(void);
-void External_17_IRQHandler(void);
-void External_18_IRQHandler(void);
-void External_19_IRQHandler(void);
-void External_20_IRQHandler(void);
-void External_21_IRQHandler(void);
-void External_22_IRQHandler(void);
-void External_23_IRQHandler(void);
-void External_24_IRQHandler(void);
-void External_25_IRQHandler(void);
-void External_26_IRQHandler(void);
-void External_27_IRQHandler(void);
-void External_28_IRQHandler(void);
-void External_29_IRQHandler(void);
-void External_30_IRQHandler(void);
-void External_31_IRQHandler(void);
+uint8_t Invalid_IRQHandler(void);
+uint8_t External_1_IRQHandler(void);
+uint8_t External_2_IRQHandler(void);
+uint8_t External_3_IRQHandler(void);
+uint8_t External_4_IRQHandler(void);
+uint8_t External_5_IRQHandler(void);
+uint8_t External_6_IRQHandler(void);
+uint8_t External_7_IRQHandler(void);
+uint8_t External_8_IRQHandler(void);
+uint8_t External_9_IRQHandler(void);
+uint8_t External_10_IRQHandler(void);
+uint8_t External_11_IRQHandler(void);
+uint8_t External_12_IRQHandler(void);
+uint8_t External_13_IRQHandler(void);
+uint8_t External_14_IRQHandler(void);
+uint8_t External_15_IRQHandler(void);
+uint8_t External_16_IRQHandler(void);
+uint8_t External_17_IRQHandler(void);
+uint8_t External_18_IRQHandler(void);
+uint8_t External_19_IRQHandler(void);
+uint8_t External_20_IRQHandler(void);
+uint8_t External_21_IRQHandler(void);
+uint8_t External_22_IRQHandler(void);
+uint8_t External_23_IRQHandler(void);
+uint8_t External_24_IRQHandler(void);
+uint8_t External_25_IRQHandler(void);
+uint8_t External_26_IRQHandler(void);
+uint8_t External_27_IRQHandler(void);
+uint8_t External_28_IRQHandler(void);
+uint8_t External_29_IRQHandler(void);
+uint8_t External_30_IRQHandler(void);
+uint8_t External_31_IRQHandler(void);
 
 /*------------------------------------------------------------------------------
  * 
@@ -68,8 +68,6 @@ void External_31_IRQHandler(void);
 extern void handle_m_ext_interrupt();
 extern void handle_m_timer_interrupt();
 extern void Software_IRQHandler();
-
-
 
 /*------------------------------------------------------------------------------
  * Increment value for the mtimecmp register in order to achieve a system tick
@@ -82,6 +80,7 @@ static uint64_t g_systick_increment = 0;
  */
 void __disable_irq(void)
 {
+    clear_csr(mstatus, MSTATUS_MPIE);
     clear_csr(mstatus, MSTATUS_MIE);
 }
 
@@ -134,7 +133,7 @@ void handle_m_timer_interrupt()
 /*------------------------------------------------------------------------------
  * RISC-V interrupt handler for external interrupts.
  */
-void (*ext_irq_handler_table[32])(void) =
+uint8_t (*ext_irq_handler_table[32])(void) =
 {
     Invalid_IRQHandler,
     External_1_IRQHandler,
@@ -176,15 +175,22 @@ void (*ext_irq_handler_table[32])(void) =
 void handle_m_ext_interrupt()
 {
     uint32_t int_num  = PLIC_ClaimIRQ();
+    uint8_t disable = EXT_IRQ_KEEP_ENABLED;
 
-    ext_irq_handler_table[int_num]();
+    disable = ext_irq_handler_table[int_num]();
 
     PLIC_CompleteIRQ(int_num);
+
+    if(EXT_IRQ_DISABLE == disable)
+    {
+    	PLIC_DisableIRQ(int_num);
+    }
 }
 
 void handle_m_soft_interrupt()
 {
     Software_IRQHandler();
+
     /*Clear software interrupt*/
     PRCI->MSIP[0] = 0x00;
 }

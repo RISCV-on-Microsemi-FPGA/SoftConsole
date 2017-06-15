@@ -9,8 +9,8 @@
  * processor memory space. The start address and size of the memory space must
  * be correct as per the Libero design.
  *
- * SVN $Revision: 9085 $
- * SVN $Date: 2017-04-28 09:59:14 +0100 (Fri, 28 Apr 2017) $
+ * SVN $Revision: 9187 $
+ * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
  */
  
 OUTPUT_ARCH( "riscv" )
@@ -34,7 +34,39 @@ SECTIONS
     *entry.o(.text);
     . = ALIGN(0x10);
     *(.text .text.* .gnu.linkonce.t.*)
+    *(.plt)
+    . = ALIGN(0x10);
+    
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*crtend.o(.ctors))
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*crtend.o(.dtors))
+    
     *(.rodata .rodata.* .gnu.linkonce.r.*)
+    *(.gcc_except_table) 
+    *(.eh_frame_hdr)
+    *(.eh_frame)
+    
+    KEEP (*(.init))
+    KEEP (*(.fini))
+
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT(.init_array.*)))
+    KEEP (*(.init_array))
+    PROVIDE_HIDDEN (__init_array_end = .);
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(.fini_array))
+    KEEP (*(SORT(.fini_array.*)))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+    . = ALIGN(0x10);
+    
   } > ram
 
   /* short/global data section */
@@ -55,6 +87,8 @@ SECTIONS
   { 
     __data_load = LOADADDR(.data);
     __data_start = .; 
+    *(.got.plt) *(.got)
+    *(.shdata)
     *(.data .data.* .gnu.linkonce.d.*)
     . = ALIGN(0x10);
     __data_end = .;
@@ -74,6 +108,7 @@ SECTIONS
   .bss : ALIGN(0x10)
   { 
     __bss_start = .;
+    *(.shbss)
     *(.bss .bss.* .gnu.linkonce.b.*)
     *(COMMON)
     . = ALIGN(0x10);

@@ -7,8 +7,8 @@
  *        CoreRISCV_AXI4. This is mainly targeted at RV32IM but should be usable
  *        with other variants.
  *
- * SVN $Revision: 9014 $
- * SVN $Date: 2017-04-19 06:23:23 +0100 (Wed, 19 Apr 2017) $
+ * SVN $Revision: 9187 $
+ * SVN $Date: 2017-05-13 13:31:28 +0530 (Sat, 13 May 2017) $
  */
 
 #ifndef RISCV_HAL_H
@@ -19,6 +19,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/*
+ *Return value from External IRQ handler. This will be used to disable the External
+ *interrupt.
+ */
+#define EXT_IRQ_KEEP_ENABLED				0
+#define EXT_IRQ_DISABLE						1
 
 /*------------------------------------------------------------------------------
  * Interrupt enable/disable.
