@@ -1,7 +1,0 @@
-18:12:32 **** Clean-only build of configuration Debug for project riscv-systick-blinky ****
-make clean 
-rm -rf  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreGPIO/core_gpio.o  ./main.o  riscv-systick-blinky.hex  riscv-systick-blinky.lst  riscv-systick-blinky.siz  ./riscv_hal/entry.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreGPIO/core_gpio.d  ./main.d  riscv-systick-blinky.elf
- 
-
-18:12:32 Build Finished (took 58ms)
-
