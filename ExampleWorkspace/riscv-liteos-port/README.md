@@ -1,7 +1,7 @@
 ## Microsemi RISC-V port for Huawei LiteOS
 
 ### LiteOS
-The LiteOS is available [LiteOS_Kernel](https://github.com/LITEOS/LiteOS_Kernel)
+The LiteOS is available at: [LiteOS_Kernel](https://github.com/LITEOS/LiteOS_Kernel)
 
     
 ### Test Platform and FPGA design:
@@ -31,6 +31,7 @@ which are related to RISC-V port are part of the project.
 This example project requires USB-UART interface to be connected to a host PC. 
 The host PC must connect to the serial port using a terminal emulator such as 
 TeraTerm or PuTTY configured as follows:
+    
         - 115200 baud
         - 8 data bits
         - 1 stop bit
