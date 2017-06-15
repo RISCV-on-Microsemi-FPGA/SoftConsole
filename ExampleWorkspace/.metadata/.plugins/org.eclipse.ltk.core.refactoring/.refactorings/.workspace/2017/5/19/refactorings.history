@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;simple-baremetal-bootloader&apos; to &apos;riscv-simple-baremetal-bootloader&apos;" description="Rename resource &apos;simple-baremetal-bootloader&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/simple-baremetal-bootloader" name="riscv-simple-baremetal-bootloader" stamp="1494349249985" updateReferences="true"/>
-</session>
