@@ -21,9 +21,8 @@ M2S150-Advanced-Dev-Kit
         LOS_INSPECT_DMEM
 
 ### How to run the LiteOS RISC-V port:
-Open SoftConsole IDE 
-Import the project riscv-liteos-port into SoftConsole. 
-Buld the project and DownLoad the from SoftConsole to M2S150-Advanced-Dev-Kit using FlashPro Debugger.
+Open SoftConsole IDE and import the project riscv-liteos-port into SoftConsole. 
+Buld the project and DownLoad it from SoftConsole to M2S150-Advanced-Dev-Kit using FlashPro Debugger.
 
 The riscv-liteos-port is a self contained project where only those LiteOS components 
 which are related to RISC-V port are part of the project.
