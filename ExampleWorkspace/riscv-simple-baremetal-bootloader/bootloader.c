@@ -31,19 +31,20 @@
 
 #define FLASH_BLOCK_SEGMENTS ( FLASH_BLOCK_SIZE / FLASH_SEGMENT_SIZE )
 
+#define FLASH_BYTE_SIZE		(FLASH_SECTOR_SIZE * FLASH_SECTORS)
+
 static int test_flash(void);
 static void mem_test(uint8_t *address);
 static uint32_t rx_app_file(uint8_t *dest_address);
 static void Bootloader_JumpToApplication(uint32_t stack_location, uint32_t reset_vector);
-static int read_program_from_flash(uint8_t *read_buf);
+static int read_program_from_flash(uint8_t *read_buf, uint32_t read_byte_length);
 static int write_program_to_flash(uint8_t *write_buf, uint32_t file_size);
-static int read_program_from_flash(uint8_t *read_buf);
 static void show_progress(void);
 
 /*
  * Base address of DDR memory where executable will be loaded.
  */
-#define DDR_BASE_ADDRESS    0x80100000
+#define DDR_BASE_ADDRESS    0x80000000
  
 /*
  * Delay loop down counter load value.
@@ -55,7 +56,7 @@ static void show_progress(void);
  * should load and launch the application on system reset or stay running to
  * allow a new image to be programming into the SPI flash.
  */
-#define BOOTLOADER_DIP_SWITCH   0x00000001
+#define BOOTLOADER_DIP_SWITCH   0x00000080
 
 /*
  * CoreGPIO instance data.
@@ -83,7 +84,7 @@ UART_instance_t g_uart;
 const uint8_t g_greeting_msg[] =
 "\r\n\r\n\
 ===============================================================================\r\n\
-                    Microsemi RISC-V Boot Loader v0.1.1\r\n\
+                    Microsemi RISC-V Boot Loader v0.2.1\r\n\
 ===============================================================================\r\n\
  This boot loader provides the following features:\r\n\
     - Load a program into DDR memory using the YModem file transfer protocol.\r\n\
@@ -211,6 +212,7 @@ int main()
     while(wait_in_bl == 1)
     {
     	static uint32_t file_size = 0;
+    	static uint32_t readback_size = (126 * 1024) /*FLASH_BYTE_SIZE*/;
 
          /**********************************************************************
          * Read data received by the UART.
@@ -235,9 +237,10 @@ int main()
                     break;
                 case '2':
                     write_program_to_flash((uint8_t *)DDR_BASE_ADDRESS, file_size);
+                    readback_size = file_size;
                     break;
                 case '3':
-                    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS);
+                    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS, readback_size);
                     break;
                 case '4':
                 	/* Populate with stack and reset vector address i.e. The first two words of the program */
@@ -272,7 +275,7 @@ int main()
         }
     }
     UART_polled_tx_string( &g_uart, g_load_executable_msg);
-    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS);
+    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS, (128 * 1024));
     UART_polled_tx_string( &g_uart, g_run_executable_msg);
     Bootloader_JumpToApplication(0x70000000, 0x70000004);
     /* will never reach here! */
@@ -740,13 +743,14 @@ static int write_program_to_flash(uint8_t *write_buf, uint32_t file_size)
 
 
 /**
- *  Read from flash on RTG4
+ *  Read from flash
  */
-static int read_program_from_flash(uint8_t *read_buf)
+static int read_program_from_flash(uint8_t *read_buf, uint32_t read_byte_length)
 {
     uint16_t status;
     int flash_address = 0;
     int count = 0;
+    uint32_t nb_segments_to_read;
     spi_flash_status_t result;
     struct device_Info DevInfo;
 
@@ -777,11 +781,16 @@ static int read_program_from_flash(uint8_t *read_buf)
 
 
     /*--------------------------------------------------------------------------
-     * Write something to all 32768 blocks of 256 bytes in the 8MB FLASH.
+     * Read from flash 256 bytes increments (FLASH_SEGMENT_SIZE).
      */
-    for( count = 0; count != (32*1024); ++count )
+    nb_segments_to_read = read_byte_length / FLASH_SEGMENT_SIZE;
+    if((read_byte_length % FLASH_SEGMENT_SIZE) > 0)
     {
+    	++nb_segments_to_read;
+    }
 
+    for( count = 0; count != nb_segments_to_read; ++count )
+    {
         /*----------------------------------------------------------------------
          * Write our values to the FLASH, read them back and compare.
          * Placing a breakpoint on the while statement below will allow
@@ -795,6 +804,7 @@ static int read_program_from_flash(uint8_t *read_buf)
 
         show_progress();
     }
+    UART_polled_tx_string( &g_uart, "\r\n<CJ> debug: read_program_from_flash exit\r\n" );
 
     UART_polled_tx_string( &g_uart, "  Flash read success\n\r" );
 
@@ -898,26 +908,18 @@ void SysTick_Handler( void )
 //volatile uint32_t cj_debug;
 static void Bootloader_JumpToApplication(uint32_t stack_location, uint32_t reset_vector)
 {
-//    cj_debug = 0x12345678;
-//    __asm volatile("lui t0,0x80000");
-//    __asm volatile("csrw mepc,t0");
+	/* Restore PLIC to known state: */
+	__disable_irq();
+	PLIC_init();
+
+	/* Disable all interrupts: */
+	write_csr(mie, 0);
+
+	/* Start executing from the top of DDR memory: */
     __asm volatile("lui ra,0x80000");
+    __asm volatile("ret");
     
-
-//<CJ>    __disable_irq(); /* ro, r1 will not be disturbed */
-    /*Load main stack pointer with application stack pointer initial value,
-      stored at first location of application area */
-    //asm volatile("ldr r0, =0x30000000");
-//<CJ>    asm volatile("ldr r0, [r0]");
-//<CJ>    asm volatile("mov sp, r0");
-
-    /*Load program counter with application reset vector address, located at
-      second word of application area. */
-//<CJ>    asm volatile("mov r3, r1");
-//<CJ>    asm volatile("mov r0, #0");  /*  ; no arguments  */
-//<CJ>    asm volatile("mov r1, #0");  /*  ; no argv either */
-    //asm volatile("ldr r3, =0x30000004");
-//<CJ>    asm volatile("ldr r3, [r3]");
-//<CJ>    asm volatile("mov pc, r3");
     /*User application execution should now start and never return here.... */
 }
+
+
