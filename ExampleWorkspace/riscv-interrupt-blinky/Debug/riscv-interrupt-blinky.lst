@@ -1,0 +1,2811 @@
+
+riscv-interrupt-blinky.elf:     file format elf32-littleriscv
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001cb0  80000000  80000000  00001000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .sdata        00000010  80001cb0  80001cb0  00002cb0  2**4
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .data         000004b0  80001cc0  80001cc0  00002cc0  2**4
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .sbss         00000010  80002170  80002170  00003170  2**4
+                  ALLOC
+  4 .bss          000000b0  80002180  80002180  00003170  2**6
+                  ALLOC
+  5 .heap         00000800  80002230  80002230  00003170  2**4
+                  ALLOC
+  6 .stack        00000800  80002a30  80002a30  00003170  2**4
+                  ALLOC
+  7 .debug_line   00003607  00000000  00000000  00003170  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_info   00004ac9  00000000  00000000  00006777  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_abbrev 00000ee1  00000000  00000000  0000b240  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_aranges 00000498  00000000  00000000  0000c128  2**3
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_frame  000018d8  00000000  00000000  0000c5c0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    0000187c  00000000  00000000  0000de98  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 000003d8  00000000  00000000  0000f714  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 14 .debug_macro  0000368f  00000000  00000000  0000faec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 15 .debug_str    0000c2ba  00000000  00000000  0001317b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 16 .comment      00000011  00000000  00000000  0001f435  2**0
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+80000000 <_start>:
+#endif
+
+  .section      .text.entry
+  .globl _start
+_start:
+  j handle_reset
+80000000:	00c0006f          	j	8000000c <handle_reset>
+
+80000004 <nmi_vector>:
+
+nmi_vector:
+  j nmi_vector
+80000004:	0000006f          	j	80000004 <nmi_vector>
+
+80000008 <trap_vector>:
+
+trap_vector:
+  j trap_entry
+80000008:	0340006f          	j	8000003c <trap_entry>
+
+8000000c <handle_reset>:
+
+handle_reset:
+  la t0, trap_entry
+8000000c:	00000297          	auipc	t0,0x0
+80000010:	03028293          	addi	t0,t0,48 # 8000003c <trap_entry>
+  csrw mtvec, t0
+80000014:	30529073          	csrw	mtvec,t0
+  csrwi mstatus, 0
+80000018:	30005073          	csrwi	mstatus,0
+  csrwi mideleg, 0
+8000001c:	30305073          	csrwi	mideleg,0
+  csrwi medeleg, 0
+80000020:	30205073          	csrwi	medeleg,0
+  csrwi mie, 0
+80000024:	30405073          	csrwi	mie,0
+
+  # initialize global pointer
+  la gp, _gp
+80000028:	00002197          	auipc	gp,0x2
+8000002c:	48818193          	addi	gp,gp,1160 # 800024b0 <_gp>
+
+  # initialize stack pointer
+  la sp, __stack_top
+80000030:	00003117          	auipc	sp,0x3
+80000034:	20010113          	addi	sp,sp,512 # 80003230 <__stack_top>
+
+  # perform the rest of initialization in C
+  j _init
+80000038:	1e00006f          	j	80000218 <_init>
+
+8000003c <trap_entry>:
+
+
+trap_entry:
+  addi sp, sp, -32*REGBYTES
+8000003c:	f8010113          	addi	sp,sp,-128
+
+  SREG x1, 0 * REGBYTES(sp)
+80000040:	00112023          	sw	ra,0(sp)
+  SREG x2, 1 * REGBYTES(sp)
+80000044:	00212223          	sw	sp,4(sp)
+  SREG x3, 2 * REGBYTES(sp)
+80000048:	00312423          	sw	gp,8(sp)
+  SREG x4, 3 * REGBYTES(sp)
+8000004c:	00412623          	sw	tp,12(sp)
+  SREG x5, 4 * REGBYTES(sp)
+80000050:	00512823          	sw	t0,16(sp)
+  SREG x6, 5 * REGBYTES(sp)
+80000054:	00612a23          	sw	t1,20(sp)
+  SREG x7, 6 * REGBYTES(sp)
+80000058:	00712c23          	sw	t2,24(sp)
+  SREG x8, 7 * REGBYTES(sp)
+8000005c:	00812e23          	sw	s0,28(sp)
+  SREG x9, 8 * REGBYTES(sp)
+80000060:	02912023          	sw	s1,32(sp)
+  SREG x10, 9 * REGBYTES(sp)
+80000064:	02a12223          	sw	a0,36(sp)
+  SREG x11, 10 * REGBYTES(sp)
+80000068:	02b12423          	sw	a1,40(sp)
+  SREG x12, 11 * REGBYTES(sp)
+8000006c:	02c12623          	sw	a2,44(sp)
+  SREG x13, 12 * REGBYTES(sp)
+80000070:	02d12823          	sw	a3,48(sp)
+  SREG x14, 13 * REGBYTES(sp)
+80000074:	02e12a23          	sw	a4,52(sp)
+  SREG x15, 14 * REGBYTES(sp)
+80000078:	02f12c23          	sw	a5,56(sp)
+  SREG x16, 15 * REGBYTES(sp)
+8000007c:	03012e23          	sw	a6,60(sp)
+  SREG x17, 16 * REGBYTES(sp)
+80000080:	05112023          	sw	a7,64(sp)
+  SREG x18, 17 * REGBYTES(sp)
+80000084:	05212223          	sw	s2,68(sp)
+  SREG x19, 18 * REGBYTES(sp)
+80000088:	05312423          	sw	s3,72(sp)
+  SREG x20, 19 * REGBYTES(sp)
+8000008c:	05412623          	sw	s4,76(sp)
+  SREG x21, 20 * REGBYTES(sp)
+80000090:	05512823          	sw	s5,80(sp)
+  SREG x22, 21 * REGBYTES(sp)
+80000094:	05612a23          	sw	s6,84(sp)
+  SREG x23, 22 * REGBYTES(sp)
+80000098:	05712c23          	sw	s7,88(sp)
+  SREG x24, 23 * REGBYTES(sp)
+8000009c:	05812e23          	sw	s8,92(sp)
+  SREG x25, 24 * REGBYTES(sp)
+800000a0:	07912023          	sw	s9,96(sp)
+  SREG x26, 25 * REGBYTES(sp)
+800000a4:	07a12223          	sw	s10,100(sp)
+  SREG x27, 26 * REGBYTES(sp)
+800000a8:	07b12423          	sw	s11,104(sp)
+  SREG x28, 27 * REGBYTES(sp)
+800000ac:	07c12623          	sw	t3,108(sp)
+  SREG x29, 28 * REGBYTES(sp)
+800000b0:	07d12823          	sw	t4,112(sp)
+  SREG x30, 29 * REGBYTES(sp)
+800000b4:	07e12a23          	sw	t5,116(sp)
+  SREG x31, 30 * REGBYTES(sp)
+800000b8:	07f12c23          	sw	t6,120(sp)
+
+
+  csrr t0, mepc
+800000bc:	341022f3          	csrr	t0,mepc
+  SREG t0, 31 * REGBYTES(sp)
+800000c0:	06512e23          	sw	t0,124(sp)
+
+  csrr a0, mcause
+800000c4:	34202573          	csrr	a0,mcause
+  csrr a1, mepc
+800000c8:	341025f3          	csrr	a1,mepc
+  mv a2, sp
+800000cc:	00010613          	mv	a2,sp
+  jal handle_trap
+800000d0:	4a8000ef          	jal	ra,80000578 <handle_trap>
+  csrw mepc, a0
+800000d4:	34151073          	csrw	mepc,a0
+
+  # Remain in M-mode after mret
+  li t0, MSTATUS_MPP
+800000d8:	000022b7          	lui	t0,0x2
+800000dc:	80028293          	addi	t0,t0,-2048 # 1800 <HEAP_SIZE+0x1000>
+  csrs mstatus, t0
+800000e0:	3002a073          	csrs	mstatus,t0
+
+  LREG x1, 0 * REGBYTES(sp)
+800000e4:	00012083          	lw	ra,0(sp)
+  LREG x2, 1 * REGBYTES(sp)
+800000e8:	00412103          	lw	sp,4(sp)
+  LREG x3, 2 * REGBYTES(sp)
+800000ec:	00812183          	lw	gp,8(sp)
+  LREG x4, 3 * REGBYTES(sp)
+800000f0:	00c12203          	lw	tp,12(sp)
+  LREG x5, 4 * REGBYTES(sp)
+800000f4:	01012283          	lw	t0,16(sp)
+  LREG x6, 5 * REGBYTES(sp)
+800000f8:	01412303          	lw	t1,20(sp)
+  LREG x7, 6 * REGBYTES(sp)
+800000fc:	01812383          	lw	t2,24(sp)
+  LREG x8, 7 * REGBYTES(sp)
+80000100:	01c12403          	lw	s0,28(sp)
+  LREG x9, 8 * REGBYTES(sp)
+80000104:	02012483          	lw	s1,32(sp)
+  LREG x10, 9 * REGBYTES(sp)
+80000108:	02412503          	lw	a0,36(sp)
+  LREG x11, 10 * REGBYTES(sp)
+8000010c:	02812583          	lw	a1,40(sp)
+  LREG x12, 11 * REGBYTES(sp)
+80000110:	02c12603          	lw	a2,44(sp)
+  LREG x13, 12 * REGBYTES(sp)
+80000114:	03012683          	lw	a3,48(sp)
+  LREG x14, 13 * REGBYTES(sp)
+80000118:	03412703          	lw	a4,52(sp)
+  LREG x15, 14 * REGBYTES(sp)
+8000011c:	03812783          	lw	a5,56(sp)
+  LREG x16, 15 * REGBYTES(sp)
+80000120:	03c12803          	lw	a6,60(sp)
+  LREG x17, 16 * REGBYTES(sp)
+80000124:	04012883          	lw	a7,64(sp)
+  LREG x18, 17 * REGBYTES(sp)
+80000128:	04412903          	lw	s2,68(sp)
+  LREG x19, 18 * REGBYTES(sp)
+8000012c:	04812983          	lw	s3,72(sp)
+  LREG x20, 19 * REGBYTES(sp)
+80000130:	04c12a03          	lw	s4,76(sp)
+  LREG x21, 20 * REGBYTES(sp)
+80000134:	05012a83          	lw	s5,80(sp)
+  LREG x22, 21 * REGBYTES(sp)
+80000138:	05412b03          	lw	s6,84(sp)
+  LREG x23, 22 * REGBYTES(sp)
+8000013c:	05812b83          	lw	s7,88(sp)
+  LREG x24, 23 * REGBYTES(sp)
+80000140:	05c12c03          	lw	s8,92(sp)
+  LREG x25, 24 * REGBYTES(sp)
+80000144:	06012c83          	lw	s9,96(sp)
+  LREG x26, 25 * REGBYTES(sp)
+80000148:	06412d03          	lw	s10,100(sp)
+  LREG x27, 26 * REGBYTES(sp)
+8000014c:	06812d83          	lw	s11,104(sp)
+  LREG x28, 27 * REGBYTES(sp)
+80000150:	06c12e03          	lw	t3,108(sp)
+  LREG x29, 28 * REGBYTES(sp)
+80000154:	07012e83          	lw	t4,112(sp)
+  LREG x30, 29 * REGBYTES(sp)
+80000158:	07412f03          	lw	t5,116(sp)
+  LREG x31, 30 * REGBYTES(sp)
+8000015c:	07812f83          	lw	t6,120(sp)
+
+  addi sp, sp, 32*REGBYTES
+80000160:	08010113          	addi	sp,sp,128
+  mret
+80000164:	30200073          	mret
+
+80000168 <copy_section>:
+extern uint32_t     __bss_start;
+extern uint32_t     __bss_end;
+
+
+static void copy_section(uint32_t * p_load, uint32_t * p_vma, uint32_t * p_vma_end)
+{
+80000168:	fe010113          	addi	sp,sp,-32
+8000016c:	00812e23          	sw	s0,28(sp)
+80000170:	02010413          	addi	s0,sp,32
+80000174:	fea42623          	sw	a0,-20(s0)
+80000178:	feb42423          	sw	a1,-24(s0)
+8000017c:	fec42223          	sw	a2,-28(s0)
+    while(p_vma <= p_vma_end)
+80000180:	02c0006f          	j	800001ac <copy_section+0x44>
+    {
+        *p_vma = *p_load;
+80000184:	fec42783          	lw	a5,-20(s0)
+80000188:	0007a703          	lw	a4,0(a5)
+8000018c:	fe842783          	lw	a5,-24(s0)
+80000190:	00e7a023          	sw	a4,0(a5)
+        ++p_load;
+80000194:	fec42783          	lw	a5,-20(s0)
+80000198:	00478793          	addi	a5,a5,4
+8000019c:	fef42623          	sw	a5,-20(s0)
+        ++p_vma;
+800001a0:	fe842783          	lw	a5,-24(s0)
+800001a4:	00478793          	addi	a5,a5,4
+800001a8:	fef42423          	sw	a5,-24(s0)
+    while(p_vma <= p_vma_end)
+800001ac:	fe842703          	lw	a4,-24(s0)
+800001b0:	fe442783          	lw	a5,-28(s0)
+800001b4:	fce7f8e3          	bleu	a4,a5,80000184 <copy_section+0x1c>
+    }
+}
+800001b8:	00000013          	nop
+800001bc:	01c12403          	lw	s0,28(sp)
+800001c0:	02010113          	addi	sp,sp,32
+800001c4:	00008067          	ret
+
+800001c8 <zero_section>:
+
+static void zero_section(uint32_t * start, uint32_t * end)
+{
+800001c8:	fd010113          	addi	sp,sp,-48
+800001cc:	02812623          	sw	s0,44(sp)
+800001d0:	03010413          	addi	s0,sp,48
+800001d4:	fca42e23          	sw	a0,-36(s0)
+800001d8:	fcb42c23          	sw	a1,-40(s0)
+    uint32_t * p_zero = start;
+800001dc:	fdc42783          	lw	a5,-36(s0)
+800001e0:	fef42623          	sw	a5,-20(s0)
+    
+    while(p_zero <= end)
+800001e4:	0180006f          	j	800001fc <zero_section+0x34>
+    {
+        *p_zero = 0;
+800001e8:	fec42783          	lw	a5,-20(s0)
+800001ec:	0007a023          	sw	zero,0(a5)
+        ++p_zero;
+800001f0:	fec42783          	lw	a5,-20(s0)
+800001f4:	00478793          	addi	a5,a5,4
+800001f8:	fef42623          	sw	a5,-20(s0)
+    while(p_zero <= end)
+800001fc:	fec42703          	lw	a4,-20(s0)
+80000200:	fd842783          	lw	a5,-40(s0)
+80000204:	fee7f2e3          	bleu	a4,a5,800001e8 <zero_section+0x20>
+    }
+}
+80000208:	00000013          	nop
+8000020c:	02c12403          	lw	s0,44(sp)
+80000210:	03010113          	addi	sp,sp,48
+80000214:	00008067          	ret
+
+80000218 <_init>:
+
+void _init(void)
+{
+80000218:	fe010113          	addi	sp,sp,-32
+8000021c:	00112e23          	sw	ra,28(sp)
+80000220:	00812c23          	sw	s0,24(sp)
+80000224:	02010413          	addi	s0,sp,32
+    extern int main(int, char**);
+    const char *argv0 = "hello";
+80000228:	800027b7          	lui	a5,0x80002
+8000022c:	c0078793          	addi	a5,a5,-1024 # 80001c00 <__stack_top+0xffffe9d0>
+80000230:	fef42623          	sw	a5,-20(s0)
+    char *argv[] = {(char *)argv0, NULL, NULL};
+80000234:	fec42783          	lw	a5,-20(s0)
+80000238:	fef42023          	sw	a5,-32(s0)
+8000023c:	fe042223          	sw	zero,-28(s0)
+80000240:	fe042423          	sw	zero,-24(s0)
+
+    copy_section(&__sdata_load, &__sdata_start, &__sdata_end);
+80000244:	800027b7          	lui	a5,0x80002
+80000248:	cc078613          	addi	a2,a5,-832 # 80001cc0 <__stack_top+0xffffea90>
+8000024c:	800027b7          	lui	a5,0x80002
+80000250:	cb078593          	addi	a1,a5,-848 # 80001cb0 <__stack_top+0xffffea80>
+80000254:	800027b7          	lui	a5,0x80002
+80000258:	cb078513          	addi	a0,a5,-848 # 80001cb0 <__stack_top+0xffffea80>
+8000025c:	f0dff0ef          	jal	ra,80000168 <copy_section>
+    copy_section(&__data_load, &__data_start, &__data_end);
+80000260:	800027b7          	lui	a5,0x80002
+80000264:	17078613          	addi	a2,a5,368 # 80002170 <__stack_top+0xffffef40>
+80000268:	800027b7          	lui	a5,0x80002
+8000026c:	cc078593          	addi	a1,a5,-832 # 80001cc0 <__stack_top+0xffffea90>
+80000270:	800027b7          	lui	a5,0x80002
+80000274:	cc078513          	addi	a0,a5,-832 # 80001cc0 <__stack_top+0xffffea90>
+80000278:	ef1ff0ef          	jal	ra,80000168 <copy_section>
+    zero_section(&__sbss_start, &__sbss_end);
+8000027c:	800027b7          	lui	a5,0x80002
+80000280:	18078593          	addi	a1,a5,384 # 80002180 <__stack_top+0xffffef50>
+80000284:	800027b7          	lui	a5,0x80002
+80000288:	17078513          	addi	a0,a5,368 # 80002170 <__stack_top+0xffffef40>
+8000028c:	f3dff0ef          	jal	ra,800001c8 <zero_section>
+    zero_section(&__bss_start, &__bss_end);
+80000290:	800027b7          	lui	a5,0x80002
+80000294:	23078593          	addi	a1,a5,560 # 80002230 <__stack_top+0xfffff000>
+80000298:	800027b7          	lui	a5,0x80002
+8000029c:	18078513          	addi	a0,a5,384 # 80002180 <__stack_top+0xffffef50>
+800002a0:	f29ff0ef          	jal	ra,800001c8 <zero_section>
+    
+    exit(main(1, argv));
+800002a4:	fe040793          	addi	a5,s0,-32
+800002a8:	00078593          	mv	a1,a5
+800002ac:	00100513          	li	a0,1
+800002b0:	670010ef          	jal	ra,80001920 <main>
+800002b4:	00050793          	mv	a5,a0
+800002b8:	00078513          	mv	a0,a5
+800002bc:	7fc010ef          	jal	ra,80001ab8 <exit>
+
+800002c0 <PLIC_DisableIRQ>:
+
+        ret_val = SUCCESS;
+    }
+    
+    return ret_val;
+}
+800002c0:	fd010113          	addi	sp,sp,-48
+800002c4:	02812623          	sw	s0,44(sp)
+800002c8:	03010413          	addi	s0,sp,48
+800002cc:	fca42e23          	sw	a0,-36(s0)
+800002d0:	f14027f3          	csrr	a5,mhartid
+800002d4:	fef42623          	sw	a5,-20(s0)
+800002d8:	fec42783          	lw	a5,-20(s0)
+800002dc:	fef42423          	sw	a5,-24(s0)
+800002e0:	40000737          	lui	a4,0x40000
+800002e4:	fdc42783          	lw	a5,-36(s0)
+800002e8:	0057d793          	srli	a5,a5,0x5
+800002ec:	fe842683          	lw	a3,-24(s0)
+800002f0:	00569693          	slli	a3,a3,0x5
+800002f4:	00f686b3          	add	a3,a3,a5
+800002f8:	000017b7          	lui	a5,0x1
+800002fc:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+80000300:	00f687b3          	add	a5,a3,a5
+80000304:	00279793          	slli	a5,a5,0x2
+80000308:	00f707b3          	add	a5,a4,a5
+8000030c:	0007a783          	lw	a5,0(a5)
+80000310:	fef42223          	sw	a5,-28(s0)
+80000314:	fdc42783          	lw	a5,-36(s0)
+80000318:	01f7f793          	andi	a5,a5,31
+8000031c:	00100713          	li	a4,1
+80000320:	00f717b3          	sll	a5,a4,a5
+80000324:	fff7c793          	not	a5,a5
+80000328:	fe442703          	lw	a4,-28(s0)
+8000032c:	00f777b3          	and	a5,a4,a5
+80000330:	fef42223          	sw	a5,-28(s0)
+80000334:	40000737          	lui	a4,0x40000
+80000338:	fdc42783          	lw	a5,-36(s0)
+8000033c:	0057d793          	srli	a5,a5,0x5
+80000340:	fe842683          	lw	a3,-24(s0)
+80000344:	00569693          	slli	a3,a3,0x5
+80000348:	00f686b3          	add	a3,a3,a5
+8000034c:	000017b7          	lui	a5,0x1
+80000350:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+80000354:	00f687b3          	add	a5,a3,a5
+80000358:	00279793          	slli	a5,a5,0x2
+8000035c:	00f707b3          	add	a5,a4,a5
+80000360:	fe442703          	lw	a4,-28(s0)
+80000364:	00e7a023          	sw	a4,0(a5)
+80000368:	00000013          	nop
+8000036c:	02c12403          	lw	s0,44(sp)
+80000370:	03010113          	addi	sp,sp,48
+80000374:	00008067          	ret
+
+80000378 <PLIC_ClaimIRQ>:
+80000378:	fe010113          	addi	sp,sp,-32
+8000037c:	00812e23          	sw	s0,28(sp)
+80000380:	02010413          	addi	s0,sp,32
+80000384:	f14027f3          	csrr	a5,mhartid
+80000388:	fef42623          	sw	a5,-20(s0)
+8000038c:	fec42783          	lw	a5,-20(s0)
+80000390:	fef42423          	sw	a5,-24(s0)
+80000394:	40000737          	lui	a4,0x40000
+80000398:	fe842783          	lw	a5,-24(s0)
+8000039c:	20078793          	addi	a5,a5,512
+800003a0:	00c79793          	slli	a5,a5,0xc
+800003a4:	00f707b3          	add	a5,a4,a5
+800003a8:	0047a783          	lw	a5,4(a5)
+800003ac:	00078513          	mv	a0,a5
+800003b0:	01c12403          	lw	s0,28(sp)
+800003b4:	02010113          	addi	sp,sp,32
+800003b8:	00008067          	ret
+
+800003bc <PLIC_CompleteIRQ>:
+800003bc:	fd010113          	addi	sp,sp,-48
+800003c0:	02812623          	sw	s0,44(sp)
+800003c4:	03010413          	addi	s0,sp,48
+800003c8:	fca42e23          	sw	a0,-36(s0)
+800003cc:	f14027f3          	csrr	a5,mhartid
+800003d0:	fef42623          	sw	a5,-20(s0)
+800003d4:	fec42783          	lw	a5,-20(s0)
+800003d8:	fef42423          	sw	a5,-24(s0)
+800003dc:	40000737          	lui	a4,0x40000
+800003e0:	fe842783          	lw	a5,-24(s0)
+800003e4:	20078793          	addi	a5,a5,512
+800003e8:	00c79793          	slli	a5,a5,0xc
+800003ec:	00f707b3          	add	a5,a4,a5
+800003f0:	fdc42703          	lw	a4,-36(s0)
+800003f4:	00e7a223          	sw	a4,4(a5)
+800003f8:	00000013          	nop
+800003fc:	02c12403          	lw	s0,44(sp)
+80000400:	03010113          	addi	sp,sp,48
+80000404:	00008067          	ret
+
+80000408 <__enable_irq>:
+80000408:	fe010113          	addi	sp,sp,-32
+8000040c:	00812e23          	sw	s0,28(sp)
+80000410:	02010413          	addi	s0,sp,32
+80000414:	300467f3          	csrrsi	a5,mstatus,8
+80000418:	fef42623          	sw	a5,-20(s0)
+8000041c:	00000013          	nop
+80000420:	01c12403          	lw	s0,28(sp)
+80000424:	02010113          	addi	sp,sp,32
+80000428:	00008067          	ret
+
+8000042c <handle_m_timer_interrupt>:
+
+/*------------------------------------------------------------------------------
+ * RISC-V interrupt handler for machine timer interrupts.
+ */
+void handle_m_timer_interrupt()
+{
+8000042c:	fe010113          	addi	sp,sp,-32
+80000430:	00112e23          	sw	ra,28(sp)
+80000434:	00812c23          	sw	s0,24(sp)
+80000438:	02010413          	addi	s0,sp,32
+    clear_csr(mie, MIP_MTIP);
+8000043c:	08000793          	li	a5,128
+80000440:	3047b7f3          	csrrc	a5,mie,a5
+80000444:	fef42623          	sw	a5,-20(s0)
+
+    SysTick_Handler();
+80000448:	214000ef          	jal	ra,8000065c <SysTick_Handler>
+
+    PRCI->MTIMECMP[read_csr(mhartid)] = PRCI->MTIME + g_systick_increment;
+8000044c:	44000737          	lui	a4,0x44000
+80000450:	0000c7b7          	lui	a5,0xc
+80000454:	00f707b3          	add	a5,a4,a5
+80000458:	ffc7a803          	lw	a6,-4(a5) # bffc <HEAP_SIZE+0xb7fc>
+8000045c:	ff87a783          	lw	a5,-8(a5)
+80000460:	80002737          	lui	a4,0x80002
+80000464:	17072583          	lw	a1,368(a4) # 80002170 <__stack_top+0xffffef40>
+80000468:	17472603          	lw	a2,372(a4)
+8000046c:	44000537          	lui	a0,0x44000
+80000470:	f1402773          	csrr	a4,mhartid
+80000474:	fee42423          	sw	a4,-24(s0)
+80000478:	fe842883          	lw	a7,-24(s0)
+8000047c:	00b786b3          	add	a3,a5,a1
+80000480:	00068313          	mv	t1,a3
+80000484:	00f33333          	sltu	t1,t1,a5
+80000488:	00c80733          	add	a4,a6,a2
+8000048c:	00e307b3          	add	a5,t1,a4
+80000490:	00078713          	mv	a4,a5
+80000494:	00068793          	mv	a5,a3
+80000498:	00070813          	mv	a6,a4
+8000049c:	00001737          	lui	a4,0x1
+800004a0:	80070713          	addi	a4,a4,-2048 # 800 <HEAP_SIZE>
+800004a4:	00e88733          	add	a4,a7,a4
+800004a8:	00371713          	slli	a4,a4,0x3
+800004ac:	00e50733          	add	a4,a0,a4
+800004b0:	00f72023          	sw	a5,0(a4)
+800004b4:	01072223          	sw	a6,4(a4)
+
+    set_csr(mie, MIP_MTIP);
+800004b8:	08000793          	li	a5,128
+800004bc:	3047a7f3          	csrrs	a5,mie,a5
+800004c0:	fef42223          	sw	a5,-28(s0)
+}
+800004c4:	00000013          	nop
+800004c8:	01c12083          	lw	ra,28(sp)
+800004cc:	01812403          	lw	s0,24(sp)
+800004d0:	02010113          	addi	sp,sp,32
+800004d4:	00008067          	ret
+
+800004d8 <handle_m_ext_interrupt>:
+
+/*------------------------------------------------------------------------------
+ * 
+ */
+void handle_m_ext_interrupt()
+{
+800004d8:	fe010113          	addi	sp,sp,-32
+800004dc:	00112e23          	sw	ra,28(sp)
+800004e0:	00812c23          	sw	s0,24(sp)
+800004e4:	02010413          	addi	s0,sp,32
+    uint32_t int_num  = PLIC_ClaimIRQ();
+800004e8:	e91ff0ef          	jal	ra,80000378 <PLIC_ClaimIRQ>
+800004ec:	fea42623          	sw	a0,-20(s0)
+    uint8_t disable = EXT_IRQ_KEEP_ENABLED;
+800004f0:	fe0405a3          	sb	zero,-21(s0)
+
+    disable = ext_irq_handler_table[int_num]();
+800004f4:	800027b7          	lui	a5,0x80002
+800004f8:	fec42703          	lw	a4,-20(s0)
+800004fc:	00271713          	slli	a4,a4,0x2
+80000500:	cc078793          	addi	a5,a5,-832 # 80001cc0 <__stack_top+0xffffea90>
+80000504:	00f707b3          	add	a5,a4,a5
+80000508:	0007a783          	lw	a5,0(a5)
+8000050c:	000780e7          	jalr	a5
+80000510:	00050793          	mv	a5,a0
+80000514:	fef405a3          	sb	a5,-21(s0)
+
+    PLIC_CompleteIRQ(int_num);
+80000518:	fec42503          	lw	a0,-20(s0)
+8000051c:	ea1ff0ef          	jal	ra,800003bc <PLIC_CompleteIRQ>
+
+    if(EXT_IRQ_DISABLE == disable)
+80000520:	feb44703          	lbu	a4,-21(s0)
+80000524:	00100793          	li	a5,1
+80000528:	00f71663          	bne	a4,a5,80000534 <handle_m_ext_interrupt+0x5c>
+    {
+    	PLIC_DisableIRQ(int_num);
+8000052c:	fec42503          	lw	a0,-20(s0)
+80000530:	d91ff0ef          	jal	ra,800002c0 <PLIC_DisableIRQ>
+    }
+}
+80000534:	00000013          	nop
+80000538:	01c12083          	lw	ra,28(sp)
+8000053c:	01812403          	lw	s0,24(sp)
+80000540:	02010113          	addi	sp,sp,32
+80000544:	00008067          	ret
+
+80000548 <handle_m_soft_interrupt>:
+
+void handle_m_soft_interrupt()
+{
+80000548:	ff010113          	addi	sp,sp,-16
+8000054c:	00112623          	sw	ra,12(sp)
+80000550:	00812423          	sw	s0,8(sp)
+80000554:	01010413          	addi	s0,sp,16
+    Software_IRQHandler();
+80000558:	0ec000ef          	jal	ra,80000644 <Software_IRQHandler>
+
+    /*Clear software interrupt*/
+    PRCI->MSIP[0] = 0x00;
+8000055c:	440007b7          	lui	a5,0x44000
+80000560:	0007a023          	sw	zero,0(a5) # 44000000 <RAM_SIZE+0x43ff0000>
+}
+80000564:	00000013          	nop
+80000568:	00c12083          	lw	ra,12(sp)
+8000056c:	00812403          	lw	s0,8(sp)
+80000570:	01010113          	addi	sp,sp,16
+80000574:	00008067          	ret
+
+80000578 <handle_trap>:
+/*------------------------------------------------------------------------------
+ * Trap/Interrupt handler
+ */
+uintptr_t handle_trap(uintptr_t mcause, uintptr_t epc)
+{
+80000578:	fe010113          	addi	sp,sp,-32
+8000057c:	00112e23          	sw	ra,28(sp)
+80000580:	00812c23          	sw	s0,24(sp)
+80000584:	02010413          	addi	s0,sp,32
+80000588:	fea42623          	sw	a0,-20(s0)
+8000058c:	feb42423          	sw	a1,-24(s0)
+    if ((mcause & MCAUSE_INT) && ((mcause & MCAUSE_CAUSE)  == IRQ_M_EXT))
+80000590:	fec42783          	lw	a5,-20(s0)
+80000594:	0207d263          	bgez	a5,800005b8 <handle_trap+0x40>
+80000598:	fec42703          	lw	a4,-20(s0)
+8000059c:	800007b7          	lui	a5,0x80000
+800005a0:	fff7c793          	not	a5,a5
+800005a4:	00f77733          	and	a4,a4,a5
+800005a8:	00b00793          	li	a5,11
+800005ac:	00f71663          	bne	a4,a5,800005b8 <handle_trap+0x40>
+    {
+        handle_m_ext_interrupt();
+800005b0:	f29ff0ef          	jal	ra,800004d8 <handle_m_ext_interrupt>
+800005b4:	0780006f          	j	8000062c <handle_trap+0xb4>
+    }
+    else if ((mcause & MCAUSE_INT) && ((mcause & MCAUSE_CAUSE)  == IRQ_M_TIMER))
+800005b8:	fec42783          	lw	a5,-20(s0)
+800005bc:	0207d263          	bgez	a5,800005e0 <handle_trap+0x68>
+800005c0:	fec42703          	lw	a4,-20(s0)
+800005c4:	800007b7          	lui	a5,0x80000
+800005c8:	fff7c793          	not	a5,a5
+800005cc:	00f77733          	and	a4,a4,a5
+800005d0:	00700793          	li	a5,7
+800005d4:	00f71663          	bne	a4,a5,800005e0 <handle_trap+0x68>
+    {
+        handle_m_timer_interrupt();
+800005d8:	e55ff0ef          	jal	ra,8000042c <handle_m_timer_interrupt>
+800005dc:	0500006f          	j	8000062c <handle_trap+0xb4>
+    }
+    else if ((mcause & MCAUSE_INT) && ((mcause & MCAUSE_CAUSE)  == IRQ_M_SOFT))
+800005e0:	fec42783          	lw	a5,-20(s0)
+800005e4:	0207d263          	bgez	a5,80000608 <handle_trap+0x90>
+800005e8:	fec42703          	lw	a4,-20(s0)
+800005ec:	800007b7          	lui	a5,0x80000
+800005f0:	fff7c793          	not	a5,a5
+800005f4:	00f77733          	and	a4,a4,a5
+800005f8:	00300793          	li	a5,3
+800005fc:	00f71663          	bne	a4,a5,80000608 <handle_trap+0x90>
+    {
+        handle_m_soft_interrupt();
+80000600:	f49ff0ef          	jal	ra,80000548 <handle_m_soft_interrupt>
+80000604:	0280006f          	j	8000062c <handle_trap+0xb4>
+    }
+    else
+    {
+        write(1, "trap\n", 5);
+80000608:	00500613          	li	a2,5
+8000060c:	800027b7          	lui	a5,0x80002
+80000610:	c0878593          	addi	a1,a5,-1016 # 80001c08 <__stack_top+0xffffe9d8>
+80000614:	00100513          	li	a0,1
+80000618:	464000ef          	jal	ra,80000a7c <write>
+        _exit(1 + mcause);
+8000061c:	fec42783          	lw	a5,-20(s0)
+80000620:	00178793          	addi	a5,a5,1
+80000624:	00078513          	mv	a0,a5
+80000628:	410000ef          	jal	ra,80000a38 <_exit>
+    }
+    return epc;
+8000062c:	fe842783          	lw	a5,-24(s0)
+}
+80000630:	00078513          	mv	a0,a5
+80000634:	01c12083          	lw	ra,28(sp)
+80000638:	01812403          	lw	s0,24(sp)
+8000063c:	02010113          	addi	sp,sp,32
+80000640:	00008067          	ret
+
+80000644 <Software_IRQHandler>:
+{
+    _exit(10);
+}
+
+__attribute__((weak)) void Software_IRQHandler(void)
+{
+80000644:	ff010113          	addi	sp,sp,-16
+80000648:	00112623          	sw	ra,12(sp)
+8000064c:	00812423          	sw	s0,8(sp)
+80000650:	01010413          	addi	s0,sp,16
+    _exit(10);
+80000654:	00a00513          	li	a0,10
+80000658:	3e0000ef          	jal	ra,80000a38 <_exit>
+
+8000065c <SysTick_Handler>:
+}
+
+__attribute__((weak)) void SysTick_Handler(void)
+{
+8000065c:	ff010113          	addi	sp,sp,-16
+80000660:	00812623          	sw	s0,12(sp)
+80000664:	01010413          	addi	s0,sp,16
+    ;
+}
+80000668:	00000013          	nop
+8000066c:	00c12403          	lw	s0,12(sp)
+80000670:	01010113          	addi	sp,sp,16
+80000674:	00008067          	ret
+
+80000678 <Invalid_IRQHandler>:
+
+__attribute__((weak))  uint8_t Invalid_IRQHandler(void)
+{
+80000678:	ff010113          	addi	sp,sp,-16
+8000067c:	00812623          	sw	s0,12(sp)
+80000680:	01010413          	addi	s0,sp,16
+    return(0);
+80000684:	00000793          	li	a5,0
+}
+80000688:	00078513          	mv	a0,a5
+8000068c:	00c12403          	lw	s0,12(sp)
+80000690:	01010113          	addi	sp,sp,16
+80000694:	00008067          	ret
+
+80000698 <External_1_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_1_IRQHandler(void)
+{
+80000698:	ff010113          	addi	sp,sp,-16
+8000069c:	00812623          	sw	s0,12(sp)
+800006a0:	01010413          	addi	s0,sp,16
+    return(0);
+800006a4:	00000793          	li	a5,0
+}
+800006a8:	00078513          	mv	a0,a5
+800006ac:	00c12403          	lw	s0,12(sp)
+800006b0:	01010113          	addi	sp,sp,16
+800006b4:	00008067          	ret
+
+800006b8 <External_2_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_2_IRQHandler(void)
+{
+800006b8:	ff010113          	addi	sp,sp,-16
+800006bc:	00812623          	sw	s0,12(sp)
+800006c0:	01010413          	addi	s0,sp,16
+    return(0);
+800006c4:	00000793          	li	a5,0
+}
+800006c8:	00078513          	mv	a0,a5
+800006cc:	00c12403          	lw	s0,12(sp)
+800006d0:	01010113          	addi	sp,sp,16
+800006d4:	00008067          	ret
+
+800006d8 <External_3_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_3_IRQHandler(void)
+{
+800006d8:	ff010113          	addi	sp,sp,-16
+800006dc:	00812623          	sw	s0,12(sp)
+800006e0:	01010413          	addi	s0,sp,16
+    return(0);
+800006e4:	00000793          	li	a5,0
+}
+800006e8:	00078513          	mv	a0,a5
+800006ec:	00c12403          	lw	s0,12(sp)
+800006f0:	01010113          	addi	sp,sp,16
+800006f4:	00008067          	ret
+
+800006f8 <External_4_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_4_IRQHandler(void)
+{
+800006f8:	ff010113          	addi	sp,sp,-16
+800006fc:	00812623          	sw	s0,12(sp)
+80000700:	01010413          	addi	s0,sp,16
+    return(0);
+80000704:	00000793          	li	a5,0
+}
+80000708:	00078513          	mv	a0,a5
+8000070c:	00c12403          	lw	s0,12(sp)
+80000710:	01010113          	addi	sp,sp,16
+80000714:	00008067          	ret
+
+80000718 <External_5_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_5_IRQHandler(void)
+{
+80000718:	ff010113          	addi	sp,sp,-16
+8000071c:	00812623          	sw	s0,12(sp)
+80000720:	01010413          	addi	s0,sp,16
+    return(0);
+80000724:	00000793          	li	a5,0
+}
+80000728:	00078513          	mv	a0,a5
+8000072c:	00c12403          	lw	s0,12(sp)
+80000730:	01010113          	addi	sp,sp,16
+80000734:	00008067          	ret
+
+80000738 <External_6_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_6_IRQHandler(void)
+{
+80000738:	ff010113          	addi	sp,sp,-16
+8000073c:	00812623          	sw	s0,12(sp)
+80000740:	01010413          	addi	s0,sp,16
+    return(0);
+80000744:	00000793          	li	a5,0
+}
+80000748:	00078513          	mv	a0,a5
+8000074c:	00c12403          	lw	s0,12(sp)
+80000750:	01010113          	addi	sp,sp,16
+80000754:	00008067          	ret
+
+80000758 <External_7_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_7_IRQHandler(void)
+{
+80000758:	ff010113          	addi	sp,sp,-16
+8000075c:	00812623          	sw	s0,12(sp)
+80000760:	01010413          	addi	s0,sp,16
+    return(0);
+80000764:	00000793          	li	a5,0
+}
+80000768:	00078513          	mv	a0,a5
+8000076c:	00c12403          	lw	s0,12(sp)
+80000770:	01010113          	addi	sp,sp,16
+80000774:	00008067          	ret
+
+80000778 <External_8_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_8_IRQHandler(void)
+{
+80000778:	ff010113          	addi	sp,sp,-16
+8000077c:	00812623          	sw	s0,12(sp)
+80000780:	01010413          	addi	s0,sp,16
+    return(0);
+80000784:	00000793          	li	a5,0
+}
+80000788:	00078513          	mv	a0,a5
+8000078c:	00c12403          	lw	s0,12(sp)
+80000790:	01010113          	addi	sp,sp,16
+80000794:	00008067          	ret
+
+80000798 <External_9_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_9_IRQHandler(void)
+{
+80000798:	ff010113          	addi	sp,sp,-16
+8000079c:	00812623          	sw	s0,12(sp)
+800007a0:	01010413          	addi	s0,sp,16
+    return(0);
+800007a4:	00000793          	li	a5,0
+}
+800007a8:	00078513          	mv	a0,a5
+800007ac:	00c12403          	lw	s0,12(sp)
+800007b0:	01010113          	addi	sp,sp,16
+800007b4:	00008067          	ret
+
+800007b8 <External_10_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_10_IRQHandler(void)
+{
+800007b8:	ff010113          	addi	sp,sp,-16
+800007bc:	00812623          	sw	s0,12(sp)
+800007c0:	01010413          	addi	s0,sp,16
+    return(0);
+800007c4:	00000793          	li	a5,0
+}
+800007c8:	00078513          	mv	a0,a5
+800007cc:	00c12403          	lw	s0,12(sp)
+800007d0:	01010113          	addi	sp,sp,16
+800007d4:	00008067          	ret
+
+800007d8 <External_11_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_11_IRQHandler(void)
+{
+800007d8:	ff010113          	addi	sp,sp,-16
+800007dc:	00812623          	sw	s0,12(sp)
+800007e0:	01010413          	addi	s0,sp,16
+    return(0);
+800007e4:	00000793          	li	a5,0
+}
+800007e8:	00078513          	mv	a0,a5
+800007ec:	00c12403          	lw	s0,12(sp)
+800007f0:	01010113          	addi	sp,sp,16
+800007f4:	00008067          	ret
+
+800007f8 <External_12_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_12_IRQHandler(void)
+{
+800007f8:	ff010113          	addi	sp,sp,-16
+800007fc:	00812623          	sw	s0,12(sp)
+80000800:	01010413          	addi	s0,sp,16
+    return(0);
+80000804:	00000793          	li	a5,0
+}
+80000808:	00078513          	mv	a0,a5
+8000080c:	00c12403          	lw	s0,12(sp)
+80000810:	01010113          	addi	sp,sp,16
+80000814:	00008067          	ret
+
+80000818 <External_13_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_13_IRQHandler(void)
+{
+80000818:	ff010113          	addi	sp,sp,-16
+8000081c:	00812623          	sw	s0,12(sp)
+80000820:	01010413          	addi	s0,sp,16
+    return(0);
+80000824:	00000793          	li	a5,0
+}
+80000828:	00078513          	mv	a0,a5
+8000082c:	00c12403          	lw	s0,12(sp)
+80000830:	01010113          	addi	sp,sp,16
+80000834:	00008067          	ret
+
+80000838 <External_14_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_14_IRQHandler(void)
+{
+80000838:	ff010113          	addi	sp,sp,-16
+8000083c:	00812623          	sw	s0,12(sp)
+80000840:	01010413          	addi	s0,sp,16
+    return(0);
+80000844:	00000793          	li	a5,0
+}
+80000848:	00078513          	mv	a0,a5
+8000084c:	00c12403          	lw	s0,12(sp)
+80000850:	01010113          	addi	sp,sp,16
+80000854:	00008067          	ret
+
+80000858 <External_15_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_15_IRQHandler(void)
+{
+80000858:	ff010113          	addi	sp,sp,-16
+8000085c:	00812623          	sw	s0,12(sp)
+80000860:	01010413          	addi	s0,sp,16
+    return(0);
+80000864:	00000793          	li	a5,0
+}
+80000868:	00078513          	mv	a0,a5
+8000086c:	00c12403          	lw	s0,12(sp)
+80000870:	01010113          	addi	sp,sp,16
+80000874:	00008067          	ret
+
+80000878 <External_16_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_16_IRQHandler(void)
+{
+80000878:	ff010113          	addi	sp,sp,-16
+8000087c:	00812623          	sw	s0,12(sp)
+80000880:	01010413          	addi	s0,sp,16
+    return(0);
+80000884:	00000793          	li	a5,0
+}
+80000888:	00078513          	mv	a0,a5
+8000088c:	00c12403          	lw	s0,12(sp)
+80000890:	01010113          	addi	sp,sp,16
+80000894:	00008067          	ret
+
+80000898 <External_17_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_17_IRQHandler(void)
+{
+80000898:	ff010113          	addi	sp,sp,-16
+8000089c:	00812623          	sw	s0,12(sp)
+800008a0:	01010413          	addi	s0,sp,16
+    return(0);
+800008a4:	00000793          	li	a5,0
+}
+800008a8:	00078513          	mv	a0,a5
+800008ac:	00c12403          	lw	s0,12(sp)
+800008b0:	01010113          	addi	sp,sp,16
+800008b4:	00008067          	ret
+
+800008b8 <External_18_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_18_IRQHandler(void)
+{
+800008b8:	ff010113          	addi	sp,sp,-16
+800008bc:	00812623          	sw	s0,12(sp)
+800008c0:	01010413          	addi	s0,sp,16
+    return(0);
+800008c4:	00000793          	li	a5,0
+}
+800008c8:	00078513          	mv	a0,a5
+800008cc:	00c12403          	lw	s0,12(sp)
+800008d0:	01010113          	addi	sp,sp,16
+800008d4:	00008067          	ret
+
+800008d8 <External_19_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_19_IRQHandler(void)
+{
+800008d8:	ff010113          	addi	sp,sp,-16
+800008dc:	00812623          	sw	s0,12(sp)
+800008e0:	01010413          	addi	s0,sp,16
+    return(0);
+800008e4:	00000793          	li	a5,0
+}
+800008e8:	00078513          	mv	a0,a5
+800008ec:	00c12403          	lw	s0,12(sp)
+800008f0:	01010113          	addi	sp,sp,16
+800008f4:	00008067          	ret
+
+800008f8 <External_20_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_20_IRQHandler(void)
+{
+800008f8:	ff010113          	addi	sp,sp,-16
+800008fc:	00812623          	sw	s0,12(sp)
+80000900:	01010413          	addi	s0,sp,16
+    return(0);
+80000904:	00000793          	li	a5,0
+}
+80000908:	00078513          	mv	a0,a5
+8000090c:	00c12403          	lw	s0,12(sp)
+80000910:	01010113          	addi	sp,sp,16
+80000914:	00008067          	ret
+
+80000918 <External_21_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_21_IRQHandler(void)
+{
+80000918:	ff010113          	addi	sp,sp,-16
+8000091c:	00812623          	sw	s0,12(sp)
+80000920:	01010413          	addi	s0,sp,16
+    return(0);
+80000924:	00000793          	li	a5,0
+}
+80000928:	00078513          	mv	a0,a5
+8000092c:	00c12403          	lw	s0,12(sp)
+80000930:	01010113          	addi	sp,sp,16
+80000934:	00008067          	ret
+
+80000938 <External_22_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_22_IRQHandler(void)
+{
+80000938:	ff010113          	addi	sp,sp,-16
+8000093c:	00812623          	sw	s0,12(sp)
+80000940:	01010413          	addi	s0,sp,16
+    return(0);
+80000944:	00000793          	li	a5,0
+}
+80000948:	00078513          	mv	a0,a5
+8000094c:	00c12403          	lw	s0,12(sp)
+80000950:	01010113          	addi	sp,sp,16
+80000954:	00008067          	ret
+
+80000958 <External_23_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_23_IRQHandler(void)
+{
+80000958:	ff010113          	addi	sp,sp,-16
+8000095c:	00812623          	sw	s0,12(sp)
+80000960:	01010413          	addi	s0,sp,16
+    return(0);
+80000964:	00000793          	li	a5,0
+}
+80000968:	00078513          	mv	a0,a5
+8000096c:	00c12403          	lw	s0,12(sp)
+80000970:	01010113          	addi	sp,sp,16
+80000974:	00008067          	ret
+
+80000978 <External_24_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_24_IRQHandler(void)
+{
+80000978:	ff010113          	addi	sp,sp,-16
+8000097c:	00812623          	sw	s0,12(sp)
+80000980:	01010413          	addi	s0,sp,16
+    return(0);
+80000984:	00000793          	li	a5,0
+}
+80000988:	00078513          	mv	a0,a5
+8000098c:	00c12403          	lw	s0,12(sp)
+80000990:	01010113          	addi	sp,sp,16
+80000994:	00008067          	ret
+
+80000998 <External_25_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_25_IRQHandler(void)
+{
+80000998:	ff010113          	addi	sp,sp,-16
+8000099c:	00812623          	sw	s0,12(sp)
+800009a0:	01010413          	addi	s0,sp,16
+    return(0);
+800009a4:	00000793          	li	a5,0
+}
+800009a8:	00078513          	mv	a0,a5
+800009ac:	00c12403          	lw	s0,12(sp)
+800009b0:	01010113          	addi	sp,sp,16
+800009b4:	00008067          	ret
+
+800009b8 <External_26_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_26_IRQHandler(void)
+{
+800009b8:	ff010113          	addi	sp,sp,-16
+800009bc:	00812623          	sw	s0,12(sp)
+800009c0:	01010413          	addi	s0,sp,16
+    return(0);
+800009c4:	00000793          	li	a5,0
+}
+800009c8:	00078513          	mv	a0,a5
+800009cc:	00c12403          	lw	s0,12(sp)
+800009d0:	01010113          	addi	sp,sp,16
+800009d4:	00008067          	ret
+
+800009d8 <External_27_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_27_IRQHandler(void)
+{
+800009d8:	ff010113          	addi	sp,sp,-16
+800009dc:	00812623          	sw	s0,12(sp)
+800009e0:	01010413          	addi	s0,sp,16
+    return(0);
+800009e4:	00000793          	li	a5,0
+}
+800009e8:	00078513          	mv	a0,a5
+800009ec:	00c12403          	lw	s0,12(sp)
+800009f0:	01010113          	addi	sp,sp,16
+800009f4:	00008067          	ret
+
+800009f8 <External_28_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_28_IRQHandler(void)
+{
+800009f8:	ff010113          	addi	sp,sp,-16
+800009fc:	00812623          	sw	s0,12(sp)
+80000a00:	01010413          	addi	s0,sp,16
+    return(0);
+80000a04:	00000793          	li	a5,0
+}
+80000a08:	00078513          	mv	a0,a5
+80000a0c:	00c12403          	lw	s0,12(sp)
+80000a10:	01010113          	addi	sp,sp,16
+80000a14:	00008067          	ret
+
+80000a18 <External_29_IRQHandler>:
+
+__attribute__((weak))  uint8_t External_29_IRQHandler(void)
+{
+80000a18:	ff010113          	addi	sp,sp,-16
+80000a1c:	00812623          	sw	s0,12(sp)
+80000a20:	01010413          	addi	s0,sp,16
+    return(0);
+80000a24:	00000793          	li	a5,0
+}
+80000a28:	00078513          	mv	a0,a5
+80000a2c:	00c12403          	lw	s0,12(sp)
+80000a30:	01010113          	addi	sp,sp,16
+80000a34:	00008067          	ret
+
+80000a38 <_exit>:
+}
+
+int wait(int* status)
+{
+    return stub(ECHILD);
+}
+80000a38:	fe010113          	addi	sp,sp,-32
+80000a3c:	00812e23          	sw	s0,28(sp)
+80000a40:	02010413          	addi	s0,sp,32
+80000a44:	fea42623          	sw	a0,-20(s0)
+80000a48:	0000006f          	j	80000a48 <_exit+0x10>
+
+80000a4c <stub>:
+80000a4c:	fe010113          	addi	sp,sp,-32
+80000a50:	00812e23          	sw	s0,28(sp)
+80000a54:	02010413          	addi	s0,sp,32
+80000a58:	fea42623          	sw	a0,-20(s0)
+80000a5c:	800027b7          	lui	a5,0x80002
+80000a60:	fec42703          	lw	a4,-20(s0)
+80000a64:	18e7a023          	sw	a4,384(a5) # 80002180 <__stack_top+0xffffef50>
+80000a68:	fff00793          	li	a5,-1
+80000a6c:	00078513          	mv	a0,a5
+80000a70:	01c12403          	lw	s0,28(sp)
+80000a74:	02010113          	addi	sp,sp,32
+80000a78:	00008067          	ret
+
+80000a7c <write>:
+
+ssize_t write(int fd, const void* ptr, size_t len)
+{
+80000a7c:	fe010113          	addi	sp,sp,-32
+80000a80:	00112e23          	sw	ra,28(sp)
+80000a84:	00812c23          	sw	s0,24(sp)
+80000a88:	02010413          	addi	s0,sp,32
+80000a8c:	fea42623          	sw	a0,-20(s0)
+80000a90:	feb42423          	sw	a1,-24(s0)
+80000a94:	fec42223          	sw	a2,-28(s0)
+    }
+    return len;
+  }
+#endif
+
+  return stub(EBADF);
+80000a98:	00900513          	li	a0,9
+80000a9c:	fb1ff0ef          	jal	ra,80000a4c <stub>
+80000aa0:	00050793          	mv	a5,a0
+}
+80000aa4:	00078513          	mv	a0,a5
+80000aa8:	01c12083          	lw	ra,28(sp)
+80000aac:	01812403          	lw	s0,24(sp)
+80000ab0:	02010113          	addi	sp,sp,32
+80000ab4:	00008067          	ret
+
+80000ab8 <HAL_enable_interrupts>:
+#include "riscv_hal.h"
+
+/*------------------------------------------------------------------------------
+ * 
+ */
+void HAL_enable_interrupts(void) {
+80000ab8:	ff010113          	addi	sp,sp,-16
+80000abc:	00112623          	sw	ra,12(sp)
+80000ac0:	00812423          	sw	s0,8(sp)
+80000ac4:	01010413          	addi	s0,sp,16
+    __enable_irq();
+80000ac8:	941ff0ef          	jal	ra,80000408 <__enable_irq>
+}
+80000acc:	00000013          	nop
+80000ad0:	00c12083          	lw	ra,12(sp)
+80000ad4:	00812403          	lw	s0,8(sp)
+80000ad8:	01010113          	addi	sp,sp,16
+80000adc:	00008067          	ret
+
+80000ae0 <HW_set_32bit_reg>:
+)
+{
+    volatile uint16_t * foo = (uint16_t * ) reg_addr;
+    uint16_t value = ((*foo) & mask) >> shift;
+    return (value);
+}
+80000ae0:	fd010113          	addi	sp,sp,-48
+80000ae4:	02812623          	sw	s0,44(sp)
+80000ae8:	03010413          	addi	s0,sp,48
+80000aec:	fca42e23          	sw	a0,-36(s0)
+80000af0:	fcb42c23          	sw	a1,-40(s0)
+80000af4:	fdc42783          	lw	a5,-36(s0)
+80000af8:	fef42623          	sw	a5,-20(s0)
+80000afc:	fec42783          	lw	a5,-20(s0)
+80000b00:	fd842703          	lw	a4,-40(s0)
+80000b04:	00e7a023          	sw	a4,0(a5)
+80000b08:	00000013          	nop
+80000b0c:	02c12403          	lw	s0,44(sp)
+80000b10:	03010113          	addi	sp,sp,48
+80000b14:	00008067          	ret
+
+80000b18 <HW_get_32bit_reg>:
+80000b18:	fd010113          	addi	sp,sp,-48
+80000b1c:	02812623          	sw	s0,44(sp)
+80000b20:	03010413          	addi	s0,sp,48
+80000b24:	fca42e23          	sw	a0,-36(s0)
+80000b28:	fdc42783          	lw	a5,-36(s0)
+80000b2c:	fef42623          	sw	a5,-20(s0)
+80000b30:	fec42783          	lw	a5,-20(s0)
+80000b34:	0007a783          	lw	a5,0(a5)
+80000b38:	00078513          	mv	a0,a5
+80000b3c:	02c12403          	lw	s0,44(sp)
+80000b40:	03010113          	addi	sp,sp,48
+80000b44:	00008067          	ret
+
+80000b48 <HW_set_32bit_reg_field>:
+80000b48:	fd010113          	addi	sp,sp,-48
+80000b4c:	02812623          	sw	s0,44(sp)
+80000b50:	03010413          	addi	s0,sp,48
+80000b54:	fca42e23          	sw	a0,-36(s0)
+80000b58:	fcb42c23          	sw	a1,-40(s0)
+80000b5c:	fcc42a23          	sw	a2,-44(s0)
+80000b60:	fcd42823          	sw	a3,-48(s0)
+80000b64:	fdc42783          	lw	a5,-36(s0)
+80000b68:	fef42623          	sw	a5,-20(s0)
+80000b6c:	fec42783          	lw	a5,-20(s0)
+80000b70:	0007a783          	lw	a5,0(a5)
+80000b74:	fef42423          	sw	a5,-24(s0)
+80000b78:	fd042703          	lw	a4,-48(s0)
+80000b7c:	fd842783          	lw	a5,-40(s0)
+80000b80:	00f717b3          	sll	a5,a4,a5
+80000b84:	fef42223          	sw	a5,-28(s0)
+80000b88:	fe442703          	lw	a4,-28(s0)
+80000b8c:	fd442783          	lw	a5,-44(s0)
+80000b90:	00f77733          	and	a4,a4,a5
+80000b94:	fd442783          	lw	a5,-44(s0)
+80000b98:	fff7c693          	not	a3,a5
+80000b9c:	fe842783          	lw	a5,-24(s0)
+80000ba0:	00f6f7b3          	and	a5,a3,a5
+80000ba4:	00f76733          	or	a4,a4,a5
+80000ba8:	fec42783          	lw	a5,-20(s0)
+80000bac:	00e7a023          	sw	a4,0(a5)
+80000bb0:	00000013          	nop
+80000bb4:	02c12403          	lw	s0,44(sp)
+80000bb8:	03010113          	addi	sp,sp,48
+80000bbc:	00008067          	ret
+
+80000bc0 <HW_set_16bit_reg>:
+80000bc0:	fd010113          	addi	sp,sp,-48
+80000bc4:	02812623          	sw	s0,44(sp)
+80000bc8:	03010413          	addi	s0,sp,48
+80000bcc:	fca42e23          	sw	a0,-36(s0)
+80000bd0:	fcb42c23          	sw	a1,-40(s0)
+80000bd4:	fdc42783          	lw	a5,-36(s0)
+80000bd8:	fef42623          	sw	a5,-20(s0)
+80000bdc:	fd842783          	lw	a5,-40(s0)
+80000be0:	01079713          	slli	a4,a5,0x10
+80000be4:	01075713          	srli	a4,a4,0x10
+80000be8:	fec42783          	lw	a5,-20(s0)
+80000bec:	00e79023          	sh	a4,0(a5)
+80000bf0:	00000013          	nop
+80000bf4:	02c12403          	lw	s0,44(sp)
+80000bf8:	03010113          	addi	sp,sp,48
+80000bfc:	00008067          	ret
+
+80000c00 <HW_get_16bit_reg>:
+80000c00:	fd010113          	addi	sp,sp,-48
+80000c04:	02812623          	sw	s0,44(sp)
+80000c08:	03010413          	addi	s0,sp,48
+80000c0c:	fca42e23          	sw	a0,-36(s0)
+80000c10:	fdc42783          	lw	a5,-36(s0)
+80000c14:	fef42623          	sw	a5,-20(s0)
+80000c18:	fec42783          	lw	a5,-20(s0)
+80000c1c:	0007d783          	lhu	a5,0(a5)
+80000c20:	01079793          	slli	a5,a5,0x10
+80000c24:	0107d793          	srli	a5,a5,0x10
+80000c28:	00078513          	mv	a0,a5
+80000c2c:	02c12403          	lw	s0,44(sp)
+80000c30:	03010113          	addi	sp,sp,48
+80000c34:	00008067          	ret
+
+80000c38 <HW_set_8bit_reg>:
+HW_set_8bit_reg
+(
+    addr_t reg_addr,
+    uint_fast8_t value
+)
+{
+80000c38:	fd010113          	addi	sp,sp,-48
+80000c3c:	02812623          	sw	s0,44(sp)
+80000c40:	03010413          	addi	s0,sp,48
+80000c44:	fca42e23          	sw	a0,-36(s0)
+80000c48:	fcb42c23          	sw	a1,-40(s0)
+    volatile uint8_t * foo = (uint8_t*) reg_addr;
+80000c4c:	fdc42783          	lw	a5,-36(s0)
+80000c50:	fef42623          	sw	a5,-20(s0)
+    *foo = value;
+80000c54:	fd842783          	lw	a5,-40(s0)
+80000c58:	0ff7f713          	andi	a4,a5,255
+80000c5c:	fec42783          	lw	a5,-20(s0)
+80000c60:	00e78023          	sb	a4,0(a5)
+}
+80000c64:	00000013          	nop
+80000c68:	02c12403          	lw	s0,44(sp)
+80000c6c:	03010113          	addi	sp,sp,48
+80000c70:	00008067          	ret
+
+80000c74 <HW_get_8bit_reg>:
+uint8_t
+HW_get_8bit_reg
+(
+    addr_t reg_addr
+)
+{
+80000c74:	fd010113          	addi	sp,sp,-48
+80000c78:	02812623          	sw	s0,44(sp)
+80000c7c:	03010413          	addi	s0,sp,48
+80000c80:	fca42e23          	sw	a0,-36(s0)
+    volatile uint8_t * foo = (uint8_t*) reg_addr;
+80000c84:	fdc42783          	lw	a5,-36(s0)
+80000c88:	fef42623          	sw	a5,-20(s0)
+    return *foo;
+80000c8c:	fec42783          	lw	a5,-20(s0)
+80000c90:	0007c783          	lbu	a5,0(a5)
+80000c94:	0ff7f793          	andi	a5,a5,255
+}
+80000c98:	00078513          	mv	a0,a5
+80000c9c:	02c12403          	lw	s0,44(sp)
+80000ca0:	03010113          	addi	sp,sp,48
+80000ca4:	00008067          	ret
+
+80000ca8 <UART_init>:
+                                                              STATUS_TXRDY_MASK;
+            } while ( (tx_ready) && ( size_sent < tx_size ) );
+        }
+    }    
+    return size_sent;
+}
+80000ca8:	fd010113          	addi	sp,sp,-48
+80000cac:	02112623          	sw	ra,44(sp)
+80000cb0:	02812423          	sw	s0,40(sp)
+80000cb4:	03010413          	addi	s0,sp,48
+80000cb8:	fca42e23          	sw	a0,-36(s0)
+80000cbc:	fcb42c23          	sw	a1,-40(s0)
+80000cc0:	00060793          	mv	a5,a2
+80000cc4:	00068713          	mv	a4,a3
+80000cc8:	fcf41b23          	sh	a5,-42(s0)
+80000ccc:	00070793          	mv	a5,a4
+80000cd0:	fcf40aa3          	sb	a5,-43(s0)
+80000cd4:	fdc42783          	lw	a5,-36(s0)
+80000cd8:	0c078e63          	beqz	a5,80000db4 <UART_init+0x10c>
+80000cdc:	fd544703          	lbu	a4,-43(s0)
+80000ce0:	00700793          	li	a5,7
+80000ce4:	0ce7e863          	bltu	a5,a4,80000db4 <UART_init+0x10c>
+80000ce8:	fd645703          	lhu	a4,-42(s0)
+80000cec:	000027b7          	lui	a5,0x2
+80000cf0:	0cf77263          	bleu	a5,a4,80000db4 <UART_init+0x10c>
+80000cf4:	fd842783          	lw	a5,-40(s0)
+80000cf8:	00878713          	addi	a4,a5,8 # 2008 <HEAP_SIZE+0x1808>
+80000cfc:	fd645783          	lhu	a5,-42(s0)
+80000d00:	0ff7f793          	andi	a5,a5,255
+80000d04:	00078593          	mv	a1,a5
+80000d08:	00070513          	mv	a0,a4
+80000d0c:	f2dff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80000d10:	fd842783          	lw	a5,-40(s0)
+80000d14:	00c78693          	addi	a3,a5,12
+80000d18:	fd544703          	lbu	a4,-43(s0)
+80000d1c:	fd645783          	lhu	a5,-42(s0)
+80000d20:	4057d793          	srai	a5,a5,0x5
+80000d24:	7f87f793          	andi	a5,a5,2040
+80000d28:	00f767b3          	or	a5,a4,a5
+80000d2c:	00078593          	mv	a1,a5
+80000d30:	00068513          	mv	a0,a3
+80000d34:	f05ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80000d38:	fdc42783          	lw	a5,-36(s0)
+80000d3c:	fd842703          	lw	a4,-40(s0)
+80000d40:	00e7a023          	sw	a4,0(a5)
+80000d44:	fdc42783          	lw	a5,-36(s0)
+80000d48:	0007a783          	lw	a5,0(a5)
+80000d4c:	01078793          	addi	a5,a5,16
+80000d50:	00078513          	mv	a0,a5
+80000d54:	f21ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000d58:	00050793          	mv	a5,a0
+80000d5c:	0027f793          	andi	a5,a5,2
+80000d60:	fef407a3          	sb	a5,-17(s0)
+80000d64:	0400006f          	j	80000da4 <UART_init+0xfc>
+80000d68:	fdc42783          	lw	a5,-36(s0)
+80000d6c:	0007a783          	lw	a5,0(a5)
+80000d70:	00478793          	addi	a5,a5,4
+80000d74:	00078513          	mv	a0,a5
+80000d78:	efdff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000d7c:	00050793          	mv	a5,a0
+80000d80:	fef40723          	sb	a5,-18(s0)
+80000d84:	fdc42783          	lw	a5,-36(s0)
+80000d88:	0007a783          	lw	a5,0(a5)
+80000d8c:	01078793          	addi	a5,a5,16
+80000d90:	00078513          	mv	a0,a5
+80000d94:	ee1ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000d98:	00050793          	mv	a5,a0
+80000d9c:	0027f793          	andi	a5,a5,2
+80000da0:	fef407a3          	sb	a5,-17(s0)
+80000da4:	fef44783          	lbu	a5,-17(s0)
+80000da8:	fc0790e3          	bnez	a5,80000d68 <UART_init+0xc0>
+80000dac:	fdc42783          	lw	a5,-36(s0)
+80000db0:	00078223          	sb	zero,4(a5)
+80000db4:	00000013          	nop
+80000db8:	02c12083          	lw	ra,44(sp)
+80000dbc:	02812403          	lw	s0,40(sp)
+80000dc0:	03010113          	addi	sp,sp,48
+80000dc4:	00008067          	ret
+
+80000dc8 <UART_send>:
+80000dc8:	fd010113          	addi	sp,sp,-48
+80000dcc:	02112623          	sw	ra,44(sp)
+80000dd0:	02812423          	sw	s0,40(sp)
+80000dd4:	03010413          	addi	s0,sp,48
+80000dd8:	fca42e23          	sw	a0,-36(s0)
+80000ddc:	fcb42c23          	sw	a1,-40(s0)
+80000de0:	fcc42a23          	sw	a2,-44(s0)
+80000de4:	fdc42783          	lw	a5,-36(s0)
+80000de8:	08078063          	beqz	a5,80000e68 <UART_send+0xa0>
+80000dec:	fd842783          	lw	a5,-40(s0)
+80000df0:	06078c63          	beqz	a5,80000e68 <UART_send+0xa0>
+80000df4:	fd442783          	lw	a5,-44(s0)
+80000df8:	06078863          	beqz	a5,80000e68 <UART_send+0xa0>
+80000dfc:	fe042623          	sw	zero,-20(s0)
+80000e00:	05c0006f          	j	80000e5c <UART_send+0x94>
+80000e04:	fdc42783          	lw	a5,-36(s0)
+80000e08:	0007a783          	lw	a5,0(a5)
+80000e0c:	01078793          	addi	a5,a5,16
+80000e10:	00078513          	mv	a0,a5
+80000e14:	e61ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000e18:	00050793          	mv	a5,a0
+80000e1c:	0017f793          	andi	a5,a5,1
+80000e20:	fef405a3          	sb	a5,-21(s0)
+80000e24:	feb44783          	lbu	a5,-21(s0)
+80000e28:	fc078ee3          	beqz	a5,80000e04 <UART_send+0x3c>
+80000e2c:	fdc42783          	lw	a5,-36(s0)
+80000e30:	0007a683          	lw	a3,0(a5)
+80000e34:	fd842703          	lw	a4,-40(s0)
+80000e38:	fec42783          	lw	a5,-20(s0)
+80000e3c:	00f707b3          	add	a5,a4,a5
+80000e40:	0007c783          	lbu	a5,0(a5)
+80000e44:	00078593          	mv	a1,a5
+80000e48:	00068513          	mv	a0,a3
+80000e4c:	dedff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80000e50:	fec42783          	lw	a5,-20(s0)
+80000e54:	00178793          	addi	a5,a5,1
+80000e58:	fef42623          	sw	a5,-20(s0)
+80000e5c:	fec42703          	lw	a4,-20(s0)
+80000e60:	fd442783          	lw	a5,-44(s0)
+80000e64:	faf760e3          	bltu	a4,a5,80000e04 <UART_send+0x3c>
+80000e68:	00000013          	nop
+80000e6c:	02c12083          	lw	ra,44(sp)
+80000e70:	02812403          	lw	s0,40(sp)
+80000e74:	03010113          	addi	sp,sp,48
+80000e78:	00008067          	ret
+
+80000e7c <UART_get_rx>:
+(
+    UART_instance_t * this_uart,
+    uint8_t * rx_buffer,
+    size_t buff_size
+)
+{
+80000e7c:	fd010113          	addi	sp,sp,-48
+80000e80:	02112623          	sw	ra,44(sp)
+80000e84:	02812423          	sw	s0,40(sp)
+80000e88:	02912223          	sw	s1,36(sp)
+80000e8c:	03010413          	addi	s0,sp,48
+80000e90:	fca42e23          	sw	a0,-36(s0)
+80000e94:	fcb42c23          	sw	a1,-40(s0)
+80000e98:	fcc42a23          	sw	a2,-44(s0)
+    uint8_t new_status;
+    uint8_t rx_full;
+    size_t rx_idx = 0u;
+80000e9c:	fe042423          	sw	zero,-24(s0)
+    
+    HAL_ASSERT( this_uart != NULL_INSTANCE )
+    HAL_ASSERT( rx_buffer != NULL_BUFFER )
+    HAL_ASSERT( buff_size > 0 )
+      
+    if( (this_uart != NULL_INSTANCE) &&
+80000ea0:	fdc42783          	lw	a5,-36(s0)
+80000ea4:	0e078663          	beqz	a5,80000f90 <UART_get_rx+0x114>
+80000ea8:	fd842783          	lw	a5,-40(s0)
+80000eac:	0e078263          	beqz	a5,80000f90 <UART_get_rx+0x114>
+        (rx_buffer != NULL_BUFFER)   &&
+80000eb0:	fd442783          	lw	a5,-44(s0)
+80000eb4:	0c078e63          	beqz	a5,80000f90 <UART_get_rx+0x114>
+        (buff_size > 0u) )
+    {
+        rx_idx = 0u;
+80000eb8:	fe042423          	sw	zero,-24(s0)
+        new_status = HAL_get_8bit_reg( this_uart->base_address, STATUS );
+80000ebc:	fdc42783          	lw	a5,-36(s0)
+80000ec0:	0007a783          	lw	a5,0(a5)
+80000ec4:	01078793          	addi	a5,a5,16
+80000ec8:	00078513          	mv	a0,a5
+80000ecc:	da9ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000ed0:	00050793          	mv	a5,a0
+80000ed4:	fef403a3          	sb	a5,-25(s0)
+        this_uart->status |= new_status;
+80000ed8:	fdc42783          	lw	a5,-36(s0)
+80000edc:	0047c703          	lbu	a4,4(a5)
+80000ee0:	fe744783          	lbu	a5,-25(s0)
+80000ee4:	00f767b3          	or	a5,a4,a5
+80000ee8:	0ff7f713          	andi	a4,a5,255
+80000eec:	fdc42783          	lw	a5,-36(s0)
+80000ef0:	00e78223          	sb	a4,4(a5)
+        rx_full = new_status & STATUS_RXFULL_MASK;
+80000ef4:	fe744783          	lbu	a5,-25(s0)
+80000ef8:	0027f793          	andi	a5,a5,2
+80000efc:	fef407a3          	sb	a5,-17(s0)
+        while ( ( rx_full ) && ( rx_idx < buff_size ) )
+80000f00:	07c0006f          	j	80000f7c <UART_get_rx+0x100>
+        {
+            rx_buffer[rx_idx] = HAL_get_8bit_reg( this_uart->base_address,
+80000f04:	fdc42783          	lw	a5,-36(s0)
+80000f08:	0007a783          	lw	a5,0(a5)
+80000f0c:	00478693          	addi	a3,a5,4
+80000f10:	fd842703          	lw	a4,-40(s0)
+80000f14:	fe842783          	lw	a5,-24(s0)
+80000f18:	00f704b3          	add	s1,a4,a5
+80000f1c:	00068513          	mv	a0,a3
+80000f20:	d55ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000f24:	00050793          	mv	a5,a0
+80000f28:	00f48023          	sb	a5,0(s1)
+                                                  RXDATA );
+            rx_idx++;
+80000f2c:	fe842783          	lw	a5,-24(s0)
+80000f30:	00178793          	addi	a5,a5,1
+80000f34:	fef42423          	sw	a5,-24(s0)
+            new_status = HAL_get_8bit_reg( this_uart->base_address, STATUS );
+80000f38:	fdc42783          	lw	a5,-36(s0)
+80000f3c:	0007a783          	lw	a5,0(a5)
+80000f40:	01078793          	addi	a5,a5,16
+80000f44:	00078513          	mv	a0,a5
+80000f48:	d2dff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000f4c:	00050793          	mv	a5,a0
+80000f50:	fef403a3          	sb	a5,-25(s0)
+            this_uart->status |= new_status;
+80000f54:	fdc42783          	lw	a5,-36(s0)
+80000f58:	0047c703          	lbu	a4,4(a5)
+80000f5c:	fe744783          	lbu	a5,-25(s0)
+80000f60:	00f767b3          	or	a5,a4,a5
+80000f64:	0ff7f713          	andi	a4,a5,255
+80000f68:	fdc42783          	lw	a5,-36(s0)
+80000f6c:	00e78223          	sb	a4,4(a5)
+            rx_full = new_status & STATUS_RXFULL_MASK;
+80000f70:	fe744783          	lbu	a5,-25(s0)
+80000f74:	0027f793          	andi	a5,a5,2
+80000f78:	fef407a3          	sb	a5,-17(s0)
+        while ( ( rx_full ) && ( rx_idx < buff_size ) )
+80000f7c:	fef44783          	lbu	a5,-17(s0)
+80000f80:	00078863          	beqz	a5,80000f90 <UART_get_rx+0x114>
+80000f84:	fe842703          	lw	a4,-24(s0)
+80000f88:	fd442783          	lw	a5,-44(s0)
+80000f8c:	f6f76ce3          	bltu	a4,a5,80000f04 <UART_get_rx+0x88>
+        }
+    }
+    return rx_idx;
+80000f90:	fe842783          	lw	a5,-24(s0)
+}
+80000f94:	00078513          	mv	a0,a5
+80000f98:	02c12083          	lw	ra,44(sp)
+80000f9c:	02812403          	lw	s0,40(sp)
+80000fa0:	02412483          	lw	s1,36(sp)
+80000fa4:	03010113          	addi	sp,sp,48
+80000fa8:	00008067          	ret
+
+80000fac <UART_polled_tx_string>:
+UART_polled_tx_string
+( 
+    UART_instance_t * this_uart, 
+    const uint8_t * p_sz_string
+)
+{
+80000fac:	fd010113          	addi	sp,sp,-48
+80000fb0:	02112623          	sw	ra,44(sp)
+80000fb4:	02812423          	sw	s0,40(sp)
+80000fb8:	03010413          	addi	s0,sp,48
+80000fbc:	fca42e23          	sw	a0,-36(s0)
+80000fc0:	fcb42c23          	sw	a1,-40(s0)
+    uint8_t tx_ready;
+
+    HAL_ASSERT( this_uart != NULL_INSTANCE )
+    HAL_ASSERT( p_sz_string != NULL_BUFFER )
+    
+    if( ( this_uart != NULL_INSTANCE ) && ( p_sz_string != NULL_BUFFER ) )
+80000fc4:	fdc42783          	lw	a5,-36(s0)
+80000fc8:	08078063          	beqz	a5,80001048 <UART_polled_tx_string+0x9c>
+80000fcc:	fd842783          	lw	a5,-40(s0)
+80000fd0:	06078c63          	beqz	a5,80001048 <UART_polled_tx_string+0x9c>
+    {
+        char_idx = 0U;
+80000fd4:	fe042623          	sw	zero,-20(s0)
+        while( 0U != p_sz_string[char_idx] )
+80000fd8:	05c0006f          	j	80001034 <UART_polled_tx_string+0x88>
+        {
+            /* Wait for UART to become ready to transmit. */
+            do {
+                tx_ready = HAL_get_8bit_reg( this_uart->base_address, STATUS ) &
+80000fdc:	fdc42783          	lw	a5,-36(s0)
+80000fe0:	0007a783          	lw	a5,0(a5)
+80000fe4:	01078793          	addi	a5,a5,16
+80000fe8:	00078513          	mv	a0,a5
+80000fec:	c89ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80000ff0:	00050793          	mv	a5,a0
+80000ff4:	0017f793          	andi	a5,a5,1
+80000ff8:	fef405a3          	sb	a5,-21(s0)
+                                                              STATUS_TXRDY_MASK;
+            } while ( !tx_ready );
+80000ffc:	feb44783          	lbu	a5,-21(s0)
+80001000:	fc078ee3          	beqz	a5,80000fdc <UART_polled_tx_string+0x30>
+            /* Send next character in the buffer. */
+            HAL_set_8bit_reg( this_uart->base_address, TXDATA,
+80001004:	fdc42783          	lw	a5,-36(s0)
+80001008:	0007a683          	lw	a3,0(a5)
+8000100c:	fd842703          	lw	a4,-40(s0)
+80001010:	fec42783          	lw	a5,-20(s0)
+80001014:	00f707b3          	add	a5,a4,a5
+80001018:	0007c783          	lbu	a5,0(a5)
+8000101c:	00078593          	mv	a1,a5
+80001020:	00068513          	mv	a0,a3
+80001024:	c15ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+                              (uint_fast8_t)p_sz_string[char_idx] );
+            char_idx++;
+80001028:	fec42783          	lw	a5,-20(s0)
+8000102c:	00178793          	addi	a5,a5,1
+80001030:	fef42623          	sw	a5,-20(s0)
+        while( 0U != p_sz_string[char_idx] )
+80001034:	fd842703          	lw	a4,-40(s0)
+80001038:	fec42783          	lw	a5,-20(s0)
+8000103c:	00f707b3          	add	a5,a4,a5
+80001040:	0007c783          	lbu	a5,0(a5)
+80001044:	f8079ce3          	bnez	a5,80000fdc <UART_polled_tx_string+0x30>
+        }
+    }
+}
+80001048:	00000013          	nop
+8000104c:	02c12083          	lw	ra,44(sp)
+80001050:	02812403          	lw	s0,40(sp)
+80001054:	03010113          	addi	sp,sp,48
+80001058:	00008067          	ret
+
+8000105c <TMR_init>:
+)
+{
+	HAL_ASSERT( this_timer != NULL_timer_instance )
+    
+    HAL_set_32bit_reg_field( this_timer->base_address, TimerEnable, 0 );
+}
+8000105c:	fd010113          	addi	sp,sp,-48
+80001060:	02112623          	sw	ra,44(sp)
+80001064:	02812423          	sw	s0,40(sp)
+80001068:	03010413          	addi	s0,sp,48
+8000106c:	fea42623          	sw	a0,-20(s0)
+80001070:	feb42423          	sw	a1,-24(s0)
+80001074:	00060793          	mv	a5,a2
+80001078:	fed42023          	sw	a3,-32(s0)
+8000107c:	fce42e23          	sw	a4,-36(s0)
+80001080:	fef403a3          	sb	a5,-25(s0)
+80001084:	fec42783          	lw	a5,-20(s0)
+80001088:	fe842703          	lw	a4,-24(s0)
+8000108c:	00e7a023          	sw	a4,0(a5)
+80001090:	fe842783          	lw	a5,-24(s0)
+80001094:	00878793          	addi	a5,a5,8
+80001098:	00000693          	li	a3,0
+8000109c:	00200613          	li	a2,2
+800010a0:	00100593          	li	a1,1
+800010a4:	00078513          	mv	a0,a5
+800010a8:	aa1ff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+800010ac:	fe842783          	lw	a5,-24(s0)
+800010b0:	00878793          	addi	a5,a5,8
+800010b4:	00000693          	li	a3,0
+800010b8:	00100613          	li	a2,1
+800010bc:	00000593          	li	a1,0
+800010c0:	00078513          	mv	a0,a5
+800010c4:	a85ff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+800010c8:	fe842783          	lw	a5,-24(s0)
+800010cc:	01078793          	addi	a5,a5,16
+800010d0:	00100593          	li	a1,1
+800010d4:	00078513          	mv	a0,a5
+800010d8:	a09ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+800010dc:	fe842783          	lw	a5,-24(s0)
+800010e0:	00c78793          	addi	a5,a5,12
+800010e4:	fe042583          	lw	a1,-32(s0)
+800010e8:	00078513          	mv	a0,a5
+800010ec:	9f5ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+800010f0:	fdc42583          	lw	a1,-36(s0)
+800010f4:	fe842503          	lw	a0,-24(s0)
+800010f8:	9e9ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+800010fc:	fe744783          	lbu	a5,-25(s0)
+80001100:	02079263          	bnez	a5,80001124 <TMR_init+0xc8>
+80001104:	fe842783          	lw	a5,-24(s0)
+80001108:	00878793          	addi	a5,a5,8
+8000110c:	00000693          	li	a3,0
+80001110:	00400613          	li	a2,4
+80001114:	00200593          	li	a1,2
+80001118:	00078513          	mv	a0,a5
+8000111c:	a2dff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+80001120:	0200006f          	j	80001140 <TMR_init+0xe4>
+80001124:	fe842783          	lw	a5,-24(s0)
+80001128:	00878793          	addi	a5,a5,8
+8000112c:	00100693          	li	a3,1
+80001130:	00400613          	li	a2,4
+80001134:	00200593          	li	a1,2
+80001138:	00078513          	mv	a0,a5
+8000113c:	a0dff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+80001140:	00000013          	nop
+80001144:	02c12083          	lw	ra,44(sp)
+80001148:	02812403          	lw	s0,40(sp)
+8000114c:	03010113          	addi	sp,sp,48
+80001150:	00008067          	ret
+
+80001154 <TMR_start>:
+80001154:	fe010113          	addi	sp,sp,-32
+80001158:	00112e23          	sw	ra,28(sp)
+8000115c:	00812c23          	sw	s0,24(sp)
+80001160:	02010413          	addi	s0,sp,32
+80001164:	fea42623          	sw	a0,-20(s0)
+80001168:	fec42783          	lw	a5,-20(s0)
+8000116c:	0007a783          	lw	a5,0(a5)
+80001170:	00878793          	addi	a5,a5,8
+80001174:	00100693          	li	a3,1
+80001178:	00100613          	li	a2,1
+8000117c:	00000593          	li	a1,0
+80001180:	00078513          	mv	a0,a5
+80001184:	9c5ff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+80001188:	00000013          	nop
+8000118c:	01c12083          	lw	ra,28(sp)
+80001190:	01812403          	lw	s0,24(sp)
+80001194:	02010113          	addi	sp,sp,32
+80001198:	00008067          	ret
+
+8000119c <TMR_enable_int>:
+void
+TMR_enable_int
+(
+    timer_instance_t * this_timer
+)
+{
+8000119c:	fe010113          	addi	sp,sp,-32
+800011a0:	00112e23          	sw	ra,28(sp)
+800011a4:	00812c23          	sw	s0,24(sp)
+800011a8:	02010413          	addi	s0,sp,32
+800011ac:	fea42623          	sw	a0,-20(s0)
+	HAL_ASSERT( this_timer != NULL_timer_instance )
+    
+    HAL_set_32bit_reg_field( this_timer->base_address, InterruptEnable, 1 );
+800011b0:	fec42783          	lw	a5,-20(s0)
+800011b4:	0007a783          	lw	a5,0(a5)
+800011b8:	00878793          	addi	a5,a5,8
+800011bc:	00100693          	li	a3,1
+800011c0:	00200613          	li	a2,2
+800011c4:	00100593          	li	a1,1
+800011c8:	00078513          	mv	a0,a5
+800011cc:	97dff0ef          	jal	ra,80000b48 <HW_set_32bit_reg_field>
+}
+800011d0:	00000013          	nop
+800011d4:	01c12083          	lw	ra,28(sp)
+800011d8:	01812403          	lw	s0,24(sp)
+800011dc:	02010113          	addi	sp,sp,32
+800011e0:	00008067          	ret
+
+800011e4 <TMR_clear_int>:
+void
+TMR_clear_int
+(
+    timer_instance_t * this_timer
+)
+{
+800011e4:	fe010113          	addi	sp,sp,-32
+800011e8:	00112e23          	sw	ra,28(sp)
+800011ec:	00812c23          	sw	s0,24(sp)
+800011f0:	02010413          	addi	s0,sp,32
+800011f4:	fea42623          	sw	a0,-20(s0)
+	HAL_ASSERT( this_timer != NULL_timer_instance )
+    
+    HAL_set_32bit_reg( this_timer->base_address, TimerIntClr, 0x01 );
+800011f8:	fec42783          	lw	a5,-20(s0)
+800011fc:	0007a783          	lw	a5,0(a5)
+80001200:	01078793          	addi	a5,a5,16
+80001204:	00100593          	li	a1,1
+80001208:	00078513          	mv	a0,a5
+8000120c:	8d5ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+}
+80001210:	00000013          	nop
+80001214:	01c12083          	lw	ra,28(sp)
+80001218:	01812403          	lw	s0,24(sp)
+8000121c:	02010113          	addi	sp,sp,32
+80001220:	00008067          	ret
+
+80001224 <GPIO_init>:
+         * It may also indicate that the base address passed as parameter to
+         * GPIO_init() was incorrect.
+         */
+        HAL_ASSERT( HW_get_32bit_reg( cfg_reg_addr ) == config );
+    }
+}
+80001224:	fd010113          	addi	sp,sp,-48
+80001228:	02112623          	sw	ra,44(sp)
+8000122c:	02812423          	sw	s0,40(sp)
+80001230:	03010413          	addi	s0,sp,48
+80001234:	fca42e23          	sw	a0,-36(s0)
+80001238:	fcb42c23          	sw	a1,-40(s0)
+8000123c:	fcc42a23          	sw	a2,-44(s0)
+80001240:	fe0407a3          	sb	zero,-17(s0)
+80001244:	fd842783          	lw	a5,-40(s0)
+80001248:	fef42423          	sw	a5,-24(s0)
+8000124c:	fdc42783          	lw	a5,-36(s0)
+80001250:	fd842703          	lw	a4,-40(s0)
+80001254:	00e7a023          	sw	a4,0(a5)
+80001258:	fdc42783          	lw	a5,-36(s0)
+8000125c:	fd442703          	lw	a4,-44(s0)
+80001260:	00e7a223          	sw	a4,4(a5)
+80001264:	fe0407a3          	sb	zero,-17(s0)
+80001268:	fd842783          	lw	a5,-40(s0)
+8000126c:	fef42423          	sw	a5,-24(s0)
+80001270:	0280006f          	j	80001298 <GPIO_init+0x74>
+80001274:	00000593          	li	a1,0
+80001278:	fe842503          	lw	a0,-24(s0)
+8000127c:	9bdff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80001280:	fe842783          	lw	a5,-24(s0)
+80001284:	00478793          	addi	a5,a5,4
+80001288:	fef42423          	sw	a5,-24(s0)
+8000128c:	fef44783          	lbu	a5,-17(s0)
+80001290:	00178793          	addi	a5,a5,1
+80001294:	fef407a3          	sb	a5,-17(s0)
+80001298:	fef44703          	lbu	a4,-17(s0)
+8000129c:	01f00793          	li	a5,31
+800012a0:	fce7fae3          	bleu	a4,a5,80001274 <GPIO_init+0x50>
+800012a4:	fdc42783          	lw	a5,-36(s0)
+800012a8:	0047a783          	lw	a5,4(a5)
+800012ac:	00100713          	li	a4,1
+800012b0:	02e78a63          	beq	a5,a4,800012e4 <GPIO_init+0xc0>
+800012b4:	00100713          	li	a4,1
+800012b8:	06e7e463          	bltu	a5,a4,80001320 <GPIO_init+0xfc>
+800012bc:	00200713          	li	a4,2
+800012c0:	00e78463          	beq	a5,a4,800012c8 <GPIO_init+0xa4>
+800012c4:	0c00006f          	j	80001384 <GPIO_init+0x160>
+800012c8:	fdc42783          	lw	a5,-36(s0)
+800012cc:	0007a783          	lw	a5,0(a5)
+800012d0:	08078793          	addi	a5,a5,128
+800012d4:	fff00593          	li	a1,-1
+800012d8:	00078513          	mv	a0,a5
+800012dc:	805ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+800012e0:	0a40006f          	j	80001384 <GPIO_init+0x160>
+800012e4:	fdc42783          	lw	a5,-36(s0)
+800012e8:	0007a783          	lw	a5,0(a5)
+800012ec:	08078713          	addi	a4,a5,128
+800012f0:	000107b7          	lui	a5,0x10
+800012f4:	fff78593          	addi	a1,a5,-1 # ffff <HEAP_SIZE+0xf7ff>
+800012f8:	00070513          	mv	a0,a4
+800012fc:	8c5ff0ef          	jal	ra,80000bc0 <HW_set_16bit_reg>
+80001300:	fdc42783          	lw	a5,-36(s0)
+80001304:	0007a783          	lw	a5,0(a5)
+80001308:	08478713          	addi	a4,a5,132
+8000130c:	000107b7          	lui	a5,0x10
+80001310:	fff78593          	addi	a1,a5,-1 # ffff <HEAP_SIZE+0xf7ff>
+80001314:	00070513          	mv	a0,a4
+80001318:	8a9ff0ef          	jal	ra,80000bc0 <HW_set_16bit_reg>
+8000131c:	0680006f          	j	80001384 <GPIO_init+0x160>
+80001320:	fdc42783          	lw	a5,-36(s0)
+80001324:	0007a783          	lw	a5,0(a5)
+80001328:	08078793          	addi	a5,a5,128
+8000132c:	0ff00593          	li	a1,255
+80001330:	00078513          	mv	a0,a5
+80001334:	905ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80001338:	fdc42783          	lw	a5,-36(s0)
+8000133c:	0007a783          	lw	a5,0(a5)
+80001340:	08478793          	addi	a5,a5,132
+80001344:	0ff00593          	li	a1,255
+80001348:	00078513          	mv	a0,a5
+8000134c:	8edff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80001350:	fdc42783          	lw	a5,-36(s0)
+80001354:	0007a783          	lw	a5,0(a5)
+80001358:	08878793          	addi	a5,a5,136
+8000135c:	0ff00593          	li	a1,255
+80001360:	00078513          	mv	a0,a5
+80001364:	8d5ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80001368:	fdc42783          	lw	a5,-36(s0)
+8000136c:	0007a783          	lw	a5,0(a5)
+80001370:	08c78793          	addi	a5,a5,140
+80001374:	0ff00593          	li	a1,255
+80001378:	00078513          	mv	a0,a5
+8000137c:	8bdff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+80001380:	00000013          	nop
+80001384:	00000013          	nop
+80001388:	02c12083          	lw	ra,44(sp)
+8000138c:	02812403          	lw	s0,40(sp)
+80001390:	03010113          	addi	sp,sp,48
+80001394:	00008067          	ret
+
+80001398 <GPIO_set_outputs>:
+void GPIO_set_outputs
+(
+    gpio_instance_t *   this_gpio,
+    uint32_t            value
+)
+{
+80001398:	fe010113          	addi	sp,sp,-32
+8000139c:	00112e23          	sw	ra,28(sp)
+800013a0:	00812c23          	sw	s0,24(sp)
+800013a4:	02010413          	addi	s0,sp,32
+800013a8:	fea42623          	sw	a0,-20(s0)
+800013ac:	feb42423          	sw	a1,-24(s0)
+    switch( this_gpio->apb_bus_width )
+800013b0:	fec42783          	lw	a5,-20(s0)
+800013b4:	0047a783          	lw	a5,4(a5)
+800013b8:	00100713          	li	a4,1
+800013bc:	02e78a63          	beq	a5,a4,800013f0 <GPIO_set_outputs+0x58>
+800013c0:	00100713          	li	a4,1
+800013c4:	06e7ee63          	bltu	a5,a4,80001440 <GPIO_set_outputs+0xa8>
+800013c8:	00200713          	li	a4,2
+800013cc:	00e78463          	beq	a5,a4,800013d4 <GPIO_set_outputs+0x3c>
+            HAL_set_8bit_reg( this_gpio->base_addr, GPIO_OUT3, (uint8_t)(value >> 24) );
+            break;
+            
+        default:
+            HAL_ASSERT(0);
+            break;
+800013d0:	1000006f          	j	800014d0 <GPIO_set_outputs+0x138>
+            HAL_set_32bit_reg( this_gpio->base_addr, GPIO_OUT, value );
+800013d4:	fec42783          	lw	a5,-20(s0)
+800013d8:	0007a783          	lw	a5,0(a5)
+800013dc:	0a078793          	addi	a5,a5,160
+800013e0:	fe842583          	lw	a1,-24(s0)
+800013e4:	00078513          	mv	a0,a5
+800013e8:	ef8ff0ef          	jal	ra,80000ae0 <HW_set_32bit_reg>
+            break;
+800013ec:	0e40006f          	j	800014d0 <GPIO_set_outputs+0x138>
+            HAL_set_16bit_reg( this_gpio->base_addr, GPIO_OUT0, (uint16_t)value );
+800013f0:	fec42783          	lw	a5,-20(s0)
+800013f4:	0007a783          	lw	a5,0(a5)
+800013f8:	0a078793          	addi	a5,a5,160
+800013fc:	fe842703          	lw	a4,-24(s0)
+80001400:	01071713          	slli	a4,a4,0x10
+80001404:	01075713          	srli	a4,a4,0x10
+80001408:	00070593          	mv	a1,a4
+8000140c:	00078513          	mv	a0,a5
+80001410:	fb0ff0ef          	jal	ra,80000bc0 <HW_set_16bit_reg>
+            HAL_set_16bit_reg( this_gpio->base_addr, GPIO_OUT1, (uint16_t)(value >> 16) );
+80001414:	fec42783          	lw	a5,-20(s0)
+80001418:	0007a783          	lw	a5,0(a5)
+8000141c:	0a478713          	addi	a4,a5,164
+80001420:	fe842783          	lw	a5,-24(s0)
+80001424:	0107d793          	srli	a5,a5,0x10
+80001428:	01079793          	slli	a5,a5,0x10
+8000142c:	0107d793          	srli	a5,a5,0x10
+80001430:	00078593          	mv	a1,a5
+80001434:	00070513          	mv	a0,a4
+80001438:	f88ff0ef          	jal	ra,80000bc0 <HW_set_16bit_reg>
+            break;
+8000143c:	0940006f          	j	800014d0 <GPIO_set_outputs+0x138>
+            HAL_set_8bit_reg( this_gpio->base_addr, GPIO_OUT0, (uint8_t)value );
+80001440:	fec42783          	lw	a5,-20(s0)
+80001444:	0007a783          	lw	a5,0(a5)
+80001448:	0a078793          	addi	a5,a5,160
+8000144c:	fe842703          	lw	a4,-24(s0)
+80001450:	0ff77713          	andi	a4,a4,255
+80001454:	00070593          	mv	a1,a4
+80001458:	00078513          	mv	a0,a5
+8000145c:	fdcff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+            HAL_set_8bit_reg( this_gpio->base_addr, GPIO_OUT1, (uint8_t)(value >> 8) );
+80001460:	fec42783          	lw	a5,-20(s0)
+80001464:	0007a783          	lw	a5,0(a5)
+80001468:	0a478713          	addi	a4,a5,164
+8000146c:	fe842783          	lw	a5,-24(s0)
+80001470:	0087d793          	srli	a5,a5,0x8
+80001474:	0ff7f793          	andi	a5,a5,255
+80001478:	00078593          	mv	a1,a5
+8000147c:	00070513          	mv	a0,a4
+80001480:	fb8ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+            HAL_set_8bit_reg( this_gpio->base_addr, GPIO_OUT2, (uint8_t)(value >> 16) );
+80001484:	fec42783          	lw	a5,-20(s0)
+80001488:	0007a783          	lw	a5,0(a5)
+8000148c:	0a878713          	addi	a4,a5,168
+80001490:	fe842783          	lw	a5,-24(s0)
+80001494:	0107d793          	srli	a5,a5,0x10
+80001498:	0ff7f793          	andi	a5,a5,255
+8000149c:	00078593          	mv	a1,a5
+800014a0:	00070513          	mv	a0,a4
+800014a4:	f94ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+            HAL_set_8bit_reg( this_gpio->base_addr, GPIO_OUT3, (uint8_t)(value >> 24) );
+800014a8:	fec42783          	lw	a5,-20(s0)
+800014ac:	0007a783          	lw	a5,0(a5)
+800014b0:	0ac78713          	addi	a4,a5,172
+800014b4:	fe842783          	lw	a5,-24(s0)
+800014b8:	0187d793          	srli	a5,a5,0x18
+800014bc:	0ff7f793          	andi	a5,a5,255
+800014c0:	00078593          	mv	a1,a5
+800014c4:	00070513          	mv	a0,a4
+800014c8:	f70ff0ef          	jal	ra,80000c38 <HW_set_8bit_reg>
+            break;
+800014cc:	00000013          	nop
+     * the number of GPIOs selected in the CoreGPIO hardware flow configuration.
+     * It may also indicate that the base address or APB bus width passed as
+     * parameter to the GPIO_init() function do not match the hardware design.
+     */
+    HAL_ASSERT( GPIO_get_outputs( this_gpio ) == value );
+}
+800014d0:	00000013          	nop
+800014d4:	01c12083          	lw	ra,28(sp)
+800014d8:	01812403          	lw	s0,24(sp)
+800014dc:	02010113          	addi	sp,sp,32
+800014e0:	00008067          	ret
+
+800014e4 <GPIO_get_inputs>:
+ */
+uint32_t GPIO_get_inputs
+(
+    gpio_instance_t *   this_gpio
+)
+{
+800014e4:	fd010113          	addi	sp,sp,-48
+800014e8:	02112623          	sw	ra,44(sp)
+800014ec:	02812423          	sw	s0,40(sp)
+800014f0:	03010413          	addi	s0,sp,48
+800014f4:	fca42e23          	sw	a0,-36(s0)
+    uint32_t gpio_in = 0;
+800014f8:	fe042623          	sw	zero,-20(s0)
+    
+    switch( this_gpio->apb_bus_width )
+800014fc:	fdc42783          	lw	a5,-36(s0)
+80001500:	0047a783          	lw	a5,4(a5)
+80001504:	00100713          	li	a4,1
+80001508:	02e78a63          	beq	a5,a4,8000153c <GPIO_get_inputs+0x58>
+8000150c:	00100713          	li	a4,1
+80001510:	08e7e263          	bltu	a5,a4,80001594 <GPIO_get_inputs+0xb0>
+80001514:	00200713          	li	a4,2
+80001518:	00e78463          	beq	a5,a4,80001520 <GPIO_get_inputs+0x3c>
+            gpio_in |= (HAL_get_8bit_reg( this_gpio->base_addr, GPIO_IN3 ) << 24);
+            break;
+            
+        default:
+            HAL_ASSERT(0);
+            break;
+8000151c:	1280006f          	j	80001644 <GPIO_get_inputs+0x160>
+            gpio_in = HAL_get_32bit_reg( this_gpio->base_addr, GPIO_IN );
+80001520:	fdc42783          	lw	a5,-36(s0)
+80001524:	0007a783          	lw	a5,0(a5)
+80001528:	09078793          	addi	a5,a5,144
+8000152c:	00078513          	mv	a0,a5
+80001530:	de8ff0ef          	jal	ra,80000b18 <HW_get_32bit_reg>
+80001534:	fea42623          	sw	a0,-20(s0)
+            break;
+80001538:	10c0006f          	j	80001644 <GPIO_get_inputs+0x160>
+            gpio_in |= HAL_get_16bit_reg( this_gpio->base_addr, GPIO_IN0 );
+8000153c:	fdc42783          	lw	a5,-36(s0)
+80001540:	0007a783          	lw	a5,0(a5)
+80001544:	09078793          	addi	a5,a5,144
+80001548:	00078513          	mv	a0,a5
+8000154c:	eb4ff0ef          	jal	ra,80000c00 <HW_get_16bit_reg>
+80001550:	00050793          	mv	a5,a0
+80001554:	00078713          	mv	a4,a5
+80001558:	fec42783          	lw	a5,-20(s0)
+8000155c:	00e7e7b3          	or	a5,a5,a4
+80001560:	fef42623          	sw	a5,-20(s0)
+            gpio_in |= (HAL_get_16bit_reg( this_gpio->base_addr, GPIO_IN1 ) << 16);
+80001564:	fdc42783          	lw	a5,-36(s0)
+80001568:	0007a783          	lw	a5,0(a5)
+8000156c:	09478793          	addi	a5,a5,148
+80001570:	00078513          	mv	a0,a5
+80001574:	e8cff0ef          	jal	ra,80000c00 <HW_get_16bit_reg>
+80001578:	00050793          	mv	a5,a0
+8000157c:	01079793          	slli	a5,a5,0x10
+80001580:	00078713          	mv	a4,a5
+80001584:	fec42783          	lw	a5,-20(s0)
+80001588:	00e7e7b3          	or	a5,a5,a4
+8000158c:	fef42623          	sw	a5,-20(s0)
+            break;
+80001590:	0b40006f          	j	80001644 <GPIO_get_inputs+0x160>
+            gpio_in |= HAL_get_8bit_reg( this_gpio->base_addr, GPIO_IN0 );
+80001594:	fdc42783          	lw	a5,-36(s0)
+80001598:	0007a783          	lw	a5,0(a5)
+8000159c:	09078793          	addi	a5,a5,144
+800015a0:	00078513          	mv	a0,a5
+800015a4:	ed0ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+800015a8:	00050793          	mv	a5,a0
+800015ac:	00078713          	mv	a4,a5
+800015b0:	fec42783          	lw	a5,-20(s0)
+800015b4:	00e7e7b3          	or	a5,a5,a4
+800015b8:	fef42623          	sw	a5,-20(s0)
+            gpio_in |= (HAL_get_8bit_reg( this_gpio->base_addr, GPIO_IN1 ) << 8);
+800015bc:	fdc42783          	lw	a5,-36(s0)
+800015c0:	0007a783          	lw	a5,0(a5)
+800015c4:	09478793          	addi	a5,a5,148
+800015c8:	00078513          	mv	a0,a5
+800015cc:	ea8ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+800015d0:	00050793          	mv	a5,a0
+800015d4:	00879793          	slli	a5,a5,0x8
+800015d8:	00078713          	mv	a4,a5
+800015dc:	fec42783          	lw	a5,-20(s0)
+800015e0:	00e7e7b3          	or	a5,a5,a4
+800015e4:	fef42623          	sw	a5,-20(s0)
+            gpio_in |= (HAL_get_8bit_reg( this_gpio->base_addr, GPIO_IN2 ) << 16);
+800015e8:	fdc42783          	lw	a5,-36(s0)
+800015ec:	0007a783          	lw	a5,0(a5)
+800015f0:	09878793          	addi	a5,a5,152
+800015f4:	00078513          	mv	a0,a5
+800015f8:	e7cff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+800015fc:	00050793          	mv	a5,a0
+80001600:	01079793          	slli	a5,a5,0x10
+80001604:	00078713          	mv	a4,a5
+80001608:	fec42783          	lw	a5,-20(s0)
+8000160c:	00e7e7b3          	or	a5,a5,a4
+80001610:	fef42623          	sw	a5,-20(s0)
+            gpio_in |= (HAL_get_8bit_reg( this_gpio->base_addr, GPIO_IN3 ) << 24);
+80001614:	fdc42783          	lw	a5,-36(s0)
+80001618:	0007a783          	lw	a5,0(a5)
+8000161c:	09c78793          	addi	a5,a5,156
+80001620:	00078513          	mv	a0,a5
+80001624:	e50ff0ef          	jal	ra,80000c74 <HW_get_8bit_reg>
+80001628:	00050793          	mv	a5,a0
+8000162c:	01879793          	slli	a5,a5,0x18
+80001630:	00078713          	mv	a4,a5
+80001634:	fec42783          	lw	a5,-20(s0)
+80001638:	00e7e7b3          	or	a5,a5,a4
+8000163c:	fef42623          	sw	a5,-20(s0)
+            break;
+80001640:	00000013          	nop
+    }
+    
+    return gpio_in;
+80001644:	fec42783          	lw	a5,-20(s0)
+}
+80001648:	00078513          	mv	a0,a5
+8000164c:	02c12083          	lw	ra,44(sp)
+80001650:	02812403          	lw	s0,40(sp)
+80001654:	03010113          	addi	sp,sp,48
+80001658:	00008067          	ret
+
+8000165c <PLIC_init>:
+/*==============================================================================
+ * The function PLIC_init() initializes the PLIC controller and enables the 
+ * global external interrupt bit.
+ */
+static inline void PLIC_init(void)
+{
+8000165c:	fe010113          	addi	sp,sp,-32
+80001660:	00812e23          	sw	s0,28(sp)
+80001664:	02010413          	addi	s0,sp,32
+    uint32_t inc;
+    unsigned long hart_id = read_csr(mhartid);
+80001668:	f14027f3          	csrr	a5,mhartid
+8000166c:	fef42423          	sw	a5,-24(s0)
+80001670:	fe842783          	lw	a5,-24(s0)
+80001674:	fef42223          	sw	a5,-28(s0)
+
+    /* Disable all interrupts for the current hart. */
+    for(inc = 0; inc < ((PLIC_NUM_SOURCES + 32u) / 32u); ++inc)
+80001678:	fe042623          	sw	zero,-20(s0)
+8000167c:	03c0006f          	j	800016b8 <PLIC_init+0x5c>
+    {
+        PLIC->TARGET_ENABLES[hart_id].ENABLES[inc] = 0;
+80001680:	40000737          	lui	a4,0x40000
+80001684:	fe442783          	lw	a5,-28(s0)
+80001688:	00579693          	slli	a3,a5,0x5
+8000168c:	fec42783          	lw	a5,-20(s0)
+80001690:	00f686b3          	add	a3,a3,a5
+80001694:	000017b7          	lui	a5,0x1
+80001698:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+8000169c:	00f687b3          	add	a5,a3,a5
+800016a0:	00279793          	slli	a5,a5,0x2
+800016a4:	00f707b3          	add	a5,a4,a5
+800016a8:	0007a023          	sw	zero,0(a5)
+    for(inc = 0; inc < ((PLIC_NUM_SOURCES + 32u) / 32u); ++inc)
+800016ac:	fec42783          	lw	a5,-20(s0)
+800016b0:	00178793          	addi	a5,a5,1
+800016b4:	fef42623          	sw	a5,-20(s0)
+800016b8:	fec42783          	lw	a5,-20(s0)
+800016bc:	fc0782e3          	beqz	a5,80001680 <PLIC_init+0x24>
+    }
+
+    /* Set priorities to zero. */
+    /* Should this really be done??? Calling PLIC_init() on one hart will cause
+    * the priorities previously set by other harts to be messed up. */
+    for(inc = 0; inc < PLIC_NUM_SOURCES; ++inc)
+800016c0:	fe042623          	sw	zero,-20(s0)
+800016c4:	0240006f          	j	800016e8 <PLIC_init+0x8c>
+    {
+        PLIC->SOURCE_PRIORITY[inc] = 0;
+800016c8:	40000737          	lui	a4,0x40000
+800016cc:	fec42783          	lw	a5,-20(s0)
+800016d0:	00279793          	slli	a5,a5,0x2
+800016d4:	00f707b3          	add	a5,a4,a5
+800016d8:	0007a223          	sw	zero,4(a5)
+    for(inc = 0; inc < PLIC_NUM_SOURCES; ++inc)
+800016dc:	fec42783          	lw	a5,-20(s0)
+800016e0:	00178793          	addi	a5,a5,1
+800016e4:	fef42623          	sw	a5,-20(s0)
+800016e8:	fec42703          	lw	a4,-20(s0)
+800016ec:	01e00793          	li	a5,30
+800016f0:	fce7fce3          	bleu	a4,a5,800016c8 <PLIC_init+0x6c>
+    }
+
+    /* Set the threshold to zero. */
+    PLIC->TARGET[hart_id].PRIORITY_THRESHOLD = 0;
+800016f4:	40000737          	lui	a4,0x40000
+800016f8:	fe442783          	lw	a5,-28(s0)
+800016fc:	20078793          	addi	a5,a5,512
+80001700:	00c79793          	slli	a5,a5,0xc
+80001704:	00f707b3          	add	a5,a4,a5
+80001708:	0007a023          	sw	zero,0(a5)
+
+    /* Enable machine external interrupts. */
+    set_csr(mie, MIP_MEIP);
+8000170c:	000017b7          	lui	a5,0x1
+80001710:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+80001714:	3047a7f3          	csrrs	a5,mie,a5
+80001718:	fef42023          	sw	a5,-32(s0)
+}
+8000171c:	00000013          	nop
+80001720:	01c12403          	lw	s0,28(sp)
+80001724:	02010113          	addi	sp,sp,32
+80001728:	00008067          	ret
+
+8000172c <PLIC_EnableIRQ>:
+/*==============================================================================
+ * The function PLIC_EnableIRQ() enables the external interrupt for the interrupt
+ * number indicated by the parameter IRQn.
+ */
+static inline void PLIC_EnableIRQ(IRQn_Type IRQn)
+{
+8000172c:	fd010113          	addi	sp,sp,-48
+80001730:	02812623          	sw	s0,44(sp)
+80001734:	03010413          	addi	s0,sp,48
+80001738:	fca42e23          	sw	a0,-36(s0)
+    unsigned long hart_id = read_csr(mhartid);
+8000173c:	f14027f3          	csrr	a5,mhartid
+80001740:	fef42623          	sw	a5,-20(s0)
+80001744:	fec42783          	lw	a5,-20(s0)
+80001748:	fef42423          	sw	a5,-24(s0)
+    uint32_t current = PLIC->TARGET_ENABLES[hart_id].ENABLES[IRQn / 32];
+8000174c:	40000737          	lui	a4,0x40000
+80001750:	fdc42783          	lw	a5,-36(s0)
+80001754:	0057d793          	srli	a5,a5,0x5
+80001758:	fe842683          	lw	a3,-24(s0)
+8000175c:	00569693          	slli	a3,a3,0x5
+80001760:	00f686b3          	add	a3,a3,a5
+80001764:	000017b7          	lui	a5,0x1
+80001768:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+8000176c:	00f687b3          	add	a5,a3,a5
+80001770:	00279793          	slli	a5,a5,0x2
+80001774:	00f707b3          	add	a5,a4,a5
+80001778:	0007a783          	lw	a5,0(a5)
+8000177c:	fef42223          	sw	a5,-28(s0)
+    current |= (uint32_t)1 << (IRQn % 32);
+80001780:	fdc42783          	lw	a5,-36(s0)
+80001784:	01f7f793          	andi	a5,a5,31
+80001788:	00100713          	li	a4,1
+8000178c:	00f717b3          	sll	a5,a4,a5
+80001790:	fe442703          	lw	a4,-28(s0)
+80001794:	00f767b3          	or	a5,a4,a5
+80001798:	fef42223          	sw	a5,-28(s0)
+    PLIC->TARGET_ENABLES[hart_id].ENABLES[IRQn / 32] = current;
+8000179c:	40000737          	lui	a4,0x40000
+800017a0:	fdc42783          	lw	a5,-36(s0)
+800017a4:	0057d793          	srli	a5,a5,0x5
+800017a8:	fe842683          	lw	a3,-24(s0)
+800017ac:	00569693          	slli	a3,a3,0x5
+800017b0:	00f686b3          	add	a3,a3,a5
+800017b4:	000017b7          	lui	a5,0x1
+800017b8:	80078793          	addi	a5,a5,-2048 # 800 <HEAP_SIZE>
+800017bc:	00f687b3          	add	a5,a3,a5
+800017c0:	00279793          	slli	a5,a5,0x2
+800017c4:	00f707b3          	add	a5,a4,a5
+800017c8:	fe442703          	lw	a4,-28(s0)
+800017cc:	00e7a023          	sw	a4,0(a5)
+}
+800017d0:	00000013          	nop
+800017d4:	02c12403          	lw	s0,44(sp)
+800017d8:	03010113          	addi	sp,sp,48
+800017dc:	00008067          	ret
+
+800017e0 <PLIC_SetPriority>:
+/*==============================================================================
+ * The function PLIC_SetPriority() sets the priority for the external interrupt 
+ * for the interrupt number indicated by the parameter IRQn.
+ */
+static inline void PLIC_SetPriority(IRQn_Type IRQn, uint32_t priority) 
+{
+800017e0:	fe010113          	addi	sp,sp,-32
+800017e4:	00812e23          	sw	s0,28(sp)
+800017e8:	02010413          	addi	s0,sp,32
+800017ec:	fea42623          	sw	a0,-20(s0)
+800017f0:	feb42423          	sw	a1,-24(s0)
+    PLIC->SOURCE_PRIORITY[IRQn] = priority;
+800017f4:	40000737          	lui	a4,0x40000
+800017f8:	fec42783          	lw	a5,-20(s0)
+800017fc:	00279793          	slli	a5,a5,0x2
+80001800:	00f707b3          	add	a5,a4,a5
+80001804:	fe842703          	lw	a4,-24(s0)
+80001808:	00e7a223          	sw	a4,4(a5)
+}
+8000180c:	00000013          	nop
+80001810:	01c12403          	lw	s0,28(sp)
+80001814:	02010113          	addi	sp,sp,32
+80001818:	00008067          	ret
+
+8000181c <External_30_IRQHandler>:
+
+uint32_t g_state;
+
+/*Core Timer 0 Interrupt Handler*/
+void External_30_IRQHandler()
+{
+8000181c:	fe010113          	addi	sp,sp,-32
+80001820:	00112e23          	sw	ra,28(sp)
+80001824:	00812c23          	sw	s0,24(sp)
+80001828:	02010413          	addi	s0,sp,32
+    uint32_t stable;
+    uint32_t gpout;
+
+    stable = GPIO_get_inputs(&g_gpio0);
+8000182c:	800027b7          	lui	a5,0x80002
+80001830:	22078513          	addi	a0,a5,544 # 80002220 <__stack_top+0xffffeff0>
+80001834:	cb1ff0ef          	jal	ra,800014e4 <GPIO_get_inputs>
+80001838:	fea42623          	sw	a0,-20(s0)
+    gpout = ~stable & 0x000000F0;
+8000183c:	fec42783          	lw	a5,-20(s0)
+80001840:	fff7c793          	not	a5,a5
+80001844:	0f07f793          	andi	a5,a5,240
+80001848:	fef42423          	sw	a5,-24(s0)
+
+    g_state = g_state << 1;
+8000184c:	800027b7          	lui	a5,0x80002
+80001850:	2287a783          	lw	a5,552(a5) # 80002228 <__stack_top+0xffffeff8>
+80001854:	00179713          	slli	a4,a5,0x1
+80001858:	800027b7          	lui	a5,0x80002
+8000185c:	22e7a423          	sw	a4,552(a5) # 80002228 <__stack_top+0xffffeff8>
+    if (g_state > 4)
+80001860:	800027b7          	lui	a5,0x80002
+80001864:	2287a703          	lw	a4,552(a5) # 80002228 <__stack_top+0xffffeff8>
+80001868:	00400793          	li	a5,4
+8000186c:	00e7f863          	bleu	a4,a5,8000187c <External_30_IRQHandler+0x60>
+    {
+        g_state = 0x01;
+80001870:	800027b7          	lui	a5,0x80002
+80001874:	00100713          	li	a4,1
+80001878:	22e7a423          	sw	a4,552(a5) # 80002228 <__stack_top+0xffffeff8>
+    }
+
+    gpout = gpout | g_state;
+8000187c:	800027b7          	lui	a5,0x80002
+80001880:	2287a783          	lw	a5,552(a5) # 80002228 <__stack_top+0xffffeff8>
+80001884:	fe842703          	lw	a4,-24(s0)
+80001888:	00f767b3          	or	a5,a4,a5
+8000188c:	fef42423          	sw	a5,-24(s0)
+    GPIO_set_outputs(&g_gpio1, gpout);
+80001890:	fe842583          	lw	a1,-24(s0)
+80001894:	800027b7          	lui	a5,0x80002
+80001898:	20c78513          	addi	a0,a5,524 # 8000220c <__stack_top+0xffffefdc>
+8000189c:	afdff0ef          	jal	ra,80001398 <GPIO_set_outputs>
+    TMR_clear_int(&g_timer0);
+800018a0:	800027b7          	lui	a5,0x80002
+800018a4:	20878513          	addi	a0,a5,520 # 80002208 <__stack_top+0xffffefd8>
+800018a8:	93dff0ef          	jal	ra,800011e4 <TMR_clear_int>
+}
+800018ac:	00000013          	nop
+800018b0:	01c12083          	lw	ra,28(sp)
+800018b4:	01812403          	lw	s0,24(sp)
+800018b8:	02010113          	addi	sp,sp,32
+800018bc:	00008067          	ret
+
+800018c0 <External_31_IRQHandler>:
+
+/*Core Timer 1 Interrupt Handler*/
+void External_31_IRQHandler()
+{
+800018c0:	ff010113          	addi	sp,sp,-16
+800018c4:	00112623          	sw	ra,12(sp)
+800018c8:	00812423          	sw	s0,8(sp)
+800018cc:	01010413          	addi	s0,sp,16
+    g_state = g_state + 1;
+800018d0:	800027b7          	lui	a5,0x80002
+800018d4:	2287a783          	lw	a5,552(a5) # 80002228 <__stack_top+0xffffeff8>
+800018d8:	00178713          	addi	a4,a5,1
+800018dc:	800027b7          	lui	a5,0x80002
+800018e0:	22e7a423          	sw	a4,552(a5) # 80002228 <__stack_top+0xffffeff8>
+    GPIO_set_outputs(&g_gpio1, g_state << 8);
+800018e4:	800027b7          	lui	a5,0x80002
+800018e8:	2287a783          	lw	a5,552(a5) # 80002228 <__stack_top+0xffffeff8>
+800018ec:	00879793          	slli	a5,a5,0x8
+800018f0:	00078593          	mv	a1,a5
+800018f4:	800027b7          	lui	a5,0x80002
+800018f8:	20c78513          	addi	a0,a5,524 # 8000220c <__stack_top+0xffffefdc>
+800018fc:	a9dff0ef          	jal	ra,80001398 <GPIO_set_outputs>
+    TMR_clear_int(&g_timer1);
+80001900:	800027b7          	lui	a5,0x80002
+80001904:	21478513          	addi	a0,a5,532 # 80002214 <__stack_top+0xffffefe4>
+80001908:	8ddff0ef          	jal	ra,800011e4 <TMR_clear_int>
+}
+8000190c:	00000013          	nop
+80001910:	00c12083          	lw	ra,12(sp)
+80001914:	00812403          	lw	s0,8(sp)
+80001918:	01010113          	addi	sp,sp,16
+8000191c:	00008067          	ret
+
+80001920 <main>:
+
+int main(int argc, char **argv)
+{
+80001920:	fd010113          	addi	sp,sp,-48
+80001924:	02112623          	sw	ra,44(sp)
+80001928:	02812423          	sw	s0,40(sp)
+8000192c:	03010413          	addi	s0,sp,48
+80001930:	fca42e23          	sw	a0,-36(s0)
+80001934:	fcb42c23          	sw	a1,-40(s0)
+    uint8_t rx_char;
+    uint8_t rx_count;
+    uint32_t switches;
+
+    PLIC_init();
+80001938:	d25ff0ef          	jal	ra,8000165c <PLIC_init>
+
+    GPIO_init(&g_gpio0, COREGPIO_IN_BASE_ADDR, GPIO_APB_32_BITS_BUS);
+8000193c:	00200613          	li	a2,2
+80001940:	700025b7          	lui	a1,0x70002
+80001944:	800027b7          	lui	a5,0x80002
+80001948:	22078513          	addi	a0,a5,544 # 80002220 <__stack_top+0xffffeff0>
+8000194c:	8d9ff0ef          	jal	ra,80001224 <GPIO_init>
+    GPIO_init(&g_gpio1, COREGPIO_OUT_BASE_ADDR, GPIO_APB_32_BITS_BUS);
+80001950:	00200613          	li	a2,2
+80001954:	700055b7          	lui	a1,0x70005
+80001958:	800027b7          	lui	a5,0x80002
+8000195c:	20c78513          	addi	a0,a5,524 # 8000220c <__stack_top+0xffffefdc>
+80001960:	8c5ff0ef          	jal	ra,80001224 <GPIO_init>
+
+    UART_init(&g_uart,
+80001964:	00100693          	li	a3,1
+80001968:	02c00613          	li	a2,44
+8000196c:	700015b7          	lui	a1,0x70001
+80001970:	800027b7          	lui	a5,0x80002
+80001974:	21878513          	addi	a0,a5,536 # 80002218 <__stack_top+0xffffefe8>
+80001978:	b30ff0ef          	jal	ra,80000ca8 <UART_init>
+              COREUARTAPB0_BASE_ADDR,
+              BAUD_VALUE_115200,
+              (DATA_8_BITS | NO_PARITY));
+
+    UART_polled_tx_string(&g_uart, (const uint8_t *)g_hello_msg);
+8000197c:	800027b7          	lui	a5,0x80002
+80001980:	cb07a783          	lw	a5,-848(a5) # 80001cb0 <__stack_top+0xffffea80>
+80001984:	00078593          	mv	a1,a5
+80001988:	800027b7          	lui	a5,0x80002
+8000198c:	21878513          	addi	a0,a5,536 # 80002218 <__stack_top+0xffffefe8>
+80001990:	e1cff0ef          	jal	ra,80000fac <UART_polled_tx_string>
+
+    /**************************************************************************
+    * Set up CoreTimer
+    *************************************************************************/
+    TMR_init(&g_timer0,
+80001994:	000147b7          	lui	a5,0x14
+80001998:	43878713          	addi	a4,a5,1080 # 14438 <RAM_SIZE+0x4438>
+8000199c:	00900693          	li	a3,9
+800019a0:	00000613          	li	a2,0
+800019a4:	700035b7          	lui	a1,0x70003
+800019a8:	800027b7          	lui	a5,0x80002
+800019ac:	20878513          	addi	a0,a5,520 # 80002208 <__stack_top+0xffffefd8>
+800019b0:	eacff0ef          	jal	ra,8000105c <TMR_init>
+             CORETIMER0_BASE_ADDR,
+             TMR_CONTINUOUS_MODE,
+             PRESCALER_DIV_1024,
+             83000);
+
+    TMR_init(&g_timer1,
+800019b4:	0000a7b7          	lui	a5,0xa
+800019b8:	41078713          	addi	a4,a5,1040 # a410 <HEAP_SIZE+0x9c10>
+800019bc:	00800693          	li	a3,8
+800019c0:	00000613          	li	a2,0
+800019c4:	700045b7          	lui	a1,0x70004
+800019c8:	800027b7          	lui	a5,0x80002
+800019cc:	21478513          	addi	a0,a5,532 # 80002214 <__stack_top+0xffffefe4>
+800019d0:	e8cff0ef          	jal	ra,8000105c <TMR_init>
+           
+    /* In this version of the PLIC, the priorities are fixed at 1.
+    Lower numbered devices have higher priorities. But this code is given as
+    an example.
+    */
+    PLIC_SetPriority(External_30_IRQn, 1);
+800019d4:	00100593          	li	a1,1
+800019d8:	01e00513          	li	a0,30
+800019dc:	e05ff0ef          	jal	ra,800017e0 <PLIC_SetPriority>
+    PLIC_SetPriority(External_31_IRQn, 1);
+800019e0:	00100593          	li	a1,1
+800019e4:	01f00513          	li	a0,31
+800019e8:	df9ff0ef          	jal	ra,800017e0 <PLIC_SetPriority>
+
+    /*Enable Timer 1 & 0 Interrupt*/
+    PLIC_EnableIRQ(External_30_IRQn);
+800019ec:	01e00513          	li	a0,30
+800019f0:	d3dff0ef          	jal	ra,8000172c <PLIC_EnableIRQ>
+    PLIC_EnableIRQ(External_31_IRQn);
+800019f4:	01f00513          	li	a0,31
+800019f8:	d35ff0ef          	jal	ra,8000172c <PLIC_EnableIRQ>
+
+    /* Enable the timers */
+    TMR_enable_int(&g_timer0);
+800019fc:	800027b7          	lui	a5,0x80002
+80001a00:	20878513          	addi	a0,a5,520 # 80002208 <__stack_top+0xffffefd8>
+80001a04:	f98ff0ef          	jal	ra,8000119c <TMR_enable_int>
+    TMR_enable_int(&g_timer1);
+80001a08:	800027b7          	lui	a5,0x80002
+80001a0c:	21478513          	addi	a0,a5,532 # 80002214 <__stack_top+0xffffefe4>
+80001a10:	f8cff0ef          	jal	ra,8000119c <TMR_enable_int>
+
+    HAL_enable_interrupts();
+80001a14:	8a4ff0ef          	jal	ra,80000ab8 <HAL_enable_interrupts>
+
+    g_state = 0x01;
+80001a18:	800027b7          	lui	a5,0x80002
+80001a1c:	00100713          	li	a4,1
+80001a20:	22e7a423          	sw	a4,552(a5) # 80002228 <__stack_top+0xffffeff8>
+
+    /*Start the timer*/
+    TMR_start(&g_timer0);
+80001a24:	800027b7          	lui	a5,0x80002
+80001a28:	20878513          	addi	a0,a5,520 # 80002208 <__stack_top+0xffffefd8>
+80001a2c:	f28ff0ef          	jal	ra,80001154 <TMR_start>
+    TMR_start(&g_timer1);
+80001a30:	800027b7          	lui	a5,0x80002
+80001a34:	21478513          	addi	a0,a5,532 # 80002214 <__stack_top+0xffffefe4>
+80001a38:	f1cff0ef          	jal	ra,80001154 <TMR_start>
+
+    /**************************************************************************
+    * Loop
+    *************************************************************************/
+    do {
+        switches = GPIO_get_inputs(&g_gpio0);
+80001a3c:	800027b7          	lui	a5,0x80002
+80001a40:	22078513          	addi	a0,a5,544 # 80002220 <__stack_top+0xffffeff0>
+80001a44:	aa1ff0ef          	jal	ra,800014e4 <GPIO_get_inputs>
+80001a48:	fea42623          	sw	a0,-20(s0)
+        rx_count = UART_get_rx(&g_uart, &rx_char, 1);
+80001a4c:	fea40793          	addi	a5,s0,-22
+80001a50:	00100613          	li	a2,1
+80001a54:	00078593          	mv	a1,a5
+80001a58:	800027b7          	lui	a5,0x80002
+80001a5c:	21878513          	addi	a0,a5,536 # 80002218 <__stack_top+0xffffefe8>
+80001a60:	c1cff0ef          	jal	ra,80000e7c <UART_get_rx>
+80001a64:	00050793          	mv	a5,a0
+80001a68:	fef405a3          	sb	a5,-21(s0)
+
+        if (rx_count > 0)
+80001a6c:	feb44783          	lbu	a5,-21(s0)
+80001a70:	00078e63          	beqz	a5,80001a8c <main+0x16c>
+        {
+          UART_send(&g_uart, &rx_char, 1);
+80001a74:	fea40793          	addi	a5,s0,-22
+80001a78:	00100613          	li	a2,1
+80001a7c:	00078593          	mv	a1,a5
+80001a80:	800027b7          	lui	a5,0x80002
+80001a84:	21878513          	addi	a0,a5,536 # 80002218 <__stack_top+0xffffefe8>
+80001a88:	b40ff0ef          	jal	ra,80000dc8 <UART_send>
+        }
+        GPIO_set_outputs(&g_gpio1, (~switches & 0x000000F0) | g_state);
+80001a8c:	fec42783          	lw	a5,-20(s0)
+80001a90:	fff7c793          	not	a5,a5
+80001a94:	0f07f713          	andi	a4,a5,240
+80001a98:	800027b7          	lui	a5,0x80002
+80001a9c:	2287a783          	lw	a5,552(a5) # 80002228 <__stack_top+0xffffeff8>
+80001aa0:	00f767b3          	or	a5,a4,a5
+80001aa4:	00078593          	mv	a1,a5
+80001aa8:	800027b7          	lui	a5,0x80002
+80001aac:	20c78513          	addi	a0,a5,524 # 8000220c <__stack_top+0xffffefdc>
+80001ab0:	8e9ff0ef          	jal	ra,80001398 <GPIO_set_outputs>
+        switches = GPIO_get_inputs(&g_gpio0);
+80001ab4:	f89ff06f          	j	80001a3c <main+0x11c>
+
+80001ab8 <exit>:
+80001ab8:	ff010113          	addi	sp,sp,-16
+80001abc:	00000593          	li	a1,0
+80001ac0:	00812423          	sw	s0,8(sp)
+80001ac4:	00112623          	sw	ra,12(sp)
+80001ac8:	00050413          	mv	s0,a0
+80001acc:	020000ef          	jal	ra,80001aec <__call_exitprocs>
+80001ad0:	800027b7          	lui	a5,0x80002
+80001ad4:	cb47a503          	lw	a0,-844(a5) # 80001cb4 <__stack_top+0xffffea84>
+80001ad8:	03c52783          	lw	a5,60(a0) # 4400003c <RAM_SIZE+0x43ff003c>
+80001adc:	00078463          	beqz	a5,80001ae4 <exit+0x2c>
+80001ae0:	000780e7          	jalr	a5
+80001ae4:	00040513          	mv	a0,s0
+80001ae8:	f51fe0ef          	jal	ra,80000a38 <_exit>
+
+80001aec <__call_exitprocs>:
+80001aec:	fd010113          	addi	sp,sp,-48
+80001af0:	800027b7          	lui	a5,0x80002
+80001af4:	01312e23          	sw	s3,28(sp)
+80001af8:	cb47a983          	lw	s3,-844(a5) # 80001cb4 <__stack_top+0xffffea84>
+80001afc:	01412c23          	sw	s4,24(sp)
+80001b00:	01512a23          	sw	s5,20(sp)
+80001b04:	01612823          	sw	s6,16(sp)
+80001b08:	02112623          	sw	ra,44(sp)
+80001b0c:	02812423          	sw	s0,40(sp)
+80001b10:	02912223          	sw	s1,36(sp)
+80001b14:	03212023          	sw	s2,32(sp)
+80001b18:	01712623          	sw	s7,12(sp)
+80001b1c:	00050a93          	mv	s5,a0
+80001b20:	00058a13          	mv	s4,a1
+80001b24:	00100b13          	li	s6,1
+80001b28:	1489a483          	lw	s1,328(s3)
+80001b2c:	00048c63          	beqz	s1,80001b44 <__call_exitprocs+0x58>
+80001b30:	0044a403          	lw	s0,4(s1)
+80001b34:	fff40913          	addi	s2,s0,-1
+80001b38:	00241413          	slli	s0,s0,0x2
+80001b3c:	00848433          	add	s0,s1,s0
+80001b40:	02095863          	bgez	s2,80001b70 <__call_exitprocs+0x84>
+80001b44:	02c12083          	lw	ra,44(sp)
+80001b48:	02812403          	lw	s0,40(sp)
+80001b4c:	02412483          	lw	s1,36(sp)
+80001b50:	02012903          	lw	s2,32(sp)
+80001b54:	01c12983          	lw	s3,28(sp)
+80001b58:	01812a03          	lw	s4,24(sp)
+80001b5c:	01412a83          	lw	s5,20(sp)
+80001b60:	01012b03          	lw	s6,16(sp)
+80001b64:	00c12b83          	lw	s7,12(sp)
+80001b68:	03010113          	addi	sp,sp,48
+80001b6c:	00008067          	ret
+80001b70:	000a0c63          	beqz	s4,80001b88 <__call_exitprocs+0x9c>
+80001b74:	10442783          	lw	a5,260(s0)
+80001b78:	01478863          	beq	a5,s4,80001b88 <__call_exitprocs+0x9c>
+80001b7c:	fff90913          	addi	s2,s2,-1
+80001b80:	ffc40413          	addi	s0,s0,-4
+80001b84:	fbdff06f          	j	80001b40 <__call_exitprocs+0x54>
+80001b88:	0044a703          	lw	a4,4(s1)
+80001b8c:	00442783          	lw	a5,4(s0)
+80001b90:	fff70713          	addi	a4,a4,-1 # 3fffffff <RAM_SIZE+0x3ffeffff>
+80001b94:	03271c63          	bne	a4,s2,80001bcc <__call_exitprocs+0xe0>
+80001b98:	0124a223          	sw	s2,4(s1)
+80001b9c:	fe0780e3          	beqz	a5,80001b7c <__call_exitprocs+0x90>
+80001ba0:	1884a683          	lw	a3,392(s1)
+80001ba4:	012b1733          	sll	a4,s6,s2
+80001ba8:	0044ab83          	lw	s7,4(s1)
+80001bac:	00d776b3          	and	a3,a4,a3
+80001bb0:	02069263          	bnez	a3,80001bd4 <__call_exitprocs+0xe8>
+80001bb4:	000780e7          	jalr	a5
+80001bb8:	0044a703          	lw	a4,4(s1)
+80001bbc:	1489a783          	lw	a5,328(s3)
+80001bc0:	f77714e3          	bne	a4,s7,80001b28 <__call_exitprocs+0x3c>
+80001bc4:	faf48ce3          	beq	s1,a5,80001b7c <__call_exitprocs+0x90>
+80001bc8:	f61ff06f          	j	80001b28 <__call_exitprocs+0x3c>
+80001bcc:	00042223          	sw	zero,4(s0)
+80001bd0:	fcdff06f          	j	80001b9c <__call_exitprocs+0xb0>
+80001bd4:	18c4a683          	lw	a3,396(s1)
+80001bd8:	08442583          	lw	a1,132(s0)
+80001bdc:	00d77733          	and	a4,a4,a3
+80001be0:	00071863          	bnez	a4,80001bf0 <__call_exitprocs+0x104>
+80001be4:	000a8513          	mv	a0,s5
+80001be8:	000780e7          	jalr	a5
+80001bec:	fcdff06f          	j	80001bb8 <__call_exitprocs+0xcc>
+80001bf0:	00058513          	mv	a0,a1
+80001bf4:	000780e7          	jalr	a5
+80001bf8:	fc1ff06f          	j	80001bb8 <__call_exitprocs+0xcc>
+80001bfc:	0000                	unimp
+80001bfe:	0000                	unimp
+80001c00:	6568                	flw	fa0,76(a0)
+80001c02:	6c6c                	flw	fa1,92(s0)
+80001c04:	0000006f          	j	80001c04 <__call_exitprocs+0x118>
+80001c08:	7274                	flw	fa3,100(a2)
+80001c0a:	7061                	0x7061
+80001c0c:	000a                	0xa
+80001c0e:	0000                	unimp
+80001c10:	0a0d                	addi	s4,s4,3
+80001c12:	65726f43          	0x65726f43
+80001c16:	4954                	lw	a3,20(a0)
+80001c18:	454d                	li	a0,19
+80001c1a:	2052                	fld	ft0,272(sp)
+80001c1c:	6e61                	lui	t3,0x18
+80001c1e:	2064                	fld	fs1,192(s0)
+80001c20:	7865                	lui	a6,0xffff9
+80001c22:	6574                	flw	fa3,76(a0)
+80001c24:	6e72                	flw	ft8,28(sp)
+80001c26:	6c61                	lui	s8,0x18
+80001c28:	4920                	lw	s0,80(a0)
+80001c2a:	746e                	flw	fs0,248(sp)
+80001c2c:	7265                	lui	tp,0xffff9
+80001c2e:	7572                	flw	fa0,60(sp)
+80001c30:	7470                	flw	fa2,108(s0)
+80001c32:	4520                	lw	s0,72(a0)
+80001c34:	6178                	flw	fa4,68(a0)
+80001c36:	706d                	0x706d
+80001c38:	656c                	flw	fa1,76(a0)
+80001c3a:	202e                	fld	ft0,200(sp)
+80001c3c:	0a0d                	addi	s4,s4,3
+80001c3e:	0a0d                	addi	s4,s4,3
+80001c40:	6573624f          	0x6573624f
+80001c44:	7672                	flw	fa2,60(sp)
+80001c46:	2065                	jal	80001cee <__data_load+0x2e>
+80001c48:	6874                	flw	fa3,84(s0)
+80001c4a:	2065                	jal	80001cf2 <__data_load+0x32>
+80001c4c:	454c                	lw	a1,12(a0)
+80001c4e:	7344                	flw	fs1,36(a4)
+80001c50:	6220                	flw	fs0,64(a2)
+80001c52:	696c                	flw	fa1,84(a0)
+80001c54:	6b6e                	flw	fs6,216(sp)
+80001c56:	6e69                	lui	t3,0x1a
+80001c58:	6e6f2067          	0x6e6f2067
+80001c5c:	7420                	flw	fs0,104(s0)
+80001c5e:	6568                	flw	fa0,76(a0)
+80001c60:	6220                	flw	fs0,64(a2)
+80001c62:	6472616f          	jal	sp,80028aa8 <__stack_top+0x25878>
+80001c66:	202e                	fld	ft0,200(sp)
+80001c68:	6854                	flw	fa3,20(s0)
+80001c6a:	2065                	jal	80001d12 <__data_load+0x52>
+80001c6c:	454c                	lw	a1,12(a0)
+80001c6e:	2044                	fld	fs1,128(s0)
+80001c70:	6170                	flw	fa2,68(a0)
+80001c72:	7474                	flw	fa3,108(s0)
+80001c74:	7265                	lui	tp,0xffff9
+80001c76:	736e                	flw	ft6,248(sp)
+80001c78:	6320                	flw	fs0,64(a4)
+80001c7a:	6168                	flw	fa0,68(a0)
+80001c7c:	676e                	flw	fa4,216(sp)
+80001c7e:	7365                	lui	t1,0xffff9
+80001c80:	6520                	flw	fs0,72(a0)
+80001c82:	6576                	flw	fa0,92(sp)
+80001c84:	7972                	flw	fs2,60(sp)
+80001c86:	7420                	flw	fs0,104(s0)
+80001c88:	6d69                	lui	s10,0x1a
+80001c8a:	2065                	jal	80001d32 <__data_load+0x72>
+80001c8c:	2061                	jal	80001d14 <__data_load+0x54>
+80001c8e:	6974                	flw	fa3,84(a0)
+80001c90:	656d                	lui	a0,0x1b
+80001c92:	2072                	fld	ft0,280(sp)
+80001c94:	6e69                	lui	t3,0x1a
+80001c96:	6574                	flw	fa3,76(a0)
+80001c98:	7272                	flw	ft4,60(sp)
+80001c9a:	7075                	0x7075
+80001c9c:	2074                	fld	fa3,192(s0)
+80001c9e:	7563636f          	jal	t1,800383f4 <__stack_top+0x351c4>
+80001ca2:	7372                	flw	ft6,60(sp)
+80001ca4:	0a0d                	addi	s4,s4,3
+80001ca6:	0000                	unimp
+80001ca8:	00000043          	fmadd.s	ft0,ft0,ft0,ft0,rne
+80001cac:	0000                	unimp
+	...

@@ -2,6 +2,10 @@
 <?scdStore version="2"?><scannerInfo id="org.eclipse.cdt.make.core.discoveredScannerInfo">
 <instance id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.144379296;org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.144379296.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.assembler.debug.999455993;org.eclipse.cdt.cross.riscv.gnu.linux.assembler.base.input.934008128">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/include"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/include-fixed"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/sys-include"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/include"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/include"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/include-fixed"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/sys-include"/>
@@ -331,6 +335,10 @@
 </instance>
 <instance id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.144379296;org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.144379296.;org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug.1462845156;org.eclipse.cdt.cross.riscv.gnu.linux.c.compiler.base.input.205620293">
 <collector id="org.eclipse.cdt.make.core.PerProjectSICollector">
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/include"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/include-fixed"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/sys-include"/>
+<includePath path="c:\microsemi\softconsole_v5.1\riscv-unknown-elf-gcc\bin\../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/include"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/include"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/include-fixed"/>
 <includePath path="/home/cyril/Microsemi_SoftConsole_v5.1/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/7.1.0/../../../../riscv64-unknown-elf/sys-include"/>
