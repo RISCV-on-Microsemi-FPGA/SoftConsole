@@ -1,0 +1,7 @@
+20:47:43 **** Clean-only build of configuration Release for project riscv-simple-baremetal-bootloader ****
+make clean 
+rm -rf  ./ymodem/ymodem.o  ./spi_flash/spi_flash.o  ./riscv_hal/entry.o ./riscv_hal/init.o ./riscv_hal/riscv_hal.o ./riscv_hal/riscv_hal_stubs.o ./riscv_hal/syscall.o  ./hal/hal_irq.o ./hal/hw_reg_access.o  ./drivers/CoreUARTapb/core_uart_apb.o  ./drivers/CoreTimer/core_timer.o  ./drivers/CoreSPI/core_spi.o  ./drivers/CoreGPIO/core_gpio.o  ./bootloader.o  riscv-simple-baremetal-bootloader.hex  riscv-simple-baremetal-bootloader.lst  riscv-simple-baremetal-bootloader.siz  ./riscv_hal/entry.d  ./ymodem/ymodem.d  ./spi_flash/spi_flash.d  ./riscv_hal/init.d ./riscv_hal/riscv_hal.d ./riscv_hal/riscv_hal_stubs.d ./riscv_hal/syscall.d  ./hal/hal_irq.d ./hal/hw_reg_access.d  ./drivers/CoreUARTapb/core_uart_apb.d  ./drivers/CoreTimer/core_timer.d  ./drivers/CoreSPI/core_spi.d  ./drivers/CoreGPIO/core_gpio.d  ./bootloader.d  riscv-simple-baremetal-bootloader.elf
+ 
+
+20:47:43 Build Finished (took 270ms)
+
