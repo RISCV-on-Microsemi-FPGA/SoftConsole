@@ -14,7 +14,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" description="" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068" name="Debug" parent="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.riscv.gnu.buildArtefactType.application,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" description="" id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068" name="Debug" parent="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug" postbuildStep="riscv64-unknown-elf-objcopy -O binary riscv-systick-blinky.elf riscv-systick-blinky.bin">
 					<folderInfo id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.debug.126021068." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.debug.1955948442" name="RISC-V GCC/Newlib Toolchain" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.toolchain.debug">
 							<option id="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level.1348336118" name="Debug level" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.option.debugging.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.debugging.level.max" valueType="enumerated"/>
@@ -25,7 +25,7 @@
 							</tool>
 							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug.161866051" name="RISC-V GCC/Newlib C Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.debug">
 								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level.972686014" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.none" valueType="enumerated"/>
-								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.1934525221" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.1934525221" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreGPIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
@@ -38,7 +38,7 @@
 								<option id="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level.192411515" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.none" valueType="enumerated"/>
 							</tool>
 							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.debug.720157193" name="RISC-V GCC/Newlib C Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.debug">
-								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.1089089013" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.1089089013" name="Remove unused sections (-gc-sections)" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
 								<inputType id="org.eclipse.cdt.cross.riscv.gnu.c.linker.input.324339982" superClass="org.eclipse.cdt.cross.riscv.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -79,7 +79,7 @@
 							</tool>
 							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.release.1574788598" name="RISC-V GCC/Newlib C Compiler" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.compiler.release">
 								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level.2038546234" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.size" valueType="enumerated"/>
-								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.136025496" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths.136025496" name="Include paths (-I)" superClass="org.eclipse.cdt.cross.riscv.gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreGPIO}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;"/>
@@ -92,7 +92,7 @@
 								<option id="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level.1602782937" name="Optimization level" superClass="org.eclipse.cdt.cross.riscv.gnu.cpp.compiler.option.optimization.level" value="org.eclipse.cdt.cross.riscv.gnu.base.option.optimization.level.size" valueType="enumerated"/>
 							</tool>
 							<tool id="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.release.2026061035" name="RISC-V GCC/Newlib C Linker" superClass="org.eclipse.cdt.cross.riscv.gnu.linux.elf.c.linker.release">
-								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.477205183" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections.477205183" name="Remove unused sections (-gc-sections)" superClass="org.eclipse.cdt.cross.riscv.gnu.c.link.option.csections" value="true" valueType="boolean"/>
 								<inputType id="org.eclipse.cdt.cross.riscv.gnu.c.linker.input.756927753" superClass="org.eclipse.cdt.cross.riscv.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>

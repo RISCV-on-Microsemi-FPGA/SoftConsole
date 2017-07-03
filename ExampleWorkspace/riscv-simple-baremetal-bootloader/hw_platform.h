@@ -126,6 +126,9 @@
 #error MSCC_STDIO_UART_BASE_ADDR not defined- e.g. #define MSCC_STDIO_UART_BASE_ADDR COREUARTAPB1_BASE_ADDR
 #endif
 #endif  /* end of MSCC_STDIO_THRU_CORE_UART_APB */
+
+#define MSCC_STDIO_BAUD_VALUE 115200
+
 /*******************************************************************************
  * End of user edit section
  */

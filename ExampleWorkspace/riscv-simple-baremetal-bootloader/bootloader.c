@@ -31,19 +31,34 @@
 
 #define FLASH_BLOCK_SEGMENTS ( FLASH_BLOCK_SIZE / FLASH_SEGMENT_SIZE )
 
+#define FLASH_BYTE_SIZE		(FLASH_SECTOR_SIZE * FLASH_SECTORS)
+#define LAST_BLOCK_ADDR     (FLASH_BYTE_SIZE - FLASH_BLOCK_SIZE)
+
 static int test_flash(void);
 static void mem_test(uint8_t *address);
 static uint32_t rx_app_file(uint8_t *dest_address);
 static void Bootloader_JumpToApplication(uint32_t stack_location, uint32_t reset_vector);
-static int read_program_from_flash(uint8_t *read_buf);
+static int read_program_from_flash(uint8_t *read_buf, uint32_t read_byte_length);
 static int write_program_to_flash(uint8_t *write_buf, uint32_t file_size);
-static int read_program_from_flash(uint8_t *read_buf);
 static void show_progress(void);
+
+/*
+ * Data structure stored at the beginning of SPI flash to indicate the suize of
+ * data stored inside the SPI flash. This is to avoid having to read the entire
+ * flash content at boot time.
+ * This data structure is one flash segment long (256 bytes).
+ */
+typedef struct
+{
+    uint32_t validity_key;
+    uint32_t spi_content_byte_size;
+    uint32_t dummy[62];
+} flash_content_t;
 
 /*
  * Base address of DDR memory where executable will be loaded.
  */
-#define DDR_BASE_ADDRESS    0x80100000
+#define DDR_BASE_ADDRESS    0x80000000
  
 /*
  * Delay loop down counter load value.
@@ -55,7 +70,12 @@ static void show_progress(void);
  * should load and launch the application on system reset or stay running to
  * allow a new image to be programming into the SPI flash.
  */
-#define BOOTLOADER_DIP_SWITCH   0x00000001
+#define BOOTLOADER_DIP_SWITCH   0x00000080
+
+/*
+ * Key value used to determine if valid data is contained in the SPI flash.
+ */
+#define SPI_FLASH_VALID_CONTENT_KEY     0xB5006BB1
 
 /*
  * CoreGPIO instance data.
@@ -83,7 +103,7 @@ UART_instance_t g_uart;
 const uint8_t g_greeting_msg[] =
 "\r\n\r\n\
 ===============================================================================\r\n\
-                    Microsemi RISC-V Boot Loader v0.1.1\r\n\
+                    Microsemi RISC-V Boot Loader v0.2.2\r\n\
 ===============================================================================\r\n\
  This boot loader provides the following features:\r\n\
     - Load a program into DDR memory using the YModem file transfer protocol.\r\n\
@@ -211,6 +231,7 @@ int main()
     while(wait_in_bl == 1)
     {
     	static uint32_t file_size = 0;
+    	static uint32_t readback_size = (126 * 1024) /*FLASH_BYTE_SIZE*/;
 
          /**********************************************************************
          * Read data received by the UART.
@@ -235,9 +256,10 @@ int main()
                     break;
                 case '2':
                     write_program_to_flash((uint8_t *)DDR_BASE_ADDRESS, file_size);
+                    readback_size = file_size;
                     break;
                 case '3':
-                    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS);
+                    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS, readback_size);
                     break;
                 case '4':
                 	/* Populate with stack and reset vector address i.e. The first two words of the program */
@@ -272,7 +294,7 @@ int main()
         }
     }
     UART_polled_tx_string( &g_uart, g_load_executable_msg);
-    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS);
+    read_program_from_flash((uint8_t *)DDR_BASE_ADDRESS, (128 * 1024));
     UART_polled_tx_string( &g_uart, g_run_executable_msg);
     Bootloader_JumpToApplication(0x70000000, 0x70000004);
     /* will never reach here! */
@@ -724,6 +746,61 @@ static int write_program_to_flash(uint8_t *write_buf, uint32_t file_size)
         flash_address += FLASH_SEGMENT_SIZE; /* Step to the next 256 byte chunk */
         show_progress();
     }
+
+    /*--------------------------------------------------------------------------
+     * Record the size written in the first SPI flash segment.
+     */
+    {
+        flash_content_t flash_content;
+
+        flash_content.validity_key = SPI_FLASH_VALID_CONTENT_KEY;
+        flash_content.spi_content_byte_size = file_size;
+
+        flash_address = LAST_BLOCK_ADDR;
+
+        /*----------------------------------------------------------------------
+         * at the start of each sector we need to make sure it is unprotected
+         * so we can erase blocks within it. The spi_flash_write() function
+         * unprotects the sector as well but we need to start erasing before the
+         * first write takes place.
+         */
+        if(0 == (flash_address % FLASH_SECTOR_SIZE))
+        {
+            result = spi_flash_control_hw( SPI_FLASH_SECTOR_UNPROTECT, flash_address, NULL );
+        }
+        /*----------------------------------------------------------------------
+         * At the start of each 4K block we issue an erase so that we are then
+         * free to write anything we want to the block. If we don't do this the
+         * write may fail as we can only effectively turn 1s to 0s when we
+         * write. For example if we have an erased location with 0xFF in it and
+         * we write 0xAA to it first and then later on write 0x55, the resulting
+         * value is 0x00...
+         */
+        if(0 == (flash_address % FLASH_BLOCK_SIZE))
+        {
+            result = spi_flash_control_hw( SPI_FLASH_4KBLOCK_ERASE, flash_address , NULL );
+        }
+        /*----------------------------------------------------------------------
+         * Write our values to the FLASH, read them back and compare.
+         * Placing a breakpoint on the while statement below will allow
+         * you break on any failures.
+         */
+        spi_flash_write( flash_address, (uint32_t)&flash_content, FLASH_SEGMENT_SIZE );
+
+        spi_flash_read ( flash_address, read_buffer, FLASH_SEGMENT_SIZE );
+        if( memcmp( (uint8_t *)&flash_content, read_buffer, FLASH_SEGMENT_SIZE ) )
+        {
+            while(1) // Breakpoint here will trap write faults
+            {
+
+            }
+
+        }
+        write_buf += FLASH_SEGMENT_SIZE;
+        flash_address += FLASH_SEGMENT_SIZE; /* Step to the next 256 byte chunk */
+        show_progress();
+    }
+
     /*--------------------------------------------------------------------------
      * One last look at the protection registers which should all be 0 now
      */
@@ -740,15 +817,17 @@ static int write_program_to_flash(uint8_t *write_buf, uint32_t file_size)
 
 
 /**
- *  Read from flash on RTG4
+ *  Read from flash
  */
-static int read_program_from_flash(uint8_t *read_buf)
+static int read_program_from_flash(uint8_t *read_buf, uint32_t read_byte_length)
 {
     uint16_t status;
     int flash_address = 0;
     int count = 0;
+    uint32_t nb_segments_to_read;
     spi_flash_status_t result;
     struct device_Info DevInfo;
+    flash_content_t flash_content;
 
     UART_polled_tx_string( &g_uart, "\r\n------------------- Reading from SPI flash into DDR memory --------------------\r\n" );
     UART_polled_tx_string( &g_uart, "This will take several minutes to complete in order to read the full SPI flash \r\ncontent.\r\n" );
@@ -777,11 +856,30 @@ static int read_program_from_flash(uint8_t *read_buf)
 
 
     /*--------------------------------------------------------------------------
-     * Write something to all 32768 blocks of 256 bytes in the 8MB FLASH.
+     * Retrieve the size of the data previously written to SPI flash.
      */
-    for( count = 0; count != (32*1024); ++count )
-    {
+    spi_flash_read ( LAST_BLOCK_ADDR, (uint8_t *)&flash_content, FLASH_SEGMENT_SIZE );
 
+    if(SPI_FLASH_VALID_CONTENT_KEY == flash_content.validity_key)
+    {
+        read_byte_length = flash_content.spi_content_byte_size;
+    }
+    else
+    {
+        read_byte_length = 0;
+    }
+
+    /*--------------------------------------------------------------------------
+     * Read from flash 256 bytes increments (FLASH_SEGMENT_SIZE).
+     */
+    nb_segments_to_read = read_byte_length / FLASH_SEGMENT_SIZE;
+    if((read_byte_length % FLASH_SEGMENT_SIZE) > 0)
+    {
+    	++nb_segments_to_read;
+    }
+
+    for( count = 0; count != nb_segments_to_read; ++count )
+    {
         /*----------------------------------------------------------------------
          * Write our values to the FLASH, read them back and compare.
          * Placing a breakpoint on the while statement below will allow
@@ -898,26 +996,18 @@ void SysTick_Handler( void )
 //volatile uint32_t cj_debug;
 static void Bootloader_JumpToApplication(uint32_t stack_location, uint32_t reset_vector)
 {
-//    cj_debug = 0x12345678;
-//    __asm volatile("lui t0,0x80000");
-//    __asm volatile("csrw mepc,t0");
+	/* Restore PLIC to known state: */
+	__disable_irq();
+	PLIC_init();
+
+	/* Disable all interrupts: */
+	write_csr(mie, 0);
+
+	/* Start executing from the top of DDR memory: */
     __asm volatile("lui ra,0x80000");
+    __asm volatile("ret");
     
-
-//<CJ>    __disable_irq(); /* ro, r1 will not be disturbed */
-    /*Load main stack pointer with application stack pointer initial value,
-      stored at first location of application area */
-    //asm volatile("ldr r0, =0x30000000");
-//<CJ>    asm volatile("ldr r0, [r0]");
-//<CJ>    asm volatile("mov sp, r0");
-
-    /*Load program counter with application reset vector address, located at
-      second word of application area. */
-//<CJ>    asm volatile("mov r3, r1");
-//<CJ>    asm volatile("mov r0, #0");  /*  ; no arguments  */
-//<CJ>    asm volatile("mov r1, #0");  /*  ; no argv either */
-    //asm volatile("ldr r3, =0x30000004");
-//<CJ>    asm volatile("ldr r3, [r3]");
-//<CJ>    asm volatile("mov pc, r3");
     /*User application execution should now start and never return here.... */
 }
+
+
