@@ -117,6 +117,8 @@ UINT32 Example_Semphore(VOID)
     TSK_INIT_PARAM_S stTask1;
     TSK_INIT_PARAM_S stTask2;
 
+    LOS_Inspect_delim();
+
    /*创建信号量*/
     LOS_SemCreate(0,&g_usSemID);
 

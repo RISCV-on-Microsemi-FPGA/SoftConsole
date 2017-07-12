@@ -87,6 +87,8 @@ UINT32 Example_SndRcvEvent(VOID)
     UINT32 uwRet;
     TSK_INIT_PARAM_S stTask1;
 
+    LOS_Inspect_delim();
+	
     /*事件初始化*/
     uwRet = LOS_EventInit(&example_event);
     if(uwRet != LOS_OK)

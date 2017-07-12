@@ -92,7 +92,7 @@ static osInspect_Def gInspect[LOS_INSPECT_BUFF] = {
 
     {LOS_INSPECT_EVENT,LOS_INSPECT_STU_START,Example_SndRcvEvent,"EVENT"},
 
-//    {LOS_INSPECT_MSG,LOS_INSPECT_STU_START,Example_MsgQueue,"MSG"},
+    {LOS_INSPECT_MSG,LOS_INSPECT_STU_START,Example_MsgQueue,"MSG"},
 
     {LOS_INSPECT_SEM,LOS_INSPECT_STU_START,Example_Semphore,"SEM"},
 
@@ -102,10 +102,10 @@ static osInspect_Def gInspect[LOS_INSPECT_BUFF] = {
 
     {LOS_INSPECT_TIMER,LOS_INSPECT_STU_START,Example_swTimer,"TIMER"},
 
-//    {LOS_INSPECT_LIST,LOS_INSPECT_STU_START,Example_list,"LIST"},
+    {LOS_INSPECT_LIST,LOS_INSPECT_STU_START,Example_list,"LIST"},
 
     {LOS_INSPECT_SMEM,LOS_INSPECT_STU_START,Example_StaticMem,"S_MEM"},
-//
+
     {LOS_INSPECT_DMEM,LOS_INSPECT_STU_START,Example_Dyn_Mem,"D_MEM"},
     
     //{LOS_INSPECT_INTERRUPT,LOS_INSPECT_STU_START,Example_Interrupt},//Ŀǰ�жϲ���δ����
@@ -325,7 +325,10 @@ void LOS_Inspect_Entry(void)
     return;
 }
 
-
+void LOS_Inspect_delim(void)
+{
+    dprintf("\r\n--------------------------------------------------------------\r\n");
+}
 
 
 #ifdef __cplusplus

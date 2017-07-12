@@ -167,12 +167,12 @@ osTaskSchedule:
 
 Software_IRQHandler:
 //disable interrupts globaly
-    li      t0, 0x08                        //mie
+    li      t0, 0x08                                //mie
     csrrc   zero, mstatus, t0
 
-    la     t0, g_pfnTskSwitchHook           //this is not defined. We are not jumping on this function as of now.
+    la     t0, g_pfnTskSwitchHook                   //this is not defined. We are not jumping on this function as of now.
     lw     t1, 0x0(t0)
-    beqz   t1, TaskSwitch                   //Branch if = zero
+    beqz   t1, TaskSwitch                           //Branch if = zero
 
 TaskSwitch:
 //stack pointer was passed by entry.s in register a2. store it in pstRunTask structure

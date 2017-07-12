@@ -139,6 +139,8 @@ UINT32 Example_TskCaseEntry(VOID)
     /*锁任务调度*/
     LOS_TaskLock();
 
+    LOS_Inspect_delim();
+	
     dprintf("LOS_TaskLock() Success!\r\n");
 
     stInitParam.pfnTaskEntry = (TSK_ENTRY_FUNC)Example_TaskHi;

@@ -78,6 +78,8 @@ extern UINT32 LOS_InspectByID(enInspectID InspectID);
 
 extern UINT32 LOS_InspectStatusSetByID(enInspectID InspectID,enInspectStu InspectStu);
 
+void LOS_Inspect_delim(void);
+
 #endif //_LOS_INSPECT_ENTRY_H
 
 
