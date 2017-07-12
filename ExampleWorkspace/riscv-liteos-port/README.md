@@ -13,10 +13,12 @@ M2S150-Advanced-Dev-Kit
     LOS_Inspect_Entry       -- Following tests are passed.
         LOS_INSPECT_TASK
         LOS_INSPECT_EVENT
+        LOS_INSPECT_MSG
         LOS_INSPECT_SEM
         LOS_INSPECT_MUTEX
         LOS_INSPECT_SYSTIC
         LOS_INSPECT_TIMER
+        LOS_INSPECT_LIST
         LOS_INSPECT_SMEM
         LOS_INSPECT_DMEM
 
