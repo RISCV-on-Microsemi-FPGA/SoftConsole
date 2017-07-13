@@ -50,6 +50,8 @@ UINT32 Example_StaticMem(VOID)
     UINT32 uwBlkSize = 3, uwBoxSize = 50;
     UINT32 uwRet;
     
+    LOS_Inspect_delim();
+
     uwRet = LOS_MemboxInit( &pBoxMem[0], uwBoxSize, uwBlkSize);
     if(uwRet != LOS_OK)
     {

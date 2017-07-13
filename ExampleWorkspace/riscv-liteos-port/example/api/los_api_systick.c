@@ -61,6 +61,8 @@ UINT32 Example_GetTick(VOID)
     UINT32 uwcyclePerTick;
     UINT64 uwTickCount1,uwTickCount2;
 
+    LOS_Inspect_delim();
+
     uwcyclePerTick  = LOS_CyclePerTickGet();
     if(0 != uwcyclePerTick)
     {

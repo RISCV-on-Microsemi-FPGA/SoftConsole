@@ -106,7 +106,6 @@ typedef struct tagTskContext
     UINT32 t5;
     UINT32 t6;
     UINT32 mepc;
-
 } TSK_CONTEXT_S;
 
 

@@ -120,6 +120,8 @@ UINT32 Example_MutexLock(VOID)
     TSK_INIT_PARAM_S stTask1;
     TSK_INIT_PARAM_S stTask2;
 
+    LOS_Inspect_delim();
+
     /*创建互斥锁*/
     LOS_MuxCreate(&g_Testmux01);
 

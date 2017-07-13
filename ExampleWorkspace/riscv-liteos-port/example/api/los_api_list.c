@@ -54,6 +54,8 @@ extern "C" {
 
 UINT32 Example_list(VOID)
 {
+    LOS_Inspect_delim();
+
     /*初始化，判断是否为空*/
     dprintf("initial......\n");
     LOS_DL_LIST* head;
@@ -89,7 +91,8 @@ UINT32 Example_list(VOID)
     /*删除双向链表节点*/
     dprintf("delete node......\n");
     LOS_ListDelete(node1);
-    free(node1);
+    //free(node1);
+    LOS_MemFree(m_aucSysMem0, node1);
     if(head->pstNext == node2)
     {
         dprintf("delete node success\n");

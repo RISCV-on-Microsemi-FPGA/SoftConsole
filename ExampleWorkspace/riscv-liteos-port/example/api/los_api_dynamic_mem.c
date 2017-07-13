@@ -50,7 +50,11 @@ UINT32 Example_Dyn_Mem(VOID)
 {
     UINT32 *p_num = NULL;
     UINT32 uwRet;
+
+    LOS_Inspect_delim();
+
     uwRet = LOS_MemInit(m_aucSysMem0, OS_SYS_MEM_SIZE);
+
     if (LOS_OK == uwRet)
     {
         dprintf("mempool init ok!\n");

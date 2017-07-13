@@ -135,10 +135,12 @@ UINT32 Example_MsgQueue(void)
     UINT32 uwTask1, uwTask2;
     TSK_INIT_PARAM_S stInitParam1;
 
+    LOS_Inspect_delim();
+
     /*创建任务1*/
     stInitParam1.pfnTaskEntry = send_Entry;
     stInitParam1.usTaskPrio = 9;
-    stInitParam1.uwStackSize = 0x200;
+    stInitParam1.uwStackSize = 0x500;
     stInitParam1.pcName = "sendQueue";
     stInitParam1.uwResved = LOS_TASK_STATUS_DETACHED;
     LOS_TaskLock();//锁住任务，防止新创建的任务比本任务高而发生调度
@@ -159,7 +161,7 @@ UINT32 Example_MsgQueue(void)
     }
 
     /*创建队列*/
-    uwRet = LOS_QueueCreate("queue", 5, &g_uwQueue, 0, 50);
+    uwRet = LOS_QueueCreate("queue", 5, &g_uwQueue, 0, 52);
     if(uwRet != LOS_OK)
     {
         dprintf("create queue failure!,error:%x\n",uwRet);
