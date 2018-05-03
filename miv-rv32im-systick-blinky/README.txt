@@ -9,10 +9,10 @@ Mi-V Soft processor system timer.
 --------------------------------------------------------------------------------
                             Mi-V Soft processor
 --------------------------------------------------------------------------------
-This example uses a Mi-V Soft processor MiV_RV32IM_L1_AHB. The design is 
-built for debugging MiV_RV32IM_L1_AHB through the SmartFusion2 FPGA programming 
+This example uses a Mi-V Soft processor MiV_RV32IMA_L1_AHB. The design is 
+built for debugging MiV_RV32IMA_L1_AHB through the SmartFusion2 FPGA programming 
 JTAG port using a FlashPro5. To achieve this the CoreJTAGDebug IP is used to 
-connect to the JTAG port of the MiV_RV32IM_L1_AHB.
+connect to the JTAG port of the MiV_RV32IMA_L1_AHB.
 
 Optionally, The design can be build to use Olimex ARM-USB-TINY-H JTAG probe. 
 For this,The JTAG pins must be routed through Fabric to the top level pins.
@@ -21,7 +21,7 @@ All the platform/design specific definitions such as peripheral base addresses,
 system clock frequency etc. are included in hw_platform.h. The hw_platform.h is 
 located at the root folder of this project.
 
-The MiV_RV32IM_L1_AHB firmware projects needs the riscv_hal and the hal firmware
+The MiV_RV32IMA_L1_AHB firmware projects needs the riscv_hal and the hal firmware
 (RISC-V HAL).
 
 The RISC-V HAL is available through Firmware catalog as well as the link below:
@@ -48,6 +48,7 @@ HyperTerminal or PuTTY configured as follows:
 
 This example displays a message on HyperTerminal then echoes back characters
 typed in HyperTerminal.
+The LEDs will toggle every time the Systic interrupt is asserted.
 
 
 --------------------------------------------------------------------------------
@@ -64,7 +65,7 @@ configuration. This can be achieved by overwriting the content of this example
 project's "hw_platform.h" file with the correct data from your Libero design.
 
 An example design for SmartFusion2 150 Ad. Dev Kit is available at 
-https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/tree/master/Libero/
+https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                           Silicon revision dependencies

@@ -1,14 +1,14 @@
 /*******************************************************************************
- * (c) Copyright 2008-2015 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2008-2018 Microsemi SoC Products Group. All rights reserved.
  * 
  * CoreGPIO bare metal driver implementation.
  *
- * SVN $Revision: 7964 $
- * SVN $Date: 2015-10-09 18:26:53 +0530 (Fri, 09 Oct 2015) $
+ * SVN $Revision: 9743 $
+ * SVN $Date: 2018-02-12 15:45:09 +0530 (Mon, 12 Feb 2018) $
  */
 #include "core_gpio.h"
-#include "hal.h"
-#include "hal_assert.h"
+#include "../../hal/hal.h"
+#include "../../hal/hal_assert.h"
 #include "coregpio_regs.h"
 
 /*-------------------------------------------------------------------------*//**
@@ -459,3 +459,75 @@ void GPIO_clear_irq
     }
 }
 
+/*-------------------------------------------------------------------------*//**
+ * GPIO_get_irq_sources
+ * See "core_gpio.h" for details of how to use this function.
+ */
+uint32_t GPIO_get_irq_sources
+(
+    gpio_instance_t *   this_gpio
+)
+{
+    uint32_t intr_src = 0;
+
+    switch( this_gpio->apb_bus_width )
+    {
+        case GPIO_APB_32_BITS_BUS:
+            intr_src = HAL_get_32bit_reg( this_gpio->base_addr, IRQ );
+            break;
+
+        case GPIO_APB_16_BITS_BUS:
+            intr_src |= HAL_get_16bit_reg( this_gpio->base_addr, IRQ0 );
+            intr_src |= (HAL_get_16bit_reg( this_gpio->base_addr, IRQ1 ) << 16);
+            break;
+
+        case GPIO_APB_8_BITS_BUS:
+            intr_src |= HAL_get_16bit_reg( this_gpio->base_addr, IRQ0 );
+            intr_src |= (HAL_get_16bit_reg( this_gpio->base_addr, IRQ1 ) << 8);
+            intr_src |= (HAL_get_16bit_reg( this_gpio->base_addr, IRQ2 ) << 16);
+            intr_src |= (HAL_get_16bit_reg( this_gpio->base_addr, IRQ3 ) << 24);
+            break;
+
+        default:
+            HAL_ASSERT(0);
+            break;
+    }
+
+    return intr_src;
+}
+
+/*-------------------------------------------------------------------------*//**
+ * GPIO_clear_all_irq_sources
+ * See "core_gpio.h" for details of how to use this function.
+ */
+void GPIO_clear_all_irq_sources
+(
+    gpio_instance_t *   this_gpio,
+    uint32_t            bitmask
+)
+{
+    uint32_t irq_clr_value = bitmask;
+
+    switch( this_gpio->apb_bus_width )
+    {
+        case GPIO_APB_32_BITS_BUS:
+            HAL_set_32bit_reg( this_gpio->base_addr, IRQ, irq_clr_value );
+            break;
+
+        case GPIO_APB_16_BITS_BUS:
+            HAL_set_16bit_reg( this_gpio->base_addr, IRQ0, irq_clr_value );
+            HAL_set_16bit_reg( this_gpio->base_addr, IRQ1, irq_clr_value >> 16 );
+            break;
+
+        case GPIO_APB_8_BITS_BUS:
+            HAL_set_8bit_reg( this_gpio->base_addr, IRQ0, irq_clr_value );
+            HAL_set_8bit_reg( this_gpio->base_addr, IRQ1, irq_clr_value >> 8 );
+            HAL_set_8bit_reg( this_gpio->base_addr, IRQ2, irq_clr_value >> 16 );
+            HAL_set_8bit_reg( this_gpio->base_addr, IRQ3, irq_clr_value >> 24 );
+            break;
+
+        default:
+            HAL_ASSERT(0);
+            break;
+    }
+}

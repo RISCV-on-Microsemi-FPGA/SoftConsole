@@ -33,8 +33,9 @@
  * Soft-processor clock definition
  * This is the only clock brought over from the Mi-V Soft processor Libero design.
  */
-#define SYS_CLK_FREQ                    83000000UL
-
+#ifndef SYS_CLK_FREQ 
+#define SYS_CLK_FREQ                    50000000UL
+#endif
 /***************************************************************************//**
  * Non-memory Peripheral base addresses
  * Format of define is:

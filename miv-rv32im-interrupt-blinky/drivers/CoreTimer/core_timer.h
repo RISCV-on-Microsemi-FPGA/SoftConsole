@@ -1,10 +1,10 @@
 /*******************************************************************************
- * (c) Copyright 2007-2015 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2007-2017 Microsemi SoC Products Group. All rights reserved.
  * 
  * CoreTimer public API.
  * 
- * SVN $Revision: 7967 $
- * SVN $Date: 2015-10-09 18:48:26 +0530 (Fri, 09 Oct 2015) $
+ * SVN $Revision: 8933 $
+ * SVN $Date: 2017-03-31 13:54:33 +0530 (Fri, 31 Mar 2017) $
  */
 #ifndef CORE_TIMER_H_
 #define CORE_TIMER_H_
@@ -27,8 +27,8 @@
  * reaches zero. The timer's counter must be reloaded to begin counting down
  * again.
  */
-#define TMR_CONTINUOUS_MODE		0
-#define TMR_ONE_SHOT_MODE		1
+#define TMR_CONTINUOUS_MODE      0
+#define TMR_ONE_SHOT_MODE        1
 
 /***************************************************************************//**
  * The following definitions are used to configure the CoreTimer prescaler.
@@ -36,16 +36,16 @@
  * CoreTimer counter. It can be configure to divide the clock by 2, 4, 8,
  * 16, 32, 64, 128, 256, 512, or 1024.
  */
-#define PRESCALER_DIV_2			0
-#define PRESCALER_DIV_4			1
-#define PRESCALER_DIV_8			2
-#define PRESCALER_DIV_16		3
-#define PRESCALER_DIV_32		4
-#define PRESCALER_DIV_64		5
-#define PRESCALER_DIV_128		6
-#define PRESCALER_DIV_256		7
-#define PRESCALER_DIV_512		8
-#define PRESCALER_DIV_1024		9
+#define PRESCALER_DIV_2         0
+#define PRESCALER_DIV_4         1
+#define PRESCALER_DIV_8         2
+#define PRESCALER_DIV_16        3
+#define PRESCALER_DIV_32        4
+#define PRESCALER_DIV_64        5
+#define PRESCALER_DIV_128       6
+#define PRESCALER_DIV_256       7
+#define PRESCALER_DIV_512       8
+#define PRESCALER_DIV_1024      9
 
 /***************************************************************************//**
  * There should be one instance of this structure for each instance of CoreTimer
@@ -59,7 +59,7 @@
  */
 typedef struct __timer_instance_t
 {
-	addr_t base_address;
+    addr_t base_address;
 } timer_instance_t;
 
 /***************************************************************************//**
@@ -73,32 +73,32 @@ typedef struct __timer_instance_t
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer will be used to identify the
- * 						target CoreTimer hardware instance in subsequent calls
- * 						to the CoreTimer functions.
+ *                      instance. This pointer will be used to identify the
+ *                      target CoreTimer hardware instance in subsequent calls
+ *                      to the CoreTimer functions.
  * @param address       Base address in the processor's memory map of the 
  *                      registers of the CoreTimer instance being initialized.
  * @param mode          This parameter is used to select the operating mode of
- * 						the timer driver. This can be either TMR_CONTINUOUS_MODE
- * 						or TMR_ONE_SHOT_MODE.
- * @param prescale    	This parameter is used to select the prescaler divider
- * 						used to divide down the clock used to decrement the
- * 						timer’s counter. This can be set using one of the 
- * 						PRESCALER_DIV_<n> definitions, where <n> is the
- * 						divider’s value.  
- * @param load_value	This parameter is used to set the timer’s load value
- * 						from which the CoreTimer counter will decrement.
- * 						In Continuous mode, this value will be used to reload 
- * 						the timer’s counter whenever it reaches zero.
+ *                      the timer driver. This can be either TMR_CONTINUOUS_MODE
+ *                      or TMR_ONE_SHOT_MODE.
+ * @param prescale      This parameter is used to select the prescaler divider
+ *                      used to divide down the clock used to decrement the
+ *                      timer’s counter. This can be set using one of the 
+ *                      PRESCALER_DIV_<n> definitions, where <n> is the
+ *                      divider’s value.  
+ * @param load_value    This parameter is used to set the timer’s load value
+ *                      from which the CoreTimer counter will decrement.
+ *                      In Continuous mode, this value will be used to reload 
+ *                      the timer’s counter whenever it reaches zero.
  */
 void
 TMR_init
 (
-	timer_instance_t * this_timer,
-	addr_t address,
-	uint8_t mode,
-	uint32_t prescale,
-	uint32_t load_value
+    timer_instance_t * this_timer,
+    addr_t address,
+    uint8_t mode,
+    uint32_t prescale,
+    uint32_t load_value
 );
 
 /***************************************************************************//**
@@ -109,8 +109,8 @@ TMR_init
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
  */
 void
 TMR_start
@@ -125,8 +125,8 @@ TMR_start
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
  */
 void
 TMR_stop
@@ -141,8 +141,8 @@ TMR_stop
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
  */
 void
 TMR_enable_int
@@ -160,8 +160,8 @@ TMR_enable_int
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
  */
 void
 TMR_clear_int
@@ -174,8 +174,8 @@ TMR_clear_int
  *
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
  *
  * @return              Returns the current value of the timer counter value.
  */
@@ -192,15 +192,15 @@ TMR_current_value
  * 
  * @param this_timer    Pointer to a timer_instance_t structure holding all 
  *                      relevant data associated with the target timer hardware
- * 						instance. This pointer is used to identify the target
- * 						CoreTimer hardware instance.
- * @param load_value	This parameter sets the value from which the CoreTimer
- * 						counter will decrement. 
+ *                      instance. This pointer is used to identify the target
+ *                      CoreTimer hardware instance.
+ * @param load_value    This parameter sets the value from which the CoreTimer
+ *                      counter will decrement. 
  */
 void TMR_reload
 (
-	timer_instance_t * this_timer,
-	uint32_t load_value
+    timer_instance_t * this_timer,
+    uint32_t load_value
 );
-	
+    
 #endif /* CORE_TIMER_H_ */

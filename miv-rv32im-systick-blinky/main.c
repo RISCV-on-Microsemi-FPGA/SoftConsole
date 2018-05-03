@@ -50,6 +50,7 @@ void SysTick_Handler(void) {
     gpout = gpout | g_state;
 
     GPIO_set_outputs(&g_gpio_out, gpout);
+    UART_polled_tx_string(&g_uart, (const uint8_t *)"tick\r\n");
 }
 
 /*-----------------------------------------------------------------------------

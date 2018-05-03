@@ -52,7 +52,7 @@ HyperTerminal or PuTTY configured as follows:
 This example displays a message on HyperTerminal then echoes back characters
 typed in HyperTerminal.
 
-
+The LEDs will toggle every time the Timer timer interrupt asserts.
 --------------------------------------------------------------------------------
                                 Target hardware
 --------------------------------------------------------------------------------

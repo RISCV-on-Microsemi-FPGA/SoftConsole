@@ -1,10 +1,10 @@
 /*******************************************************************************
- * (c) Copyright 2008-2015 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2008-2018 Microsemi SoC Products Group. All rights reserved.
  * 
  *  CoreGPIO bare metal driver public API.
  *
- * SVN $Revision: 7964 $
- * SVN $Date: 2015-10-09 18:26:53 +0530 (Fri, 09 Oct 2015) $
+ * SVN $Revision: 9743 $
+ * SVN $Date: 2018-02-12 15:45:09 +0530 (Mon, 12 Feb 2018) $
  */
 
 /*=========================================================================*//**
@@ -31,7 +31,7 @@
   Catalog.
   
   The CoreGPIO driver functions are logically grouped into the following groups:
-    - Initiliazation
+    - Initialization
     - Configuration
     - Reading and writing GPIO state
     - Interrupt control
@@ -62,6 +62,8 @@
     - GPIO_enable_irq()
     - GPIO_disable_irq()
     - GPIO_clear_irq()
+    - GPIO_get_irq_sources()
+    - GPIO_clear_all_irq_sources()
   
  *//*=========================================================================*/
 #ifndef CORE_GPIO_H_
@@ -137,38 +139,38 @@ typedef struct __gpio_instance_t
   These definitions can also be used to identity GPIO through logical
   operations on the return value of function GPIO_get_inputs().
  */
-#define GPIO_0_MASK		    0x00000001UL
-#define GPIO_1_MASK		    0x00000002UL
+#define GPIO_0_MASK         0x00000001UL
+#define GPIO_1_MASK         0x00000002UL
 #define GPIO_2_MASK         0x00000004UL
-#define GPIO_3_MASK	        0x00000008UL
-#define GPIO_4_MASK	        0x00000010UL
-#define GPIO_5_MASK	        0x00000020UL
-#define GPIO_6_MASK	        0x00000040UL
-#define GPIO_7_MASK	        0x00000080UL
-#define GPIO_8_MASK	        0x00000100UL
-#define GPIO_9_MASK		    0x00000200UL
-#define GPIO_10_MASK		0x00000400UL
-#define GPIO_11_MASK		0x00000800UL
-#define GPIO_12_MASK		0x00001000UL
-#define GPIO_13_MASK		0x00002000UL
-#define GPIO_14_MASK		0x00004000UL
-#define GPIO_15_MASK		0x00008000UL
-#define GPIO_16_MASK		0x00010000UL
-#define GPIO_17_MASK		0x00020000UL
-#define GPIO_18_MASK		0x00040000UL
-#define GPIO_19_MASK		0x00080000UL
-#define GPIO_20_MASK		0x00100000UL
-#define GPIO_21_MASK		0x00200000UL
-#define GPIO_22_MASK		0x00400000UL
-#define GPIO_23_MASK		0x00800000UL
-#define GPIO_24_MASK		0x01000000UL
-#define GPIO_25_MASK		0x02000000UL
-#define GPIO_26_MASK		0x04000000UL
-#define GPIO_27_MASK		0x08000000UL
-#define GPIO_28_MASK		0x10000000UL
-#define GPIO_29_MASK		0x20000000UL
-#define GPIO_30_MASK		0x40000000UL
-#define GPIO_31_MASK		0x80000000UL
+#define GPIO_3_MASK         0x00000008UL
+#define GPIO_4_MASK         0x00000010UL
+#define GPIO_5_MASK         0x00000020UL
+#define GPIO_6_MASK         0x00000040UL
+#define GPIO_7_MASK         0x00000080UL
+#define GPIO_8_MASK         0x00000100UL
+#define GPIO_9_MASK         0x00000200UL
+#define GPIO_10_MASK        0x00000400UL
+#define GPIO_11_MASK        0x00000800UL
+#define GPIO_12_MASK        0x00001000UL
+#define GPIO_13_MASK        0x00002000UL
+#define GPIO_14_MASK        0x00004000UL
+#define GPIO_15_MASK        0x00008000UL
+#define GPIO_16_MASK        0x00010000UL
+#define GPIO_17_MASK        0x00020000UL
+#define GPIO_18_MASK        0x00040000UL
+#define GPIO_19_MASK        0x00080000UL
+#define GPIO_20_MASK        0x00100000UL
+#define GPIO_21_MASK        0x00200000UL
+#define GPIO_22_MASK        0x00400000UL
+#define GPIO_23_MASK        0x00800000UL
+#define GPIO_24_MASK        0x01000000UL
+#define GPIO_25_MASK        0x02000000UL
+#define GPIO_26_MASK        0x04000000UL
+#define GPIO_27_MASK        0x08000000UL
+#define GPIO_28_MASK        0x10000000UL
+#define GPIO_29_MASK        0x20000000UL
+#define GPIO_30_MASK        0x40000000UL
+#define GPIO_31_MASK        0x80000000UL
 
 /*-------------------------------------------------------------------------*//**
  * GPIO modes
@@ -180,11 +182,11 @@ typedef struct __gpio_instance_t
 /*-------------------------------------------------------------------------*//**
  * Possible GPIO inputs interrupt configurations.
  */
-#define GPIO_IRQ_LEVEL_HIGH			0x0000000000UL
-#define GPIO_IRQ_LEVEL_LOW			0x0000000020UL
-#define GPIO_IRQ_EDGE_POSITIVE		0x0000000040UL
-#define GPIO_IRQ_EDGE_NEGATIVE		0x0000000060UL
-#define GPIO_IRQ_EDGE_BOTH			0x0000000080UL
+#define GPIO_IRQ_LEVEL_HIGH           0x0000000000UL
+#define GPIO_IRQ_LEVEL_LOW            0x0000000020UL
+#define GPIO_IRQ_EDGE_POSITIVE        0x0000000040UL
+#define GPIO_IRQ_EDGE_NEGATIVE        0x0000000060UL
+#define GPIO_IRQ_EDGE_BOTH            0x0000000080UL
 
 /*-------------------------------------------------------------------------*//**
  * Possible states for GPIO configured as INOUT.
@@ -235,7 +237,7 @@ typedef enum gpio_inout_state
     
     void system_init( void )
     {
-        GPIO_init( &g_gpio,	COREGPIO_BASE_ADDR, GPIO_APB_32_BITS_BUS );
+        GPIO_init( &g_gpio,    COREGPIO_BASE_ADDR, GPIO_APB_32_BITS_BUS );
     }
   @endcode
   */
@@ -361,7 +363,7 @@ void GPIO_set_output
 
 /*-------------------------------------------------------------------------*//**
   The GPIO_get_inputs() function is used to read the state of all GPIOs
-  confgured as inputs.
+  configured as inputs.
  
   @param this_gpio
     The this_gpio parameter is a pointer to the gpio_instance_t structure holding
@@ -415,7 +417,7 @@ uint32_t GPIO_get_outputs
     all data regarding the CoreGPIO instance controlled through this function call.
 
   @param port_id
-    The port_id parameter identifies the GPIO for whcih this function will
+    The port_id parameter identifies the GPIO for which this function will
     change the output state.
     An enumeration item of the form GPIO_n where n is the number of the GPIO
     port is used to identify the GPIO port. For example GPIO_0 identifies the
@@ -511,7 +513,7 @@ void GPIO_disable_irq
   The GPIO_clear_irq() function is used to clear the interrupt generated by
   the GPIO specified as parameter. The GPIO_clear_irq() function  must be
   called as part of a GPIO interrupt service routine (ISR) in order to prevent
-  the same interrupt event retriggering a call to the GPIO ISR.
+  the same interrupt event re-triggering a call to the GPIO ISR.
   Please note that interrupts may also need to be cleared in the processor's
   interrupt controller.
  
@@ -531,7 +533,7 @@ void GPIO_disable_irq
     
   Example:
     The example below demonstrates the use of the GPIO_clear_irq() function as
-    part of the GPIO 9 interrupt service routine on a Cortex-M processor.  
+    part of the GPIO 9 interrupt service routine.  
     @code
     void GPIO9_IRQHandler( void )
     {
@@ -549,4 +551,80 @@ void GPIO_clear_irq
     gpio_id_t           port_id
 );
 
+/*-------------------------------------------------------------------------*//**
+  The GPIO_get_irq_sources() function is used to identify the source of
+  interrupt. i.e. the GPIO input line whose state change triggered the interrupt.
+  The GPIO_get_irq_sources() function  must be called as part of a GPIO
+  interrupt service routine (ISR) in order to determine the interrupt source.
+
+  @param this_gpio
+    The this_gpio parameter is a pointer to the gpio_instance_t structure holding
+    all data regarding the CoreGPIO instance controlled through this function call.
+
+  @return
+     This function returns a 32 bit unsigned integer where each bit represents
+     the pin number of GPIO.
+
+  Example:
+    The example below demonstrates the use of the GPIO_get_irq_sources() function
+    as part of the GPIO 9 interrupt service routine.
+    @code
+    void GPIO9_IRQHandler( void )
+    {
+        do_interrupt_processing();
+
+        GPIO_clear_all_irq_sources(g_p_mygpio, GPIO_get_irq_sources(g_p_mygpio));
+
+        NVIC_ClearPendingIRQ( GPIO9_IRQn );
+    }
+    @endcode
+ */
+uint32_t GPIO_get_irq_sources
+(
+    gpio_instance_t *   this_gpio
+);
+
+/*-------------------------------------------------------------------------*//**
+  The GPIO_clear_all_irq_sources() function is used to clear the all the active
+  interrupt generated by the GPIO specified as parameter. The
+  GPIO_clear_all_irq_sources() function  must be called as part of a GPIO interrupt
+  service routine (ISR) in order to prevent the same interrupt event
+  re-triggering a call to the GPIO ISR.
+  Please note that interrupts may also need to be cleared in the processor's
+  interrupt controller.
+
+  @param this_gpio
+    The this_gpio parameter is a pointer to the gpio_instance_t structure holding
+    all data regarding the CoreGPIO instance controlled through this function call.
+
+  @param bitmask
+     This bitmask parameter is a 32 bit unsigned integer where each bit represents
+     the GPIO pin used to clears the interrupt bit register of the corresponding
+     GPIO bit. The least significant bit representing the status of GPIO 0 and
+     the most significant bit the status of GPIO 31.
+
+  @return
+    none.
+
+  Example:
+    The example below demonstrates the use of the GPIO_clear_all_irq_sources() function as
+    part of the GPIO 9 interrupt service routine.
+    @code
+    void GPIO9_IRQHandler( void )
+    {
+        do_interrupt_processing();
+
+        do_interrupt_processing();
+
+        GPIO_clear_all_irq_sources(g_p_mygpio, GPIO_get_irq_sources(g_p_mygpio));
+
+        NVIC_ClearPendingIRQ( GPIO9_IRQn );
+    }
+    @endcode
+ */
+void GPIO_clear_all_irq_sources
+(
+    gpio_instance_t *   this_gpio,
+    uint32_t            bitmask
+);
 #endif /* CORE_GPIO_H_ */

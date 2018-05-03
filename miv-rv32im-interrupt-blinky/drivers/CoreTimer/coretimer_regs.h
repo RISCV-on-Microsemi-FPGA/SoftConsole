@@ -1,17 +1,17 @@
 /*******************************************************************************
- * (c) Copyright 2007-2015 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2007-2017 Microsemi SoC Products Group. All rights reserved.
  * 
- * SVN $Revision: 7967 $
- * SVN $Date: 2015-10-09 18:48:26 +0530 (Fri, 09 Oct 2015) $
+ * SVN $Revision: 8933 $
+ * SVN $Date: 2017-03-31 13:54:33 +0530 (Fri, 31 Mar 2017) $
  */
 
 #ifndef __CORE_TIMER_REGISTERS
-#define __CORE_TIMER_REGISTERS	1
+#define __CORE_TIMER_REGISTERS  1
 
 /*------------------------------------------------------------------------------
  * TimerLoad register details
  */
-#define TimerLoad_REG_OFFSET	0x00
+#define TimerLoad_REG_OFFSET    0x00
 
 /*
  * LoadValue bits.
@@ -23,7 +23,7 @@
 /*------------------------------------------------------------------------------
  * TimerValue register details
  */
-#define TimerValue_REG_OFFSET	0x04
+#define TimerValue_REG_OFFSET   0x04
 
 /*
  * CurrentValue bits.
@@ -35,7 +35,7 @@
 /*------------------------------------------------------------------------------
  * TimerControl register details
  */
-#define TimerControl_REG_OFFSET	0x08
+#define TimerControl_REG_OFFSET 0x08
 
 /*
  * TimerEnable bits.
@@ -61,7 +61,7 @@
 /*------------------------------------------------------------------------------
  * TimerPrescale register details
  */
-#define TimerPrescale_REG_OFFSET	0x0C
+#define TimerPrescale_REG_OFFSET    0x0C
 
 /*
  * Prescale bits.
@@ -73,7 +73,7 @@
 /*------------------------------------------------------------------------------
  * TimerIntClr register details
  */
-#define TimerIntClr_REG_OFFSET	0x10
+#define TimerIntClr_REG_OFFSET  0x10
 
 /*
  * TimerIntClr bits.
@@ -85,7 +85,7 @@
 /*------------------------------------------------------------------------------
  * TimerRIS register details
  */
-#define TimerRIS_REG_OFFSET	0x14
+#define TimerRIS_REG_OFFSET 0x14
 
 /*
  * RawTimerInterrupt bits.
@@ -97,7 +97,7 @@
 /*------------------------------------------------------------------------------
  * TimerMIS register details
  */
-#define TimerMIS_REG_OFFSET	0x18
+#define TimerMIS_REG_OFFSET 0x18
 
 /*
  * TimerInterrupt bits.
