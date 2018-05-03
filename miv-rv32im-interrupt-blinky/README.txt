@@ -25,7 +25,7 @@ The MiV_RV32IM_L1_AHB firmware projects needs the riscv_hal and the hal firmware
 (RISC-V HAL).
 
 The RISC-V HAL is available through Firmware catalog as well as the link below:
-    https://github.com/RISCV-on-Microsemi-FPGA/riscv-hal
+    https://github.com/RISCV-on-Microsemi-FPGA/Mi-V-Firmware
     
 --------------------------------------------------------------------------------
                             How to use this example
@@ -67,7 +67,7 @@ configuration. This can be achieved by overwriting the content of this example
 project's "hw_platform.h" file with the correct data from your Libero design.
 
 An example design for SmartFusion2 150 Ad. Dev Kit is available at 
-https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/tree/master/Libero/
+https://github.com/RISCV-on-Microsemi-FPGA/SmartFusion2-Advanced-Dev-Kit
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                           Silicon revision dependencies
