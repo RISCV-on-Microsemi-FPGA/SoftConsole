@@ -2,7 +2,11 @@
               RISC-V simple bare metal bootloader example project
 ================================================================================
 
-TBD - remainder is copied from one of the blinky projects
+Simple boot-loader example program.
+ *  This sample project is targeted at a RISC-V design running on the M2S150 development board.
+ *  You can program the on board SPI Flash from a command line program and have the
+    boot-loader load a program from SPI Flash and jump to it.
+ *  These actions are driven from a serial command line interface.
 
 --------------------------------------------------------------------------------
                             Mi-V Soft processor
@@ -28,13 +32,6 @@ The RISC-V HAL is available through Firmware catalog as well as the link below:
 --------------------------------------------------------------------------------
                             How to use this example
 --------------------------------------------------------------------------------
-The System timer is configured using SysTick_Config() function. This function
-also enables the internal system timer interrupt. This example implements the
-SysTick_Handler() function which will be called by the RISCV-HAL.The application
-specific interrupt handling is implemented in SysTick_Handler() function.
-As demonstration, the LEDs blink pattern can be observed to see the System internal
-timer interrupt functionality.
-
 This example project requires USB-UART interface to be connected to a host PC. 
 The host PC must connect to the serial port using a terminal emulator such as
 HyperTerminal or PuTTY configured as follows:
@@ -44,9 +41,8 @@ HyperTerminal or PuTTY configured as follows:
     - no parity
     - no flow control
 
-This example displays a message on HyperTerminal then echoes back characters
-typed in HyperTerminal.
-
+This example displays a message on HyperTerminal. Use the interactive use interface
+to give commands from HyperTerminal.
 
 --------------------------------------------------------------------------------
                                 Target hardware
@@ -63,8 +59,3 @@ project's "hw_platform.h" file with the correct data from your Libero design.
 
 An example design for SmartFusion2 150 Ad. Dev Kit is available at 
 https://github.com/RISCV-on-Microsemi-FPGA/SmartFusion2-Advanced-Dev-Kit
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                          Silicon revision dependencies
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-This example is tested on M2S150 device.
