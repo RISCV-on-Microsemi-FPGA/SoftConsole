@@ -190,7 +190,7 @@ int main()
      * Initialize the CoreGPIO driver with the base address of the CoreGPIO
      * instance to use and the initial state of the outputs.
      *************************************************************************/
-    GPIO_init( &g_gpio, COREGPIO_BASE_ADDR, GPIO_APB_32_BITS_BUS );
+    GPIO_init( &g_gpio, COREGPIO_IN_BASE_ADDR, GPIO_APB_32_BITS_BUS );
 
     /**************************************************************************
      * Configure the GPIOs.

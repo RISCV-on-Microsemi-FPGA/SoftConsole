@@ -1,11 +1,11 @@
 /*******************************************************************************
- * (c) Copyright 2009-2015 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2009-2018 Microsemi SoC Products Group. All rights reserved.
  * 
- * SVN $Revision: 7964 $
- * SVN $Date: 2015-10-09 18:26:53 +0530 (Fri, 09 Oct 2015) $
+ * SVN $Revision: 9743 $
+ * SVN $Date: 2018-02-12 15:45:09 +0530 (Mon, 12 Feb 2018) $
  */
 #ifndef __CORE_GPIO_REGISTERS_H
-#define __CORE_GPIO_REGISTERS_H		1
+#define __CORE_GPIO_REGISTERS_H    1
 
 /*------------------------------------------------------------------------------
  * 

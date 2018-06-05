@@ -47,7 +47,7 @@
 <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/miv-rv32im-interrupt-blinky.elf"/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="miv-rv32im-interrupt-blinky"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
-<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="ilg.gnumcueclipse.managedbuild.cross.riscv.config.elf.debug.1292654480"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/miv-rv32im-interrupt-blinky"/>
 </listAttribute>

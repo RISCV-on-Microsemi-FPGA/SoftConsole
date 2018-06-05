@@ -25,7 +25,7 @@ The MiV_RV32IM_L1_AHB firmware projects needs the riscv_hal and the hal firmware
 (RISC-V HAL).
 
 The RISC-V HAL is available through Firmware catalog as well as the link below:
-    https://github.com/RISCV-on-Microsemi-FPGA/riscv-hal
+    https://github.com/RISCV-on-Microsemi-FPGA/Mi-V-Firmware
     
 --------------------------------------------------------------------------------
                             How to use this example
@@ -52,7 +52,7 @@ HyperTerminal or PuTTY configured as follows:
 This example displays a message on HyperTerminal then echoes back characters
 typed in HyperTerminal.
 
-
+The LEDs will toggle every time the Timer timer interrupt asserts.
 --------------------------------------------------------------------------------
                                 Target hardware
 --------------------------------------------------------------------------------
@@ -67,9 +67,4 @@ configuration. This can be achieved by overwriting the content of this example
 project's "hw_platform.h" file with the correct data from your Libero design.
 
 An example design for SmartFusion2 150 Ad. Dev Kit is available at 
-https://github.com/RISCV-on-Microsemi-FPGA/M2S150-Advanced-Dev-Kit/tree/master/Libero/
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                          Silicon revision dependencies
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-This example is tested on M2S150 device.
+https://github.com/RISCV-on-Microsemi-FPGA/SmartFusion2-Advanced-Dev-Kit

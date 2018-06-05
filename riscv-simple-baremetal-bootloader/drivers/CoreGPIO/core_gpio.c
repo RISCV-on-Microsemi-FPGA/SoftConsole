@@ -1,10 +1,10 @@
 /*******************************************************************************
- * (c) Copyright 2008-2017 Microsemi SoC Products Group. All rights reserved.
+ * (c) Copyright 2008-2018 Microsemi SoC Products Group. All rights reserved.
  * 
  * CoreGPIO bare metal driver implementation.
  *
- * SVN $Revision: 9066 $
- * SVN $Date: 2017-04-27 19:54:13 +0530 (Thu, 27 Apr 2017) $
+ * SVN $Revision: 9743 $
+ * SVN $Date: 2018-02-12 15:45:09 +0530 (Mon, 12 Feb 2018) $
  */
 #include "core_gpio.h"
 #include "../../hal/hal.h"
