@@ -1,6 +1,6 @@
 #                       Dhrystone
                         
-This SoftConsole Makefile project demonstrates how to configure and use the Dhrystone Benchmark.
+This Softconsole Makefile project is used to measure the efficiency of the code generated for the same computer.
 
 ##                      Mi-V Soft processor
 This example uses a Mi-V Soft processor MiV_RV32IMA_L1_AHB. The design is 
