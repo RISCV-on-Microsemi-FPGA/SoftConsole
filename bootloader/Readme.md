@@ -1,4 +1,4 @@
-#                   RISC-V simple bare metal bootloader example project
+#                   Bootloader
 
 
 Simple boot-loader example program.
