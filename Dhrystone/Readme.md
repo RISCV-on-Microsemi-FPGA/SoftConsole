@@ -21,6 +21,20 @@ The MiV_RV32IMA_L1_AHB firmware projects needs the riscv_hal and the hal firmwar
 The RISC-V HAL is available through Firmware catalog as well as the link below:
 https://github.com/RISCV-on-Microsemi-FPGA/Solutions/tree/master/Mi-V-Firmware
 
+
+##                            How to use this example
+This example project requires USB-UART interface to be connected to a host PC. 
+The host PC must connect to the serial port using a terminal emulator such as
+HyperTerminal or PuTTY configured as follows:
+    - 115200 baud
+    - 8 data bits
+    - 1 stop bit
+    - no parity
+    - no flow control
+
+This example displays a message on HyperTerminal. Use the interactive use interface
+to give commands from HyperTerminal.
+
 ## Target hardware
 
 This example project is targeted at a SmartFusion2 M2S150 advanced development kit. 
