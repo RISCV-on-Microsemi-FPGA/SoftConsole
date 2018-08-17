@@ -26,11 +26,11 @@ https://github.com/RISCV-on-Microsemi-FPGA/Solutions/tree/master/Mi-V-Firmware
 This example project requires USB-UART interface to be connected to a host PC. 
 The host PC must connect to the serial port using a terminal emulator such as
 HyperTerminal or PuTTY configured as follows:
-    - 115200 baud
-    - 8 data bits
-    - 1 stop bit
-    - no parity
-    - no flow control
+    * 115200 baud
+    * 8 data bits
+    * 1 stop bit
+    * no parity
+    * no flow control
 
 This example displays a message on HyperTerminal. Use the interactive use interface
 to give commands from HyperTerminal.
