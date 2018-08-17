@@ -31,6 +31,7 @@ The RISC-V HAL is available through Firmware catalog as well as the link below:
 This example project requires USB-UART interface to be connected to a host PC. 
 The host PC must connect to the serial port using a terminal emulator such as
 HyperTerminal or PuTTY configured as follows:
+
     - 115200 baud
     - 8 data bits
     - 1 stop bit
