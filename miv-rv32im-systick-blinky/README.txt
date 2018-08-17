@@ -25,7 +25,9 @@ The MiV_RV32IMA_L1_AHB firmware projects needs the riscv_hal and the hal firmwar
 (RISC-V HAL).
 
 The RISC-V HAL is available through Firmware catalog as well as the link below:
-    https://github.com/RISCV-on-Microsemi-FPGA/Mi-V-Firmware
+
+     https://github.com/RISCV-on-Microsemi-FPGA/Solutions/tree/master/Mi-V-Firmware
+    
 
 --------------------------------------------------------------------------------
                             How to use this example
