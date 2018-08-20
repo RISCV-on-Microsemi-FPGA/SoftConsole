@@ -41,7 +41,7 @@ HyperTerminal or PuTTY configured as follows:
     - no parity
     - no flow control
 
-This example displays a message on HyperTerminal. Use the interactive use interface
+This example displays a message on HyperTerminal. Use the interactive user interface
 to give commands from HyperTerminal.
 
 --------------------------------------------------------------------------------
