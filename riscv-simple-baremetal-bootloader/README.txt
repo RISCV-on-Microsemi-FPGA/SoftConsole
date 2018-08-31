@@ -27,8 +27,8 @@ The MiV_RV32IM_L1_AHB firmware projects needs the riscv_hal and the hal firmware
 (RISC-V HAL).
 
 The RISC-V HAL is available through Firmware catalog as well as the link below:
-    https://github.com/RISCV-on-Microsemi-FPGA/Mi-V-Firmware
 
+    https://github.com/RISCV-on-Microsemi-FPGA/Solutions/tree/master/Mi-V-Firmware
 --------------------------------------------------------------------------------
                             How to use this example
 --------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ HyperTerminal or PuTTY configured as follows:
     - no parity
     - no flow control
 
-This example displays a message on HyperTerminal. Use the interactive use interface
+This example displays a message on HyperTerminal. Use the interactive user interface
 to give commands from HyperTerminal.
 
 --------------------------------------------------------------------------------
