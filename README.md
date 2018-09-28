@@ -4,7 +4,7 @@
 
 [SoftConsole](https://www.microsemi.com/products/fpga-soc/design-resources/design-software/softconsole) is Microsemi's free [Eclipse](https://www.eclipse.org/home/index.php)/[CDT](https://www.eclipse.org/cdt/) and [GNU MCU Eclipse](https://gnu-mcu-eclipse.github.io/) based Integrated Development Environment (IDE) provided as key part of the [Microsemi Mi-V Embedded Ecosystem](https://www.microsemi.com/products/fpga-soc/mi-v-ecosystem). SoftConsole supports development and debugging of [bare metal](https://en.wikipedia.org/wiki/Bare_machine) and [RTOS](https://en.wikipedia.org/wiki/Real-time_operating_system) based [RISC-V](https://riscv.org/) and [Arm Cortex-M](https://www.arm.com/products/processors/cortex-m) software in C, C++ and assembler using industry standard [GNU](https://www.gnu.org/) tools including [GCC](https://gcc.gnu.org/), [GDB](https://www.gnu.org/software/gdb/), [binutils](https://www.gnu.org/software/binutils/) running on Windows and Linux. SoftConsole supports embedded debugging over [JTAG](https://en.wikipedia.org/wiki/JTAG) using the [Microsemi FlashPro programmer](https://www.microsemi.com/products/fpga-soc/design-resources/programming-debug-tools) and [OpenOCD](http://openocd.org/).
 
-The current released version of SoftConsole is v5.2 and can be downloaded from [here](https://www.microsemi.com/products/fpga-soc/design-resources/design-software/softconsole#downloads).
+The current released version of SoftConsole is v5.3 and can be downloaded from [here](https://www.microsemi.com/products/fpga-soc/design-resources/design-software/softconsole#downloads).
 Please read the SoftConsole release notes in full before installing and using it.
 
 ## Example projects
