@@ -55,7 +55,7 @@ $(RISCV_HAL_C_OBJS): %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 ELF_TO_IHEX = objcopy -O ihex --set-start 0
-ELF_TO_LST = -objdump --source --all-headers --demangle --line-numbers --wide "Dhrystone.elf" > "Dhrystone.lst"
+ELF_TO_LST = -objdump --source --all-headers --demangle --line-numbers --wide "dhrystone.elf" > "dhrystone.lst"
 
 
 dhrystone.lst: dhrystone.elf
